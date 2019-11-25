@@ -1,0 +1,33 @@
+<queries>
+  <query service="CouchDB">
+  /%id/_all_docs?include_docs=true
+  </query>
+  <query service="WikiData">
+  SELECT ?wdLabel ?ps_Label ?wdpqLabel ?pq_Label
+                         {
+                             VALUES (?object) {(wd:%id)}
+                             ?object ?p ?statement.
+                             ?statement ?ps ?ps_.
+                             ?wd wikibase:claim ?p.
+                             ?wd wikibase:statementProperty ?ps.
+                             OPTIONAL
+                             {
+                                ?statement ?pq ?pq_.
+                                ?wdpq wikibase:qualifier ?pq.
+                             }
+                             SERVICE wikibase:label { bd:serviceParam wikibase:language 'en'}
+                         }
+  </query>
+  <query service="DBPedia">
+  SELECT ?objectLabel ?label ?value
+                        {
+                            VALUES (?object) {(dbr:" + id + @")}
+                            ?object ?p ?value.
+                            ?object rdfs:label ?objectLabel.
+                            ?p rdfs:label ?label.
+                            FILTER (LANG(?objectLabel) = 'en')
+                            FILTER(LANG(?label) = 'en')
+                            FILTER(LANG(?value) = 'en' || LANG(?value) = '')
+                        }
+  </query>
+</queries>

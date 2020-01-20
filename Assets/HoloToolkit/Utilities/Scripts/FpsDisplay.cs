@@ -99,7 +99,7 @@ namespace HoloToolkit.Unity
 
             if (textMesh != null)
             {
-                textMesh.text = displayString;
+                textMesh.text = displayString + " (fps) " + Camera.main.transform.rotation.eulerAngles.x + "(xrot) " + Camera.main.transform.rotation.eulerAngles.y +" (yrot)";
             }
 
             if (uGUIText != null)

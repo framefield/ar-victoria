@@ -4,13 +4,21 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Lamp
+    100004: SjoepennaFloorLampV3
     400000: //RootNode
+    400002: Lamp
+    400004: SjoepennaFloorLampV3
     2100000: Material_001
+    2100002: Material.001
     2300000: //RootNode
+    2300002: SjoepennaFloorLampV3
     3300000: //RootNode
+    3300002: SjoepennaFloorLampV3
     4300000: SjoepennaFloorLampV3
     7400000: Default Take
     9500000: //RootNode
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -45,6 +53,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -69,6 +78,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

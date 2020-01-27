@@ -3,6 +3,431 @@ guid: b92227f95f24da14d93a814a94a292bc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: body
+    100002: //RootNode
+    100004: cluster1Handle
+    100006: cluster2Handle
+    100008: cluster3Handle
+    100010: curve11
+    100012: curve50
+    100014: curve51
+    100016: curve52
+    100018: curve53
+    100020: curve54
+    100022: curve54 1
+    100024: curve54 2
+    100026: curve55
+    100028: curve56
+    100030: curve57
+    100032: curve58
+    100034: curve59
+    100036: curve60
+    100038: curve61
+    100040: curve62
+    100042: curve63
+    100044: curve64
+    100046: curve65
+    100048: curve66
+    100050: curve67
+    100052: curve68
+    100054: curve69
+    100056: curve7
+    100058: curve70
+    100060: curve71
+    100062: curve72
+    100064: curve73
+    100066: curve74
+    100068: curve75
+    100070: curve76
+    100072: eyebrow
+    100074: eyeL
+    100076: eyeR
+    100078: face
+    100080: group1
+    100082: group10
+    100084: group11
+    100086: group12
+    100088: group13
+    100090: group2
+    100092: group3
+    100094: group4
+    100096: group5
+    100098: group6
+    100100: group6 1
+    100102: group7
+    100104: group8
+    100106: group9
+    100108: hair
+    100110: handline:curve7
+    100112: handline:group1
+    100114: ikHandle1
+    100116: ikHandle10
+    100118: ikHandle11
+    100120: ikHandle2
+    100122: ikHandle3
+    100124: ikHandle4
+    100126: ikHandle5
+    100128: ikHandle6
+    100130: ikHandle7
+    100132: ikHandle8
+    100134: ikHandle9
+    100136: inst3d
+    100138: jacket
+    100140: joint2
+    100142: joint3
+    100144: joint4
+    100146: joint5
+    100148: joint6
+    100150: joint7
+    100152: L_b01
+    100154: L_b02
+    100156: L_butt
+    100158: L_ja01
+    100160: L_ja02
+    100162: L_ja03
+    100164: LeftElbow
+    100166: LeftFinger
+    100168: LeftFinger 1
+    100170: LeftFinger 10
+    100172: LeftFinger 11
+    100174: LeftFinger 12
+    100176: LeftFinger 13
+    100178: LeftFinger 14
+    100180: LeftFinger 15
+    100182: LeftFinger 16
+    100184: LeftFinger 2
+    100186: LeftFinger 3
+    100188: LeftFinger 4
+    100190: LeftFinger 5
+    100192: LeftFinger 6
+    100194: LeftFinger 7
+    100196: LeftFinger 8
+    100198: LeftFinger 9
+    100200: LeftFinger1
+    100202: LeftFinger2
+    100204: LeftFinger3
+    100206: LeftFinger4
+    100208: LeftFoot
+    100210: LeftHand
+    100212: LeftHip
+    100214: LeftKnee
+    100216: LeftShoulder
+    100218: LeftShoulder 1
+    100220: LeftToe
+    100222: LeftToe 1
+    100224: LeftToe 2
+    100226: locator1
+    100228: M_ja01
+    100230: M_ja02
+    100232: M_ja03
+    100234: nurbsCircle11
+    100236: nurbsCircle11 1
+    100238: nurbsCircle12
+    100240: nurbsCircle12 1
+    100242: nurbsCircle13
+    100244: nurbsCircle13 1
+    100246: nurbsCircle14
+    100248: nurbsCircle14 1
+    100250: nurbsCircle15
+    100252: nurbsCircle15 1
+    100254: polySurface10
+    100256: polySurface11
+    100258: polySurface12
+    100260: polySurface16
+    100262: polySurface17
+    100264: polySurface18
+    100266: polySurface19
+    100268: polySurface2
+    100270: polySurface22
+    100272: polySurface3
+    100274: polySurface32
+    100276: polySurface33
+    100278: polySurface34
+    100280: polySurface5
+    100282: polySurface6
+    100284: polySurface7
+    100286: polySurface8
+    100288: polySurface9
+    100290: R_b01
+    100292: R_b02
+    100294: R_butt
+    100296: R_ja01
+    100298: R_ja02
+    100300: R_ja03
+    100302: RightElbow
+    100304: RightFinger
+    100306: RightFinger 1
+    100308: RightFinger 10
+    100310: RightFinger 11
+    100312: RightFinger 12
+    100314: RightFinger 13
+    100316: RightFinger 14
+    100318: RightFinger 15
+    100320: RightFinger 16
+    100322: RightFinger 2
+    100324: RightFinger 3
+    100326: RightFinger 4
+    100328: RightFinger 5
+    100330: RightFinger 6
+    100332: RightFinger 7
+    100334: RightFinger 8
+    100336: RightFinger 9
+    100338: RightFinger1
+    100340: RightFinger2
+    100342: RightFinger3
+    100344: RightFinger4
+    100346: RightFoot
+    100348: RightHand
+    100350: RightHip
+    100352: RightKnee
+    100354: RightShoulder
+    100356: RightShoulder 1
+    100358: RightToe
+    100360: RightToe 1
+    100362: RightToe 2
+    100364: root
+    100366: root_a
+    100368: transform1
+    100370: transform10
+    100372: transform11
+    100374: transform12
+    100376: transform13
+    100378: transform14
+    100380: transform2
+    100382: transform3
+    100384: transform4
+    100386: transform5
+    100388: transform6
+    100390: transform7
+    100392: transform8
+    100394: transform9
+    400000: body
+    400002: //RootNode
+    400004: cluster1Handle
+    400006: cluster2Handle
+    400008: cluster3Handle
+    400010: curve11
+    400012: curve50
+    400014: curve51
+    400016: curve52
+    400018: curve53
+    400020: curve54
+    400022: curve54 1
+    400024: curve54 2
+    400026: curve55
+    400028: curve56
+    400030: curve57
+    400032: curve58
+    400034: curve59
+    400036: curve60
+    400038: curve61
+    400040: curve62
+    400042: curve63
+    400044: curve64
+    400046: curve65
+    400048: curve66
+    400050: curve67
+    400052: curve68
+    400054: curve69
+    400056: curve7
+    400058: curve70
+    400060: curve71
+    400062: curve72
+    400064: curve73
+    400066: curve74
+    400068: curve75
+    400070: curve76
+    400072: eyebrow
+    400074: eyeL
+    400076: eyeR
+    400078: face
+    400080: group1
+    400082: group10
+    400084: group11
+    400086: group12
+    400088: group13
+    400090: group2
+    400092: group3
+    400094: group4
+    400096: group5
+    400098: group6
+    400100: group6 1
+    400102: group7
+    400104: group8
+    400106: group9
+    400108: hair
+    400110: handline:curve7
+    400112: handline:group1
+    400114: ikHandle1
+    400116: ikHandle10
+    400118: ikHandle11
+    400120: ikHandle2
+    400122: ikHandle3
+    400124: ikHandle4
+    400126: ikHandle5
+    400128: ikHandle6
+    400130: ikHandle7
+    400132: ikHandle8
+    400134: ikHandle9
+    400136: inst3d
+    400138: jacket
+    400140: joint2
+    400142: joint3
+    400144: joint4
+    400146: joint5
+    400148: joint6
+    400150: joint7
+    400152: L_b01
+    400154: L_b02
+    400156: L_butt
+    400158: L_ja01
+    400160: L_ja02
+    400162: L_ja03
+    400164: LeftElbow
+    400166: LeftFinger
+    400168: LeftFinger 1
+    400170: LeftFinger 10
+    400172: LeftFinger 11
+    400174: LeftFinger 12
+    400176: LeftFinger 13
+    400178: LeftFinger 14
+    400180: LeftFinger 15
+    400182: LeftFinger 16
+    400184: LeftFinger 2
+    400186: LeftFinger 3
+    400188: LeftFinger 4
+    400190: LeftFinger 5
+    400192: LeftFinger 6
+    400194: LeftFinger 7
+    400196: LeftFinger 8
+    400198: LeftFinger 9
+    400200: LeftFinger1
+    400202: LeftFinger2
+    400204: LeftFinger3
+    400206: LeftFinger4
+    400208: LeftFoot
+    400210: LeftHand
+    400212: LeftHip
+    400214: LeftKnee
+    400216: LeftShoulder
+    400218: LeftShoulder 1
+    400220: LeftToe
+    400222: LeftToe 1
+    400224: LeftToe 2
+    400226: locator1
+    400228: M_ja01
+    400230: M_ja02
+    400232: M_ja03
+    400234: nurbsCircle11
+    400236: nurbsCircle11 1
+    400238: nurbsCircle12
+    400240: nurbsCircle12 1
+    400242: nurbsCircle13
+    400244: nurbsCircle13 1
+    400246: nurbsCircle14
+    400248: nurbsCircle14 1
+    400250: nurbsCircle15
+    400252: nurbsCircle15 1
+    400254: polySurface10
+    400256: polySurface11
+    400258: polySurface12
+    400260: polySurface16
+    400262: polySurface17
+    400264: polySurface18
+    400266: polySurface19
+    400268: polySurface2
+    400270: polySurface22
+    400272: polySurface3
+    400274: polySurface32
+    400276: polySurface33
+    400278: polySurface34
+    400280: polySurface5
+    400282: polySurface6
+    400284: polySurface7
+    400286: polySurface8
+    400288: polySurface9
+    400290: R_b01
+    400292: R_b02
+    400294: R_butt
+    400296: R_ja01
+    400298: R_ja02
+    400300: R_ja03
+    400302: RightElbow
+    400304: RightFinger
+    400306: RightFinger 1
+    400308: RightFinger 10
+    400310: RightFinger 11
+    400312: RightFinger 12
+    400314: RightFinger 13
+    400316: RightFinger 14
+    400318: RightFinger 15
+    400320: RightFinger 16
+    400322: RightFinger 2
+    400324: RightFinger 3
+    400326: RightFinger 4
+    400328: RightFinger 5
+    400330: RightFinger 6
+    400332: RightFinger 7
+    400334: RightFinger 8
+    400336: RightFinger 9
+    400338: RightFinger1
+    400340: RightFinger2
+    400342: RightFinger3
+    400344: RightFinger4
+    400346: RightFoot
+    400348: RightHand
+    400350: RightHip
+    400352: RightKnee
+    400354: RightShoulder
+    400356: RightShoulder 1
+    400358: RightToe
+    400360: RightToe 1
+    400362: RightToe 2
+    400364: root
+    400366: root_a
+    400368: transform1
+    400370: transform10
+    400372: transform11
+    400374: transform12
+    400376: transform13
+    400378: transform14
+    400380: transform2
+    400382: transform3
+    400384: transform4
+    400386: transform5
+    400388: transform6
+    400390: transform7
+    400392: transform8
+    400394: transform9
+    2100000: TEMPORARY_IMPORT_NAMESPACE_sylvia1_Material__25
+    2100002: Material__27
+    2300000: eyeL
+    2300002: eyeR
+    2300004: hair
+    2300006: inst3d
+    3300000: eyeL
+    3300002: eyeR
+    3300004: hair
+    3300006: inst3d
+    4300000: polySurface2
+    4300002: polySurface3
+    4300004: polySurface16
+    4300006: polySurface19
+    4300008: polySurface22
+    4300010: polySurface33
+    4300012: polySurface34
+    4300014: inst3d
+    4300016: eyeR
+    4300018: eyeL
+    4300020: hair
+    9500000: //RootNode
+    13700000: polySurface16
+    13700002: polySurface19
+    13700004: polySurface2
+    13700006: polySurface22
+    13700008: polySurface3
+    13700010: polySurface33
+    13700012: polySurface34
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -38,6 +463,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -56,12 +482,15 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

@@ -1,0 +1,4 @@
+newmtl mat0
+map_Kd 0.tga
+newmtl mat1
+map_Kd 1.tga

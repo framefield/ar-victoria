@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 803f0e4bb80ecbe46930836b39b6b836
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Atama1_FaAtama_SeBoAtama_FaAtama
+    100002: Atama2_FaAtama_SeBoAtama_FaAtama
+    100004: Atama3_FaAtama_SeBoAtama_FaAtama
+    100006: //RootNode
+    100008: FaEye_BoFaEye_L_
+    100010: FaEye_BoFaEye_R_
+    100012: FaEyelashUn_L_
+    100014: FaEyelashUn_R_
+    100016: FaEyelashUp_L_
+    100018: FaEyelashUp_R_
+    100020: FaEyeShadow_BoFaEyeS
+    100022: FaKe
+    100024: FaRibonWrist_L_
+    100026: FaRibonWrist_R_
+    100028: sdef_FaBody
+    100030: sdef_FaEp
+    100032: sdef_FaFair
+    100034: sdef_FaRibonHd_L_
+    100036: sdef_FaRibonHd_R_
+    100038: sdef_FaRibonNe
+    100040: select_FaAtama
+    100042: Xxxx
+    400000: Atama1_FaAtama_SeBoAtama_FaAtama
+    400002: Atama2_FaAtama_SeBoAtama_FaAtama
+    400004: Atama3_FaAtama_SeBoAtama_FaAtama
+    400006: //RootNode
+    400008: FaEye_BoFaEye_L_
+    400010: FaEye_BoFaEye_R_
+    400012: FaEyelashUn_L_
+    400014: FaEyelashUn_R_
+    400016: FaEyelashUp_L_
+    400018: FaEyelashUp_R_
+    400020: FaEyeShadow_BoFaEyeS
+    400022: FaKe
+    400024: FaRibonWrist_L_
+    400026: FaRibonWrist_R_
+    400028: sdef_FaBody
+    400030: sdef_FaEp
+    400032: sdef_FaFair
+    400034: sdef_FaRibonHd_L_
+    400036: sdef_FaRibonHd_R_
+    400038: sdef_FaRibonNe
+    400040: select_FaAtama
+    400042: Xxxx
+    2100000: Famimi
+    2100002: Falace
+    2100004: Falace_ura
+    2100006: Facos
+    2100008: Fahair
+    2300000: Atama1_FaAtama_SeBoAtama_FaAtama
+    2300002: Atama2_FaAtama_SeBoAtama_FaAtama
+    2300004: Atama3_FaAtama_SeBoAtama_FaAtama
+    2300006: FaEye_BoFaEye_L_
+    2300008: FaEye_BoFaEye_R_
+    2300010: FaEyelashUn_L_
+    2300012: FaEyelashUn_R_
+    2300014: FaEyelashUp_L_
+    2300016: FaEyelashUp_R_
+    2300018: FaEyeShadow_BoFaEyeS
+    2300020: FaKe
+    2300022: FaRibonWrist_L_
+    2300024: FaRibonWrist_R_
+    2300026: sdef_FaBody
+    2300028: sdef_FaEp
+    2300030: sdef_FaFair
+    2300032: sdef_FaRibonHd_L_
+    2300034: sdef_FaRibonHd_R_
+    2300036: sdef_FaRibonNe
+    2300038: select_FaAtama
+    2300040: Xxxx
+    3300000: Atama1_FaAtama_SeBoAtama_FaAtama
+    3300002: Atama2_FaAtama_SeBoAtama_FaAtama
+    3300004: Atama3_FaAtama_SeBoAtama_FaAtama
+    3300006: FaEye_BoFaEye_L_
+    3300008: FaEye_BoFaEye_R_
+    3300010: FaEyelashUn_L_
+    3300012: FaEyelashUn_R_
+    3300014: FaEyelashUp_L_
+    3300016: FaEyelashUp_R_
+    3300018: FaEyeShadow_BoFaEyeS
+    3300020: FaKe
+    3300022: FaRibonWrist_L_
+    3300024: FaRibonWrist_R_
+    3300026: sdef_FaBody
+    3300028: sdef_FaEp
+    3300030: sdef_FaFair
+    3300032: sdef_FaRibonHd_L_
+    3300034: sdef_FaRibonHd_R_
+    3300036: sdef_FaRibonNe
+    3300038: select_FaAtama
+    3300040: Xxxx
+    4300000: Atama1_FaAtama_SeBoAtama_FaAtama
+    4300002: Atama2_FaAtama_SeBoAtama_FaAtama
+    4300004: Atama3_FaAtama_SeBoAtama_FaAtama
+    4300006: FaEye_BoFaEye_L_
+    4300008: FaEye_BoFaEye_R_
+    4300010: FaEyelashUn_L_
+    4300012: FaEyelashUn_R_
+    4300014: FaEyelashUp_L_
+    4300016: FaEyelashUp_R_
+    4300018: FaEyeShadow_BoFaEyeS
+    4300020: FaKe
+    4300022: FaRibonWrist_L_
+    4300024: FaRibonWrist_R_
+    4300026: sdef_FaBody
+    4300028: sdef_FaEp
+    4300030: sdef_FaFair
+    4300032: sdef_FaRibonHd_L_
+    4300034: sdef_FaRibonHd_R_
+    4300036: sdef_FaRibonNe
+    4300038: select_FaAtama
+    4300040: Xxxx
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

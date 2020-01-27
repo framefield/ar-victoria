@@ -1,0 +1,219 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration 
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+newmtl Scrungie
+	 Ka 0 0 0
+	 Kd 0.9 0.878824 0.758824
+	 Ks 0.00025 0.000244118 0.000210784
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd coat.jpg
+map_bump ClothW2.jpg
+bump ClothW2.jpg
+newmtl Hair_Ponytail
+	 Ka 0 0 0
+	 Kd 0.621176 0.444706 0.254118
+	 Ks 0.000414118 0.000296471 0.000169412
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WHair3P.jpg
+map_bump WHair3P.jpg
+bump WHair3P.jpg
+newmtl Hair
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WHair2.jpg
+map_bump WHair2.jpg
+bump WHair2.jpg
+newmtl Woman_Head
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WFace.jpg
+map_bump WTisB.jpg
+bump WTisB.jpg
+newmtl Woman_Mouth
+	 Ka 0 0 0
+	 Kd 0.705882 0.403922 0.403922
+	 Ks 0.00229412 0.00131275 0.00131275
+	 illum 2
+	 Ns 2.2518e+015
+newmtl Woman_Leg_Right
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WLegR.jpg
+map_bump WTisB.jpg
+bump WTisB.jpg
+newmtl Woman_Leg_Left
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WLegL.jpg
+map_bump WTisB.jpg
+bump WTisB.jpg
+newmtl Woman_Fingernails
+	 Ka 0 0 0
+	 Kd 0.639608 0.293726 0.277255
+	 Ks 0.00159902 0.000734314 0.000693137
+	 illum 2
+	 Ns 2.2518e+015
+newmtl Woman_Hand_Left
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WHandL.jpg
+map_bump WHandLB.jpg
+bump WHandLB.jpg
+newmtl Woman_Palm_Left
+	 Ka 0 0 0
+	 Kd 0.889412 0.444706 0.423529
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WPalmL.jpg
+map_bump WPalmLB.jpg
+bump WPalmLB.jpg
+newmtl Woman_Arm_Left
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WArmL.jpg
+map_bump WTisB.jpg
+bump WTisB.jpg
+newmtl Woman_Feet
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.000227451 0.000184314 0.000137255
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WSkin.jpg
+map_bump WLegR.jpg
+bump WLegR.jpg
+newmtl Woman_Torso
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WTorso2.jpg
+map_bump WTisB.jpg
+bump WTisB.jpg
+newmtl Woman_Hand_Right
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WHandR.jpg
+map_bump WHandRB.jpg
+bump WHandRB.jpg
+newmtl Woman_Palm_Right
+	 Ka 0 0 0
+	 Kd 0.889412 0.444706 0.423529
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WPalmR.jpg
+map_bump WPalmRB.jpg
+bump WPalmRB.jpg
+newmtl Woman_Arm_Right
+	 Ka 0 0 0
+	 Kd 0.818824 0.663529 0.494118
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WArmR.jpg
+map_bump WTisB.jpg
+bump WTisB.jpg
+newmtl Woman_Tongue
+	 Ka 0 0 0
+	 Kd 0.6 0.343333 0.343333
+	 Ks 0.00317647 0.00181765 0.00181765
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WTongue.jpg
+map_bump WTongueB.jpg
+bump WTongueB.jpg
+newmtl Woman_Teeth
+	 Ka 0 0 0
+	 Kd 0.635294 0.363529 0.363529
+	 Ks 0.00317647 0.00181765 0.00181765
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WTeeth.jpg
+map_bump WTeethB.jpg
+bump WTeethB.jpg
+newmtl Woman_Gums
+	 Ka 0 0 0
+	 Kd 0.6 0.343333 0.343333
+	 Ks 0.00317647 0.00181765 0.00181765
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WGums.jpg
+map_bump WGumsB.jpg
+bump WGumsB.jpg
+newmtl Cornea_Inner
+	 Ka 0 0 0
+	 Kd 0.351373 0.351373 0.351373
+	 Ks 0.00188235 0.00188235 0.00188235
+	 illum 2
+	 Ns 2.2518e+015
+newmtl Cornea_Outer
+	 Ka 0 0 0
+	 Kd 0.351373 0.351373 0.351373
+	 Ks 0.00200784 0.00200784 0.00200784
+	 illum 2
+	 Ns 2.2518e+015
+newmtl Woman_Iris_Left
+	 Ka 0 0 0
+	 Kd 1 1 1
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WEyeD.jpg
+map_bump WEyeB.jpg
+bump WEyeB.jpg
+newmtl Woman_Eye_Left
+	 Ka 0 0 0
+	 Kd 1 1 1
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WEyeD.jpg
+map_bump WEyeB.jpg
+bump WEyeB.jpg
+newmtl Woman_Iris_Right
+	 Ka 0 0 0
+	 Kd 1 1 1
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WEyeD.jpg
+map_bump WEyeB.jpg
+bump WEyeB.jpg
+newmtl Woman_Eye_Right
+	 Ka 0 0 0
+	 Kd 1 1 1
+	 Ks 0.00376471 0.00376471 0.00376471
+	 illum 2
+	 Ns 2.2518e+015
+map_Kd WEyeD.jpg
+map_bump WEyeB.jpg
+bump WEyeB.jpg

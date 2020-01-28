@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class TourController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ContentStep[] _steps;
+
+    private void  Start()
     {
-        
+        UpdateActiveStep();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _activeStepIndex= (_activeStepIndex+1)%_steps.Length;
+            UpdateActiveStep();
+        }
     }
+    
+    private void UpdateActiveStep()
+    {
+        foreach (var step in _steps)
+        {
+            step.SetActive(step == _steps[_activeStepIndex]);
+        }
+    }
+    
+    private int _activeStepIndex;
+
 }

@@ -460,9 +460,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4897817802343742914}
   - component: {fileID: 4897817802343742915}
-  - component: {fileID: 4897817802343742912}
-  - component: {fileID: 4897817802343742913}
-  - component: {fileID: 4897817802343742942}
   m_Layer: 0
   m_Name: GesturesInput
   m_TagString: Untagged
@@ -500,53 +497,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RecognizerStart: 0
   UseRailsNavigation: 0
---- !u!114 &4897817802343742912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897817802343742917}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae997c4c19503ce4299f36c08176287f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recognitionInterval: 0.1
---- !u!114 &4897817802343742913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897817802343742917}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580d237e61733a74f82f56f91dfeb848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4897817802343742942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897817802343742917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7f2cd8fe5a64645b8885c8ab8cae07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodSensitivity: 2
-  shakeSensitivity: 4
-  leanSensitivity: 10
-  nodNeutralZone: 1
-  shakeNeutralZone: 2
-  leanNeutralZone: 5
-  timeOut: 3
-  doubleNodTimeOut: 1.5
-  trackedHead: {fileID: 0}
-  trackerTarget: {fileID: 0}
 --- !u!1 &4897817802434729975
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +665,6 @@ MonoBehaviour:
     KeyCode: 116
   - Keyword: Test
     KeyCode: 49
-  recognitionConfidenceLevel: 1
 --- !u!114 &4897817802523763473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,6 +792,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - Keyword: Start Exhibition
     Response:
       m_PersistentCalls:
@@ -902,6 +853,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 1
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - Keyword: Start Record
     Response:
       m_PersistentCalls:
@@ -929,6 +882,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - Keyword: Stop Record
     Response:
       m_PersistentCalls:
@@ -956,6 +911,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - Keyword: Test
     Response:
       m_PersistentCalls:
@@ -1070,5 +1027,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   IsGlobalListener: 1
   PersistentKeywords: 1

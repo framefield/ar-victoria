@@ -452,26 +452,26 @@ namespace HoloToolkit.Unity.UX
 
             switch (flattenedAxis)
             {
-                case BoundingBox.FlattenModeEnum.DoNotFlatten:
+                case FlattenModeEnum.DoNotFlatten:
                 default:
                     scale.x += (largestDimension * scalePadding);
                     scale.y += (largestDimension * scalePadding);
                     scale.z += (largestDimension * scalePadding);
                     break;
 
-                case BoundingBox.FlattenModeEnum.FlattenX:
+                case FlattenModeEnum.FlattenX:
                     scale.x += (largestDimension * flattenedScalePadding);
                     scale.y += (largestDimension * scalePadding);
                     scale.z += (largestDimension * scalePadding);
                     break;
 
-                case BoundingBox.FlattenModeEnum.FlattenY:
+                case FlattenModeEnum.FlattenY:
                     scale.x += (largestDimension * scalePadding);
                     scale.y += (largestDimension * flattenedScalePadding);
                     scale.z += (largestDimension * scalePadding);
                     break;
 
-                case BoundingBox.FlattenModeEnum.FlattenZ:
+                case FlattenModeEnum.FlattenZ:
                     scale.x += (largestDimension * scalePadding);
                     scale.y += (largestDimension * scalePadding);
                     scale.z += (largestDimension * flattenedScalePadding);
@@ -618,13 +618,13 @@ namespace HoloToolkit.Unity.UX
         {
             LayerMask mask = new LayerMask();
 
-            GameObject clone = GameObject.Instantiate(target);
+            GameObject clone = Instantiate(target);
             clone.transform.localRotation = Quaternion.identity;
             clone.transform.position = Vector3.zero;
             clone.transform.localScale = Vector3.one;
-            BoundingBox.GetMeshFilterBoundsPoints(clone, boundsPoints, mask);
+            GetMeshFilterBoundsPoints(clone, boundsPoints, mask);
             Vector3 centroid = target.transform.position;
-            GameObject.Destroy(clone);
+            Destroy(clone);
 
 #if UNITY_2017_1_OR_NEWER
             for (int i = 0; i < boundsPoints.Count; ++i)

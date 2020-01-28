@@ -24,7 +24,7 @@ namespace HoloToolkit.Unity
 
         public AudioSource AddNewAudioSource()
         {
-            var source = this.gameObject.AddComponent<AudioSource>();
+            var source = gameObject.AddComponent<AudioSource>();
             source.playOnAwake = false;
             source.dopplerLevel = 0f;
             source.enabled = false;
@@ -46,7 +46,7 @@ namespace HoloToolkit.Unity
             // AudioSourcesReference created all these components and nothing else should use them.
             foreach (AudioSource audioSource in audioSources)
             {
-                Object.Destroy(audioSource);
+                Destroy(audioSource);
             }
 
             audioSources = null;

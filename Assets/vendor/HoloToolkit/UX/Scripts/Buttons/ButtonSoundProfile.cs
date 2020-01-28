@@ -63,7 +63,7 @@ namespace HoloToolkit.Unity.Buttons
                 UnityEditor.EditorGUILayout.LabelField(label, UnityEditor.EditorStyles.boldLabel);
                 UnityEditor.EditorGUI.indentLevel++;
                 UnityEditor.EditorGUILayout.BeginHorizontal();
-                clip = (AudioClip)UnityEditor.EditorGUILayout.ObjectField(clip, typeof(UnityEngine.AudioClip), true);
+                clip = (AudioClip)UnityEditor.EditorGUILayout.ObjectField(clip, typeof(AudioClip), true);
                 volume = UnityEditor.EditorGUILayout.Slider(volume, 0f, 1f);
                 UnityEditor.EditorGUILayout.EndHorizontal();
                 UnityEditor.EditorGUI.indentLevel--;

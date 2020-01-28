@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[System.Serializable]
+[Serializable]
 public class ProjectInfoJson
 {
     public String _id;
@@ -12,7 +12,7 @@ public class ProjectInfoJson
     public ProjectJson[] projects;
 }
 
-[System.Serializable]
+[Serializable]
 public class ProjectJson
 {
     public String _id;
@@ -20,7 +20,7 @@ public class ProjectJson
     public String activeTopic;
 }
 
-[System.Serializable]
+[Serializable]
 public class AnnotationReponseValueJson
 {
     public string id;
@@ -28,7 +28,7 @@ public class AnnotationReponseValueJson
     public Annotation doc;
 }
 
-[System.Serializable]
+[Serializable]
 public class AnnotationResponseJson
 {
     public int total_rows;
@@ -36,7 +36,7 @@ public class AnnotationResponseJson
     public AnnotationReponseValueJson[] rows;
 }
 
-[System.Serializable]
+[Serializable]
 public class TopicResponseJson
 {
     public string _id;
@@ -46,7 +46,7 @@ public class TopicResponseJson
     public AttachmentResponseJson[] _attachments;
 }
 
-[System.Serializable]
+[Serializable]
 public class FileResponseJson
 {
     public string content_type;
@@ -56,7 +56,7 @@ public class FileResponseJson
     public bool stub;
 }
 
-[System.Serializable]
+[Serializable]
 public class AttachmentResponseJson
 {
     public FileResponseJson file;
@@ -112,7 +112,7 @@ public class CouchDBWrapper : IDataService {
     {
         //string text = GetRequest("/" + id + "/topic_/file");
         string id;
-        if (project.ids.TryGetValue(this.serviceName, out id))
+        if (project.ids.TryGetValue(serviceName, out id))
         {
             Debug.Log("/" + id + "/topic_/file/");
             UnityWebRequest webop = CreateGetRequest("/" + id + "/topic_/file", true);

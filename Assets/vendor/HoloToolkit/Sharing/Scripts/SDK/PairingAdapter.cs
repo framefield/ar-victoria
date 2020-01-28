@@ -17,17 +17,17 @@ namespace HoloToolkit.Sharing
 
         public override void PairingConnectionSucceeded()
         {
-            if (this.SuccessEvent != null)
+            if (SuccessEvent != null)
             {
-                this.SuccessEvent();
+                SuccessEvent();
             }
         }
 
         public override void PairingConnectionFailed(PairingResult result)
         {
-            if (this.FailureEvent != null)
+            if (FailureEvent != null)
             {
-                this.FailureEvent(result);
+                FailureEvent(result);
             }
         }
     }

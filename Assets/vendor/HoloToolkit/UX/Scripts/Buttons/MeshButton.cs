@@ -54,14 +54,14 @@ namespace HoloToolkit.Unity.Buttons
 
             // if filter or renderer are null set them
             if (_meshFilter == null)
-                _meshFilter = this.GetComponent<MeshFilter>();
+                _meshFilter = GetComponent<MeshFilter>();
 
             if (_renderer == null)
-                _renderer = this.GetComponent<MeshRenderer>();
+                _renderer = GetComponent<MeshRenderer>();
 
 
             if (_animator == null)
-                _animator = this.GetComponent<Animator>();
+                _animator = GetComponent<Animator>();
 
             // Play animator state
             if (UseAnimator)

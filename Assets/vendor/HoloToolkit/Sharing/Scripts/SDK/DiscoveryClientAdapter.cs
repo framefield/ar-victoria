@@ -12,17 +12,17 @@ namespace HoloToolkit.Sharing
 
         public override void OnRemoteSystemDiscovered(DiscoveredSystem remoteSystem) 
         {
-            if (this.DiscoveredEvent != null)
+            if (DiscoveredEvent != null)
             {
-                this.DiscoveredEvent(remoteSystem);
+                DiscoveredEvent(remoteSystem);
             }
         }
 
         public override void OnRemoteSystemLost(DiscoveredSystem remoteSystem)
         {
-            if (this.LostEvent != null)
+            if (LostEvent != null)
             {
-                this.LostEvent(remoteSystem);
+                LostEvent(remoteSystem);
             }
         }
     }

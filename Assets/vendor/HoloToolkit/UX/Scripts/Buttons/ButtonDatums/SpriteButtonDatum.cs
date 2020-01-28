@@ -12,7 +12,7 @@ namespace HoloToolkit.Unity.Buttons
     [Serializable]
     public class SpriteButtonDatum
     {
-        public SpriteButtonDatum(ButtonStateEnum state) { this.ActiveState = state; this.Name = state.ToString(); }
+        public SpriteButtonDatum(ButtonStateEnum state) { ActiveState = state; Name = state.ToString(); }
 
         /// <summary>
         /// Name of Datum entry

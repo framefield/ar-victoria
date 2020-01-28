@@ -97,7 +97,7 @@ namespace HoloToolkit.UX.Dialog
             // Wait a moment to give scripts a chance to respond
             yield return null;
             // Destroy ourselves
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
             yield break;
         }
 
@@ -154,7 +154,7 @@ namespace HoloToolkit.UX.Dialog
         /// <returns></returns>
         public static Dialog Open(GameObject dialogPrefab, DialogResult result)
         {
-            GameObject dialogGo = GameObject.Instantiate(dialogPrefab) as GameObject;
+            GameObject dialogGo = Instantiate(dialogPrefab) as GameObject;
             Dialog dialog = dialogGo.GetComponent<Dialog>();
 
             dialog.Launch(result);
@@ -171,7 +171,7 @@ namespace HoloToolkit.UX.Dialog
         /// <returns></returns>
         public static Dialog Open(GameObject dialogPrefab, DialogButtonType buttons, string title, string message)
         {
-            GameObject dialogGameObject = GameObject.Instantiate(dialogPrefab) as GameObject;
+            GameObject dialogGameObject = Instantiate(dialogPrefab) as GameObject;
             Dialog dialog = dialogGameObject.GetComponent<Dialog>();
 
             DialogResult result = new DialogResult

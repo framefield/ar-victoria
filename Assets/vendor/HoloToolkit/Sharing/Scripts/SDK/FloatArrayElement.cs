@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class FloatArrayElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal FloatArrayElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.FloatArrayElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal FloatArrayElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.FloatArrayElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(FloatArrayElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(FloatArrayElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~FloatArrayElement() {
@@ -27,21 +27,21 @@ public class FloatArrayElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_FloatArrayElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static FloatArrayElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.FloatArrayElement_Cast(Element.getCPtr(element));
-    FloatArrayElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatArrayElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.FloatArrayElement_Cast(Element.getCPtr(element));
+    FloatArrayElement ret = (cPtr == System.IntPtr.Zero) ? null : new FloatArrayElement(cPtr, true);
     return ret; 
   }
 

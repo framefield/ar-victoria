@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class VisualPairReceiver : PairMaker {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal VisualPairReceiver(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.VisualPairReceiver_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal VisualPairReceiver(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.VisualPairReceiver_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(VisualPairReceiver obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(VisualPairReceiver obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~VisualPairReceiver() {
@@ -27,27 +27,27 @@ public class VisualPairReceiver : PairMaker {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_VisualPairReceiver(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static VisualPairReceiver Create() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.VisualPairReceiver_Create();
-    VisualPairReceiver ret = (cPtr == global::System.IntPtr.Zero) ? null : new VisualPairReceiver(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.VisualPairReceiver_Create();
+    VisualPairReceiver ret = (cPtr == System.IntPtr.Zero) ? null : new VisualPairReceiver(cPtr, true);
     return ret; 
   }
 
   public virtual TagImage CreateTagImage() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.VisualPairReceiver_CreateTagImage(swigCPtr);
-    TagImage ret = (cPtr == global::System.IntPtr.Zero) ? null : new TagImage(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.VisualPairReceiver_CreateTagImage(swigCPtr);
+    TagImage ret = (cPtr == System.IntPtr.Zero) ? null : new TagImage(cPtr, true);
     return ret; 
   }
 

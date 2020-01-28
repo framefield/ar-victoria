@@ -58,19 +58,19 @@ namespace HoloToolkit.Unity.InputModule
             // Workaround for Remote Desktop.  Ctrl-mouse, Shift-mouse, and Alt-mouse don't work, so they should be avoided.
             if (IsRunningUnderRemoteDesktop())
             {
-                if (this.buttonType == ButtonType.Control)
+                if (buttonType == ButtonType.Control)
                 {
-                    this.buttonType = ButtonType.Left;
+                    buttonType = ButtonType.Left;
                     Debug.LogWarning("Running under Remote Desktop, so changed ButtonController method to Left mouse button");
                 }
-                if (this.buttonType == ButtonType.Alt)
+                if (buttonType == ButtonType.Alt)
                 {
-                    this.buttonType = ButtonType.Right;
+                    buttonType = ButtonType.Right;
                     Debug.LogWarning("Running under Remote Desktop, so changed ButtonController method to Right mouse button");
                 }
-                if (this.buttonType == ButtonType.Shift)
+                if (buttonType == ButtonType.Shift)
                 {
-                    this.buttonType = ButtonType.Middle;
+                    buttonType = ButtonType.Middle;
                     Debug.LogWarning("Running under Remote Desktop, so changed ButtonController method to Middle mouse button");
                 }
             }
@@ -109,7 +109,7 @@ namespace HoloToolkit.Unity.InputModule
                 case ButtonType.Return:
                     return Input.GetKey(KeyCode.Return);
                 case ButtonType.Focused:
-                    return this.appHasFocus;
+                    return appHasFocus;
                 case ButtonType.ControlAndLeft:
                     return control && left;
                 case ButtonType.ControlAndRight:
@@ -142,7 +142,7 @@ namespace HoloToolkit.Unity.InputModule
 
         private void OnApplicationFocus(bool focusStatus)
         {
-            this.appHasFocus = focusStatus;
+            appHasFocus = focusStatus;
         }
 
 #if UNITY_EDITOR

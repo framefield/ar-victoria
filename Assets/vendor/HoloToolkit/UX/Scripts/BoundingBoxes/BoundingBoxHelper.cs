@@ -250,7 +250,7 @@ namespace HoloToolkit.Unity.UX
         /// <param name="ignoreLayers">a LayerMask variable</param>
         public static void GetUntransformedCornersFromObject(GameObject target, List<Vector3> boundsPoints, LayerMask ignoreLayers)
         {
-            GameObject clone = GameObject.Instantiate(target);
+            GameObject clone = Object.Instantiate(target);
             clone.transform.localRotation = Quaternion.identity;
             clone.transform.position = Vector3.zero;
             clone.transform.localScale = Vector3.one;
@@ -268,7 +268,7 @@ namespace HoloToolkit.Unity.UX
                 AddAABoundingBoxes(boundsPoints, corners);
             }
 
-            GameObject.Destroy(clone);
+            Object.Destroy(clone);
         }
         /// <summary>
         /// This function expands the box defined by the first param 'points' to include the second bounding box 'pointsToAdd'. The

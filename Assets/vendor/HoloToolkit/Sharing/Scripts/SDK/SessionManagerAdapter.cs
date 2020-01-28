@@ -24,9 +24,9 @@ namespace HoloToolkit.Sharing
         public override void OnCreateSucceeded(Session newSession)
         {
             Profile.BeginRange("OnCreateSucceeded");
-            if (this.CreateSucceededEvent != null)
+            if (CreateSucceededEvent != null)
             {
-                this.CreateSucceededEvent(newSession);
+                CreateSucceededEvent(newSession);
             }
             Profile.EndRange();
         }
@@ -34,9 +34,9 @@ namespace HoloToolkit.Sharing
         public override void OnCreateFailed(XString reason)
         {
             Profile.BeginRange("OnCreateFailed");
-            if (this.CreateFailedEvent != null)
+            if (CreateFailedEvent != null)
             {
-                this.CreateFailedEvent(reason);
+                CreateFailedEvent(reason);
             }
             Profile.EndRange();
         }
@@ -44,9 +44,9 @@ namespace HoloToolkit.Sharing
         public override void OnSessionAdded(Session newSession)
         {
             Profile.BeginRange("OnSessionAdded");
-            if (this.SessionAddedEvent != null)
+            if (SessionAddedEvent != null)
             {
-                this.SessionAddedEvent(newSession);
+                SessionAddedEvent(newSession);
             }
             Profile.EndRange();
         }
@@ -54,9 +54,9 @@ namespace HoloToolkit.Sharing
         public override void OnSessionClosed(Session session)
         {
             Profile.BeginRange("OnSessionClosed");
-            if (this.SessionClosedEvent != null)
+            if (SessionClosedEvent != null)
             {
-                this.SessionClosedEvent(session);
+                SessionClosedEvent(session);
             }
             Profile.EndRange();
         }
@@ -64,9 +64,9 @@ namespace HoloToolkit.Sharing
         public override void OnUserJoinedSession(Session session, User newUser)
         {
             Profile.BeginRange("OnUserJoinedSession");
-            if (this.UserJoinedSessionEvent != null)
+            if (UserJoinedSessionEvent != null)
             {
-                this.UserJoinedSessionEvent(session, newUser);
+                UserJoinedSessionEvent(session, newUser);
             }
             Profile.EndRange();
         }
@@ -74,9 +74,9 @@ namespace HoloToolkit.Sharing
         public override void OnUserLeftSession(Session session, User user)
         {
             Profile.BeginRange("OnUserLeftSession");
-            if (this.UserLeftSessionEvent != null)
+            if (UserLeftSessionEvent != null)
             {
-                this.UserLeftSessionEvent(session, user);
+                UserLeftSessionEvent(session, user);
             }
             Profile.EndRange();
         }
@@ -84,9 +84,9 @@ namespace HoloToolkit.Sharing
         public override void OnUserChanged(Session session, User user)
         {
             Profile.BeginRange("OnUserChanged");
-            if (this.UserChangedEvent != null)
+            if (UserChangedEvent != null)
             {
-                this.UserChangedEvent(session, user);
+                UserChangedEvent(session, user);
             }
             Profile.EndRange();
         }
@@ -94,9 +94,9 @@ namespace HoloToolkit.Sharing
         public override void OnServerConnected()
         {
             Profile.BeginRange("OnServerConnected");
-            if (this.ServerConnectedEvent != null)
+            if (ServerConnectedEvent != null)
             {
-                this.ServerConnectedEvent();
+                ServerConnectedEvent();
             }
             Profile.EndRange();
         }
@@ -104,9 +104,9 @@ namespace HoloToolkit.Sharing
         public override void OnServerDisconnected()
         {
             Profile.BeginRange("OnServerDisconnected");
-            if (this.ServerDisconnectedEvent != null)
+            if (ServerDisconnectedEvent != null)
             {
-                this.ServerDisconnectedEvent();
+                ServerDisconnectedEvent();
             }
             Profile.EndRange();
         }

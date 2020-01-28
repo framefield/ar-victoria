@@ -64,12 +64,12 @@ namespace HoloToolkit.Unity.UX
         {
             if (lineMatInstance != null)
             {
-                GameObject.Destroy(lineMatInstance);
+                Destroy(lineMatInstance);
             }
 
             if (meshRendererGameObject != null)
             {
-                GameObject.Destroy(meshRendererGameObject);
+                Destroy(meshRendererGameObject);
                 stripMeshRenderer = null;
             }
         }

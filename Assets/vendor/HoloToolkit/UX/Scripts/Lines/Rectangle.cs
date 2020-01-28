@@ -184,7 +184,7 @@ namespace HoloToolkit.Unity.UX
                 return;
             }
 
-            if (UnityEditor.Selection.activeGameObject == this.gameObject)
+            if (UnityEditor.Selection.activeGameObject == gameObject)
             {
                 return;
             }

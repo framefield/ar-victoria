@@ -32,7 +32,7 @@ namespace HoloToolkit.Unity
 
         private void HandleSpatialMappingSourceChanged(object sender, PropertyChangedEventArgsEx<SpatialMappingSource> e)
         {
-            Debug.Assert(object.ReferenceEquals(sender, SpatialMappingManager.Instance));
+            Debug.Assert(ReferenceEquals(sender, SpatialMappingManager.Instance));
 
             TryDetach(e.OldValue);
             TryAttach(e.NewValue);
@@ -71,7 +71,7 @@ namespace HoloToolkit.Unity
 
         private void HandleSurfaceAdded(object sender, DataEventArgs<SpatialMappingSource.SurfaceObject> e)
         {
-            Debug.Assert(object.ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
+            Debug.Assert(ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
             Debug.Assert(FindMeshIndexInInputMeshList(e.Data.ID) < 0);
 
             inputMeshList.Add(CreateMeshData(e.Data, meshUpdateID: 0));
@@ -79,7 +79,7 @@ namespace HoloToolkit.Unity
 
         private void HandleSurfaceUpdated(object sender, DataEventArgs<SpatialMappingSource.SurfaceUpdate> e)
         {
-            Debug.Assert(object.ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
+            Debug.Assert(ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
             Debug.Assert(e.Data.Old.ID == e.Data.New.ID);
 
             int iMesh = FindMeshIndexInInputMeshList(e.Data.New.ID);
@@ -90,7 +90,7 @@ namespace HoloToolkit.Unity
 
         private void HandleSurfaceRemoved(object sender, DataEventArgs<SpatialMappingSource.SurfaceObject> e)
         {
-            Debug.Assert(object.ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
+            Debug.Assert(ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
 
             var iMesh = FindMeshIndexInInputMeshList(e.Data.ID);
             Debug.Assert(iMesh >= 0);
@@ -100,7 +100,7 @@ namespace HoloToolkit.Unity
 
         private void HandleRemovingAllSurfaces(object sender, EventArgs e)
         {
-            Debug.Assert(object.ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
+            Debug.Assert(ReferenceEquals(sender, SpatialMappingManager.Instance.Source));
 
             inputMeshList.Clear();
         }

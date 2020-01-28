@@ -23,7 +23,7 @@ namespace HoloToolkit.Unity.Buttons
         {
             if (_animator == null)
             {
-                _animator = this.GetComponent<Animator>();
+                _animator = GetComponent<Animator>();
             }
 
             _animator.SetInteger("State", (int)newState);

@@ -240,7 +240,7 @@ namespace HoloToolkit.UX.Dialog
                 }
                 else
                 {
-                    stringBuilder.Append(System.Environment.NewLine);
+                    stringBuilder.Append(Environment.NewLine);
                 }
             }
 

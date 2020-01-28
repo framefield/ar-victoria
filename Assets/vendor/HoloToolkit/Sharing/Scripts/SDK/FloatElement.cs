@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class FloatElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal FloatElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.FloatElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal FloatElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.FloatElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(FloatElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(FloatElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~FloatElement() {
@@ -27,21 +27,21 @@ public class FloatElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_FloatElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static FloatElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.FloatElement_Cast(Element.getCPtr(element));
-    FloatElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.FloatElement_Cast(Element.getCPtr(element));
+    FloatElement ret = (cPtr == System.IntPtr.Zero) ? null : new FloatElement(cPtr, true);
     return ret; 
   }
 

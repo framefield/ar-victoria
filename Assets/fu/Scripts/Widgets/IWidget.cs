@@ -14,10 +14,10 @@ public abstract class IWidget : MonoBehaviour {
     public IWidget[] widgets;
     // Use this for initialization
     void Start () {
-        IWidget parent = this.transform.parent.gameObject.GetComponent<IWidget>();
+        IWidget parent = transform.parent.gameObject.GetComponent<IWidget>();
         if(parent!=null)
         {
-            this.project = parent.project;
+            project = parent.project;
         }
         initWidget();
 
@@ -33,9 +33,9 @@ public abstract class IWidget : MonoBehaviour {
 
     public void addWidget(IWidget widget)
     {
-        widget.transform.SetParent(this.transform);
+        widget.transform.SetParent(transform);
         widget.transform.localPosition = Vector3.zero;
-        widget.project = this.project;
+        widget.project = project;
         widget.initWidget();
     }
 

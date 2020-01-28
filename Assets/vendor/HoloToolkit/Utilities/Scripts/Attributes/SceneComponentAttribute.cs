@@ -4,6 +4,7 @@
 using System;
 using System.Reflection;
 using UnityEngine;
+using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -60,7 +61,7 @@ namespace HoloToolkit.Unity
                 sceneObject = null;
             }
 
-            UnityEngine.Object[] objectsInScene = GameObject.FindObjectsOfType(componentType);
+            UnityEngine.Object[] objectsInScene = Object.FindObjectsOfType(componentType);
             int selectedIndex = 0;
             string[] displayedOptions = new string[objectsInScene.Length + 1];
             displayedOptions[0] = "(None)";

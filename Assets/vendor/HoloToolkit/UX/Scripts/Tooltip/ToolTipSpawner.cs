@@ -162,7 +162,7 @@ namespace HoloToolkit.UX.ToolTips
         {
             if (toolTip == null)
             {
-                GameObject toolTipGo = GameObject.Instantiate(toolTipPrefab) as GameObject;
+                GameObject toolTipGo = Instantiate(toolTipPrefab) as GameObject;
                 toolTip = toolTipGo.GetComponent<ToolTip>();
                 toolTip.gameObject.SetActive(false);
                 toolTip.ShowBackground = showBackground;

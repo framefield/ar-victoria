@@ -58,7 +58,7 @@ namespace HoloToolkit.Examples.InteractiveElements
 
         private void Awake()
         {
-            cachedMaterial = this.GetComponent<Renderer>().material;
+            cachedMaterial = GetComponent<Renderer>().material;
             cachedColor = cachedMaterial.color;
         }
 

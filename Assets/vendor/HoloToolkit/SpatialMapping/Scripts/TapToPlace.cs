@@ -150,7 +150,7 @@ namespace HoloToolkit.Unity.SpatialMapping
             else
             {
                 StopPlacing();
-                Debug.Log("Victoria: x: " + this.transform.parent.position.x + ",y: " + this.transform.parent.position.y + ",z: " + this.transform.parent.position.z);
+                Debug.Log("Victoria: x: " + transform.parent.position.x + ",y: " + transform.parent.position.y + ",z: " + transform.parent.position.z);
 
             }
         }

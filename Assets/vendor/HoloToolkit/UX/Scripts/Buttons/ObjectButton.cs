@@ -24,7 +24,7 @@ namespace HoloToolkit.Unity.Buttons
             /// <summary>
             /// Constructor for prefab datum
             /// </summary>
-            public ObjectButtonDatum(ButtonStateEnum state) { this.ActiveState = state; this.Name = state.ToString(); }
+            public ObjectButtonDatum(ButtonStateEnum state) { ActiveState = state; Name = state.ToString(); }
 
             /// <summary>
             /// Name of Datum entry
@@ -73,8 +73,8 @@ namespace HoloToolkit.Unity.Buttons
                 {
                     if(ButtonStates[i].Prefab.scene.IsValid())
                     {
-                        ButtonStates[i].Instance = Instantiate(ButtonStates[i].Prefab, this.transform.position, this.transform.rotation) as GameObject;
-                        ButtonStates[i].Instance.transform.parent = this.transform;
+                        ButtonStates[i].Instance = Instantiate(ButtonStates[i].Prefab, transform.position, transform.rotation) as GameObject;
+                        ButtonStates[i].Instance.transform.parent = transform;
 
                         // Remove Clone Name
                         ButtonStates[i].Instance.name = ButtonStates[i].Instance.name.Substring(0, ButtonStates[i].Instance.name.Length - 7);

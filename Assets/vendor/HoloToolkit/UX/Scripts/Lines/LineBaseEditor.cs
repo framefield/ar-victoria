@@ -121,13 +121,13 @@ public class LineBaseEditor : MRTKEditor
                 for (int i = 1; i < line.NumPoints; i++)
                 {
                     Vector3 currentPos = line.GetPoint(i);
-                    Handles.DrawDottedLine(lastPos, currentPos, MRTKEditor.DottedLineScreenSpace);
+                    Handles.DrawDottedLine(lastPos, currentPos, DottedLineScreenSpace);
                     lastPos = currentPos;
                 }
 
                 if (line.Loops)
                 {
-                    Handles.DrawDottedLine(lastPos, firstPos, MRTKEditor.DottedLineScreenSpace);
+                    Handles.DrawDottedLine(lastPos, firstPos, DottedLineScreenSpace);
                 }
                 break;
 
@@ -141,13 +141,13 @@ public class LineBaseEditor : MRTKEditor
                 {
                     float normalizedLength = (1f / (numSteps - 1)) * i;
                     Vector3 currentPos = line.GetPoint(normalizedLength);
-                    Handles.DrawDottedLine(lastPos, currentPos, MRTKEditor.DottedLineScreenSpace);
+                    Handles.DrawDottedLine(lastPos, currentPos, DottedLineScreenSpace);
                     lastPos = currentPos;
                 }
 
                 if (line.Loops)
                 {
-                    Handles.DrawDottedLine(lastPos, firstPos, MRTKEditor.DottedLineScreenSpace);
+                    Handles.DrawDottedLine(lastPos, firstPos, DottedLineScreenSpace);
                 }
                 break;
         }

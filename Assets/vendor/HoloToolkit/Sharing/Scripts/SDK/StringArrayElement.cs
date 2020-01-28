@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class StringArrayElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal StringArrayElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.StringArrayElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal StringArrayElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.StringArrayElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(StringArrayElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(StringArrayElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~StringArrayElement() {
@@ -27,21 +27,21 @@ public class StringArrayElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_StringArrayElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static StringArrayElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.StringArrayElement_Cast(Element.getCPtr(element));
-    StringArrayElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new StringArrayElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.StringArrayElement_Cast(Element.getCPtr(element));
+    StringArrayElement ret = (cPtr == System.IntPtr.Zero) ? null : new StringArrayElement(cPtr, true);
     return ret; 
   }
 
@@ -51,8 +51,8 @@ public class StringArrayElement : Element {
   }
 
   public virtual XString GetValue(int index) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.StringArrayElement_GetValue(swigCPtr, index);
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.StringArrayElement_GetValue(swigCPtr, index);
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 

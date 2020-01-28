@@ -170,11 +170,11 @@ namespace HoloToolkit.Unity.UX
                 }
 
                 //calculate affines
-                if (this.AffineType == BoundingBoxGizmoHandleTransformType.Scale)
+                if (AffineType == BoundingBoxGizmoHandleTransformType.Scale)
                 {
                     ApplyScale(currentHandPosition);
                 }
-                else if (this.AffineType == BoundingBoxGizmoHandleTransformType.Rotation)
+                else if (AffineType == BoundingBoxGizmoHandleTransformType.Rotation)
                 {
                     if (isHandRotationAvailable && handMotionForRotation == BoundingBoxGizmoHandleHandMotionType.handRotatesToRotateObject)
                     {
@@ -365,7 +365,7 @@ namespace HoloToolkit.Unity.UX
         {
             inputDownEventData = null;
 
-            if (this.AffineType == BoundingBoxGizmoHandleTransformType.Scale)
+            if (AffineType == BoundingBoxGizmoHandleTransformType.Scale)
             {
                 cachedRenderer.sharedMaterial = Rig.ScaleHandleMaterial;
             }
@@ -374,7 +374,7 @@ namespace HoloToolkit.Unity.UX
                 cachedRenderer.sharedMaterial = Rig.RotateHandleMaterial;
             }
 
-            HoloToolkit.Unity.InputModule.InputManager.Instance.PopModalInputHandler();
+            InputManager.Instance.PopModalInputHandler();
             Rig.FocusOnHandle(null);
         }
 
@@ -389,12 +389,12 @@ namespace HoloToolkit.Unity.UX
             initialOrientation      = transformToAffect.rotation.eulerAngles;
             initialRotation         = transformToAffect.rotation;
             initialHandOrientation  = GetHandOrientation(eventData.SourceId);
-            initialScaleOrigin      = transformToAffect.position - this.transform.position;
+            initialScaleOrigin      = transformToAffect.position - transform.position;
 
-            HoloToolkit.Unity.InputModule.InputManager.Instance.PushModalInputHandler(gameObject);
+            InputManager.Instance.PushModalInputHandler(gameObject);
 
             cachedRenderer.sharedMaterial = Rig.InteractingMaterial;
-            Rig.FocusOnHandle(this.gameObject);
+            Rig.FocusOnHandle(gameObject);
             eventData.Use();
         }
         public void OnInputUp(InputEventData eventData)

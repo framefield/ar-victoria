@@ -15,9 +15,9 @@ namespace HoloToolkit.Sharing
 
         public override void OnUserPresenceChanged(User user)
         {
-            if (this.UserPresenceChangedEvent != null)
+            if (UserPresenceChangedEvent != null)
             {
-                this.UserPresenceChangedEvent(user);
+                UserPresenceChangedEvent(user);
             }
         }
     }

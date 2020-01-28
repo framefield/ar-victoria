@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class XString : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class XString : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal XString(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal XString(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(XString obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(XString obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~XString() {
@@ -29,14 +29,14 @@ public class XString : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_XString(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -99,7 +99,7 @@ public class XString : global::System.IDisposable {
   }
 
   public bool IsEqual(XString otherStr) {
-    bool ret = SharingClientPINVOKE.XString_IsEqual(swigCPtr, XString.getCPtr(otherStr));
+    bool ret = SharingClientPINVOKE.XString_IsEqual(swigCPtr, getCPtr(otherStr));
     return ret;
   }
 

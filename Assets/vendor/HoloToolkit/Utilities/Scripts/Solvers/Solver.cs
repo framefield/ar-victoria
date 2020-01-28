@@ -60,7 +60,7 @@ namespace HoloToolkit.Unity
                 UpdateLinkedTransform = false;
             }
 
-            GoalScale = MaintainScale == true ? this.transform.localScale : Vector3.one;
+            GoalScale = MaintainScale == true ? transform.localScale : Vector3.one;
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace HoloToolkit.Unity
                 }
                 else
                 {
-                    this.transform.position = value;
+                    transform.position = value;
                 }
             }
         }
@@ -184,7 +184,7 @@ namespace HoloToolkit.Unity
                 }
                 else
                 {
-                    this.transform.rotation = value;
+                    transform.rotation = value;
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace HoloToolkit.Unity
                 }
                 else
                 {
-                    this.transform.localScale = value;
+                    transform.localScale = value;
                 }
             }
         }
@@ -252,24 +252,24 @@ namespace HoloToolkit.Unity
         {
             if (Smoothing)
             {
-                Vector3 pos = this.transform.position;
-                Quaternion rot = this.transform.rotation;
-                Vector3 scale = this.transform.localScale;
+                Vector3 pos = transform.position;
+                Quaternion rot = transform.rotation;
+                Vector3 scale = transform.localScale;
 
                 float dt = solverHandler.DeltaTime;
                 pos = SmoothTo(pos, GoalPosition, dt, MoveLerpTime);
                 rot = SmoothTo(rot, GoalRotation, dt, RotateLerpTime);
                 scale = SmoothTo(scale, GoalScale, dt, ScaleLerpTime);
 
-                this.transform.position = pos;
-                this.transform.rotation = rot;
-                this.transform.localScale = scale;
+                transform.position = pos;
+                transform.rotation = rot;
+                transform.localScale = scale;
             }
             else
             {
-                this.transform.position = GoalPosition;
-                this.transform.rotation = GoalRotation;
-                this.transform.localScale = GoalScale;
+                transform.position = GoalPosition;
+                transform.rotation = GoalRotation;
+                transform.localScale = GoalScale;
             }
         }
 

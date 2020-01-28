@@ -77,7 +77,7 @@ public abstract class IDataProvider : MonoBehaviour {
     public void deleteAnnotation(string id)
     {
         //annotations.Remove(id);
-        this.annotations = annotations.Where(x => { return x._id != id; }).ToList();
+        annotations = annotations.Where(x => { return x._id != id; }).ToList();
         GetComponent<IWidget>().updateWidgets();
     }
 

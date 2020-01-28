@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class IntArrayListener : Listener {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal IntArrayListener(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.IntArrayListener_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal IntArrayListener(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.IntArrayListener_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(IntArrayListener obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(IntArrayListener obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~IntArrayListener() {
@@ -27,14 +27,14 @@ public class IntArrayListener : Listener {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_IntArrayListener(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -65,8 +65,8 @@ public class IntArrayListener : Listener {
     SharingClientPINVOKE.IntArrayListener_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(IntArrayListener));
     return hasDerivedMethod;
   }
@@ -91,9 +91,9 @@ public class IntArrayListener : Listener {
   private SwigDelegateIntArrayListener_1 swigDelegate1;
   private SwigDelegateIntArrayListener_2 swigDelegate2;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(int), typeof(int) };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] { typeof(int), typeof(int) };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(int), typeof(int) };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(int), typeof(int) };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] { typeof(int), typeof(int) };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(int), typeof(int) };
 }
 
 }

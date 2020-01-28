@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class NetworkConnectionListener : Listener {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal NetworkConnectionListener(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.NetworkConnectionListener_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal NetworkConnectionListener(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.NetworkConnectionListener_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(NetworkConnectionListener obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(NetworkConnectionListener obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~NetworkConnectionListener() {
@@ -27,14 +27,14 @@ public class NetworkConnectionListener : Listener {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_NetworkConnectionListener(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -72,42 +72,42 @@ public class NetworkConnectionListener : Listener {
     SharingClientPINVOKE.NetworkConnectionListener_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2, swigDelegate3);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(NetworkConnectionListener));
     return hasDerivedMethod;
   }
 
-  private void SwigDirectorOnConnected(global::System.IntPtr connection) {
-    OnConnected((connection == global::System.IntPtr.Zero) ? null : new NetworkConnection(connection, true));
+  private void SwigDirectorOnConnected(System.IntPtr connection) {
+    OnConnected((connection == System.IntPtr.Zero) ? null : new NetworkConnection(connection, true));
   }
 
-  private void SwigDirectorOnConnectFailed(global::System.IntPtr connection) {
-    OnConnectFailed((connection == global::System.IntPtr.Zero) ? null : new NetworkConnection(connection, true));
+  private void SwigDirectorOnConnectFailed(System.IntPtr connection) {
+    OnConnectFailed((connection == System.IntPtr.Zero) ? null : new NetworkConnection(connection, true));
   }
 
-  private void SwigDirectorOnDisconnected(global::System.IntPtr connection) {
-    OnDisconnected((connection == global::System.IntPtr.Zero) ? null : new NetworkConnection(connection, true));
+  private void SwigDirectorOnDisconnected(System.IntPtr connection) {
+    OnDisconnected((connection == System.IntPtr.Zero) ? null : new NetworkConnection(connection, true));
   }
 
-  private void SwigDirectorOnMessageReceived(global::System.IntPtr connection, global::System.IntPtr message) {
-    OnMessageReceived((connection == global::System.IntPtr.Zero) ? null : new NetworkConnection(connection, true), new NetworkInMessage(message, false));
+  private void SwigDirectorOnMessageReceived(System.IntPtr connection, System.IntPtr message) {
+    OnMessageReceived((connection == System.IntPtr.Zero) ? null : new NetworkConnection(connection, true), new NetworkInMessage(message, false));
   }
 
-  public delegate void SwigDelegateNetworkConnectionListener_0(global::System.IntPtr connection);
-  public delegate void SwigDelegateNetworkConnectionListener_1(global::System.IntPtr connection);
-  public delegate void SwigDelegateNetworkConnectionListener_2(global::System.IntPtr connection);
-  public delegate void SwigDelegateNetworkConnectionListener_3(global::System.IntPtr connection, global::System.IntPtr message);
+  public delegate void SwigDelegateNetworkConnectionListener_0(System.IntPtr connection);
+  public delegate void SwigDelegateNetworkConnectionListener_1(System.IntPtr connection);
+  public delegate void SwigDelegateNetworkConnectionListener_2(System.IntPtr connection);
+  public delegate void SwigDelegateNetworkConnectionListener_3(System.IntPtr connection, System.IntPtr message);
 
   private SwigDelegateNetworkConnectionListener_0 swigDelegate0;
   private SwigDelegateNetworkConnectionListener_1 swigDelegate1;
   private SwigDelegateNetworkConnectionListener_2 swigDelegate2;
   private SwigDelegateNetworkConnectionListener_3 swigDelegate3;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(NetworkConnection) };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] { typeof(NetworkConnection) };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(NetworkConnection) };
-  private static global::System.Type[] swigMethodTypes3 = new global::System.Type[] { typeof(NetworkConnection), typeof(NetworkInMessage) };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(NetworkConnection) };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] { typeof(NetworkConnection) };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(NetworkConnection) };
+  private static System.Type[] swigMethodTypes3 = new System.Type[] { typeof(NetworkConnection), typeof(NetworkInMessage) };
 }
 
 }

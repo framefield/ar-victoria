@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class StringElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal StringElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.StringElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal StringElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.StringElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(StringElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(StringElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~StringElement() {
@@ -27,27 +27,27 @@ public class StringElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_StringElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static StringElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.StringElement_Cast(Element.getCPtr(element));
-    StringElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new StringElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.StringElement_Cast(Element.getCPtr(element));
+    StringElement ret = (cPtr == System.IntPtr.Zero) ? null : new StringElement(cPtr, true);
     return ret; 
   }
 
   public virtual XString GetValue() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.StringElement_GetValue(swigCPtr);
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.StringElement_GetValue(swigCPtr);
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 

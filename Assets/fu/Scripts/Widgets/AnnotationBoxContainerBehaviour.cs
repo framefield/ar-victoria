@@ -14,14 +14,14 @@ public class AnnotationBoxContainerBehaviour : IWidget {
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            GameObject.Destroy(transform.GetChild(i).gameObject);
+            Destroy(transform.GetChild(i).gameObject);
         }
 
         List<Annotation> annotations = GetComponent<IDataProvider>().GetData() as List<Annotation>;
         foreach (Annotation a in annotations)
         {
             //Create GUI
-            IWidget annotationInfoBox = GameObject.Instantiate(widgets[0]);
+            IWidget annotationInfoBox = Instantiate(widgets[0]);
             annotationInfoBox.gameObject.SetActive(true);
             annotationInfoBox.gameObject.name = a._id;
 

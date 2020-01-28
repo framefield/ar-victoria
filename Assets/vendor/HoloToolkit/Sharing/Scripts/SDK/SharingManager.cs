@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class SharingManager : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class SharingManager : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal SharingManager(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal SharingManager(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SharingManager obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(SharingManager obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~SharingManager() {
@@ -29,56 +29,56 @@ public class SharingManager : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_SharingManager(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
   public static SharingManager Create(ClientConfig config) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_Create(ClientConfig.getCPtr(config));
-    SharingManager ret = (cPtr == global::System.IntPtr.Zero) ? null : new SharingManager(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_Create(ClientConfig.getCPtr(config));
+    SharingManager ret = (cPtr == System.IntPtr.Zero) ? null : new SharingManager(cPtr, true);
     return ret; 
   }
 
   public virtual SessionManager GetSessionManager() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetSessionManager(swigCPtr);
-    SessionManager ret = (cPtr == global::System.IntPtr.Zero) ? null : new SessionManager(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetSessionManager(swigCPtr);
+    SessionManager ret = (cPtr == System.IntPtr.Zero) ? null : new SessionManager(cPtr, true);
     return ret; 
   }
 
   public virtual UserPresenceManager GetUserPresenceManager() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetUserPresenceManager(swigCPtr);
-    UserPresenceManager ret = (cPtr == global::System.IntPtr.Zero) ? null : new UserPresenceManager(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetUserPresenceManager(swigCPtr);
+    UserPresenceManager ret = (cPtr == System.IntPtr.Zero) ? null : new UserPresenceManager(cPtr, true);
     return ret; 
   }
 
   public virtual AudioManager GetAudioManager() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetAudioManager(swigCPtr);
-    AudioManager ret = (cPtr == global::System.IntPtr.Zero) ? null : new AudioManager(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetAudioManager(swigCPtr);
+    AudioManager ret = (cPtr == System.IntPtr.Zero) ? null : new AudioManager(cPtr, true);
     return ret; 
   }
 
   public virtual PairingManager GetPairingManager() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetPairingManager(swigCPtr);
-    PairingManager ret = (cPtr == global::System.IntPtr.Zero) ? null : new PairingManager(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetPairingManager(swigCPtr);
+    PairingManager ret = (cPtr == System.IntPtr.Zero) ? null : new PairingManager(cPtr, true);
     return ret; 
   }
 
   public virtual RoomManager GetRoomManager() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetRoomManager(swigCPtr);
-    RoomManager ret = (cPtr == global::System.IntPtr.Zero) ? null : new RoomManager(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetRoomManager(swigCPtr);
+    RoomManager ret = (cPtr == System.IntPtr.Zero) ? null : new RoomManager(cPtr, true);
     return ret; 
   }
 
   public virtual ObjectElement GetRootSyncObject() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetRootSyncObject(swigCPtr);
-    ObjectElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetRootSyncObject(swigCPtr);
+    ObjectElement ret = (cPtr == System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
     return ret; 
   }
 
@@ -92,20 +92,20 @@ public class SharingManager : global::System.IDisposable {
   }
 
   public virtual NetworkConnection GetPairedConnection() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetPairedConnection(swigCPtr);
-    NetworkConnection ret = (cPtr == global::System.IntPtr.Zero) ? null : new NetworkConnection(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetPairedConnection(swigCPtr);
+    NetworkConnection ret = (cPtr == System.IntPtr.Zero) ? null : new NetworkConnection(cPtr, true);
     return ret; 
   }
 
   public virtual NetworkConnection GetServerConnection() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetServerConnection(swigCPtr);
-    NetworkConnection ret = (cPtr == global::System.IntPtr.Zero) ? null : new NetworkConnection(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetServerConnection(swigCPtr);
+    NetworkConnection ret = (cPtr == System.IntPtr.Zero) ? null : new NetworkConnection(cPtr, true);
     return ret; 
   }
 
   public virtual Settings GetSettings() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetSettings(swigCPtr);
-    Settings ret = (cPtr == global::System.IntPtr.Zero) ? null : new Settings(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetSettings(swigCPtr);
+    Settings ret = (cPtr == System.IntPtr.Zero) ? null : new Settings(cPtr, true);
     return ret; 
   }
 
@@ -114,8 +114,8 @@ public class SharingManager : global::System.IDisposable {
   }
 
   public virtual User GetLocalUser() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetLocalUser(swigCPtr);
-    User ret = (cPtr == global::System.IntPtr.Zero) ? null : new User(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SharingManager_GetLocalUser(swigCPtr);
+    User ret = (cPtr == System.IntPtr.Zero) ? null : new User(cPtr, true);
     return ret; 
   }
 

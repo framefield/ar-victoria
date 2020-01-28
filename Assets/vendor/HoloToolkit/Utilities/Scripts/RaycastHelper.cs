@@ -22,7 +22,7 @@ namespace HoloToolkit.Unity
 
             // Check to see if the ray cast hits any of the requested Unity layers
             if (layerMask != 0 &&
-                UnityEngine.Physics.Raycast(origin, direction, out hit, distance, layerMask))
+                Physics.Raycast(origin, direction, out hit, distance, layerMask))
             {
                 result = new RaycastResultHelper(hit, layerMask);
 
@@ -41,7 +41,7 @@ namespace HoloToolkit.Unity
 
             // Check to see if the ray cast hits any of the requested Unity layers
             if (layerMask != 0 &&
-                UnityEngine.Physics.SphereCast(origin, radius, direction, out hit, distance, layerMask))
+                Physics.SphereCast(origin, radius, direction, out hit, distance, layerMask))
             {
                 result = new RaycastResultHelper(hit, layerMask);
 
@@ -62,7 +62,7 @@ namespace HoloToolkit.Unity
             List<RaycastResultHelper> results = null;
             if (layerMask != 0)
             {
-                var raycastHits = UnityEngine.Physics.RaycastAll(origin, direction, distance, layerMask);
+                var raycastHits = Physics.RaycastAll(origin, direction, distance, layerMask);
                 if (raycastHits != null)
                 {
                     results = new List<RaycastResultHelper>(raycastHits.Length);

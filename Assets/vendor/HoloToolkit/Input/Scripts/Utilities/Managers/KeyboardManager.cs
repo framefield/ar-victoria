@@ -40,8 +40,8 @@ namespace HoloToolkit.Unity.InputModule
 
             public KeyCodeEventPair(KeyCode keyCode, KeyEvent keyEvent)
             {
-                this.KeyCode = keyCode;
-                this.KeyEvent = keyEvent;
+                KeyCode = keyCode;
+                KeyEvent = keyEvent;
             }
 
             public override bool Equals(object obj)
@@ -83,7 +83,7 @@ namespace HoloToolkit.Unity.InputModule
             {
                 if (isRegistered)
                 {
-                    var keyboard = KeyboardManager.Instance;
+                    var keyboard = Instance;
                     if (keyboard)
                     {
                         keyboard.UnregisterKeyEvent(keyCodeEvent, callback);

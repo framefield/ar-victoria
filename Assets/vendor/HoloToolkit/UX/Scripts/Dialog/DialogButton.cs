@@ -34,7 +34,7 @@ namespace HoloToolkit.UX.Buttons
         /// <summary>
         /// The type description of the button
         /// </summary>
-        public Dialog.DialogButtonType ButtonTypeEnum;
+        public DialogButtonType ButtonTypeEnum;
 
         private void OnEnable()
         {

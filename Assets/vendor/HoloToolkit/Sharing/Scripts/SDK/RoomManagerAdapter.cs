@@ -22,9 +22,9 @@ namespace HoloToolkit.Sharing
         public override void OnRoomAdded(Room newRoom)
         {
             Profile.BeginRange("OnRoomAdded");
-            if (this.RoomAddedEvent != null)
+            if (RoomAddedEvent != null)
             {
-                this.RoomAddedEvent(newRoom);
+                RoomAddedEvent(newRoom);
             }
             Profile.EndRange();
         }
@@ -32,9 +32,9 @@ namespace HoloToolkit.Sharing
         public override void OnRoomClosed(Room room)
         {
             Profile.BeginRange("OnRoomClosed");
-            if (this.RoomClosedEvent != null)
+            if (RoomClosedEvent != null)
             {
-                this.RoomClosedEvent(room);
+                RoomClosedEvent(room);
             }
             Profile.EndRange();
         }
@@ -42,9 +42,9 @@ namespace HoloToolkit.Sharing
         public override void OnUserJoinedRoom(Room room, int user)
         {
             Profile.BeginRange("OnUserJoinedRoom");
-            if (this.UserJoinedRoomEvent != null)
+            if (UserJoinedRoomEvent != null)
             {
-                this.UserJoinedRoomEvent(room, user);
+                UserJoinedRoomEvent(room, user);
             }
             Profile.EndRange();
         }
@@ -52,9 +52,9 @@ namespace HoloToolkit.Sharing
         public override void OnUserLeftRoom(Room room, int user)
         {
             Profile.BeginRange("OnUserLeftRoom");
-            if (this.UserLeftRoomEvent != null)
+            if (UserLeftRoomEvent != null)
             {
-                this.UserLeftRoomEvent(room, user);
+                UserLeftRoomEvent(room, user);
             }
             Profile.EndRange();
         }
@@ -62,9 +62,9 @@ namespace HoloToolkit.Sharing
         public override void OnAnchorsChanged(Room room)
         {
             Profile.BeginRange("OnAnchorsChanged");
-            if (this.AnchorsChangedEvent != null)
+            if (AnchorsChangedEvent != null)
             {
-                this.AnchorsChangedEvent(room);
+                AnchorsChangedEvent(room);
             }
             Profile.EndRange();
         }
@@ -72,9 +72,9 @@ namespace HoloToolkit.Sharing
         public override void OnAnchorsDownloaded(bool successful, AnchorDownloadRequest request, XString failureReason)
         {
             Profile.BeginRange("OnAnchorsDownloaded");
-            if (this.AnchorsDownloadedEvent != null)
+            if (AnchorsDownloadedEvent != null)
             {
-                this.AnchorsDownloadedEvent(successful, request, failureReason);
+                AnchorsDownloadedEvent(successful, request, failureReason);
             }
             Profile.EndRange();
         }
@@ -82,9 +82,9 @@ namespace HoloToolkit.Sharing
         public override void OnAnchorUploadComplete(bool successful, XString failureReason)
         {
             Profile.BeginRange("OnAnchorUploadComplete");
-            if (this.AnchorUploadedEvent != null)
+            if (AnchorUploadedEvent != null)
             {
-                this.AnchorUploadedEvent(successful, failureReason);
+                AnchorUploadedEvent(successful, failureReason);
             }
             Profile.EndRange();
         }

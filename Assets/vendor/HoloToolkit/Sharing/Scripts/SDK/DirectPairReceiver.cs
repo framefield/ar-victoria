@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class DirectPairReceiver : PairMaker {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal DirectPairReceiver(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.DirectPairReceiver_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal DirectPairReceiver(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.DirectPairReceiver_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DirectPairReceiver obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(DirectPairReceiver obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~DirectPairReceiver() {
@@ -27,14 +27,14 @@ public class DirectPairReceiver : PairMaker {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_DirectPairReceiver(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -56,8 +56,8 @@ public class DirectPairReceiver : PairMaker {
   }
 
   public override XString GetAddress(int index) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.DirectPairReceiver_GetAddress(swigCPtr, index);
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.DirectPairReceiver_GetAddress(swigCPtr, index);
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 

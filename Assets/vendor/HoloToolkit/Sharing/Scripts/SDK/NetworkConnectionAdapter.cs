@@ -19,9 +19,9 @@ namespace HoloToolkit.Sharing
         public override void OnConnected(NetworkConnection connection)
         {
             Profile.BeginRange("OnConnected");
-            if (this.ConnectedCallback != null)
+            if (ConnectedCallback != null)
             {
-                this.ConnectedCallback(connection);
+                ConnectedCallback(connection);
             }
             Profile.EndRange();
         }
@@ -29,9 +29,9 @@ namespace HoloToolkit.Sharing
         public override void OnConnectFailed(NetworkConnection connection)
         {
             Profile.BeginRange("OnConnectFailed");
-            if (this.ConnectionFailedCallback != null)
+            if (ConnectionFailedCallback != null)
             {
-                this.ConnectionFailedCallback(connection);
+                ConnectionFailedCallback(connection);
             }
             Profile.EndRange();
         }
@@ -39,9 +39,9 @@ namespace HoloToolkit.Sharing
         public override void OnDisconnected(NetworkConnection connection)
         {
             Profile.BeginRange("OnDisconnected");
-            if (this.DisconnectedCallback != null)
+            if (DisconnectedCallback != null)
             {
-                this.DisconnectedCallback(connection);
+                DisconnectedCallback(connection);
             }
             Profile.EndRange();
         }
@@ -49,9 +49,9 @@ namespace HoloToolkit.Sharing
         public override void OnMessageReceived(NetworkConnection connection, NetworkInMessage message)
         {
             Profile.BeginRange("OnMessageReceived");
-            if (this.MessageReceivedCallback != null)
+            if (MessageReceivedCallback != null)
             {
-                this.MessageReceivedCallback(connection, message);
+                MessageReceivedCallback(connection, message);
             }
             Profile.EndRange();
         }

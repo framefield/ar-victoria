@@ -24,7 +24,7 @@ namespace HoloToolkit.UI.Keyboard
         /// </summary>
         private void Start()
         {
-            m_Keyboard = this.GetComponentInParent<Keyboard>();
+            m_Keyboard = GetComponentInParent<Keyboard>();
             UpdateState();
         }
 

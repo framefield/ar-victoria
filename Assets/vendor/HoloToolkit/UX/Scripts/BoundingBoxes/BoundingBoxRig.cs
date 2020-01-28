@@ -175,7 +175,7 @@ namespace HoloToolkit.Unity.UX
 
         private void Start()
         {
-            objectToBound = this.gameObject;
+            objectToBound = gameObject;
 
             boxInstance = Instantiate(BoundingBoxPrefab) as BoundingBox;
             boxInstance.Target = objectToBound;
@@ -351,7 +351,7 @@ namespace HoloToolkit.Unity.UX
             {
                 for (int i = 0; i < cornerHandles.Length; ++i)
                 {
-                    GameObject.Destroy(cornerHandles[i]);
+                    Destroy(cornerHandles[i]);
                 }
                 cornerHandles = null;
                 handleCentroids = null;
@@ -491,12 +491,12 @@ namespace HoloToolkit.Unity.UX
                 List<Vector3> bounds = new List<Vector3>();
                 LayerMask mask = new LayerMask();
 
-                GameObject clone = GameObject.Instantiate(boxInstance.gameObject);
+                GameObject clone = Instantiate(boxInstance.gameObject);
                 clone.transform.localRotation = Quaternion.identity;
                 clone.transform.position = Vector3.zero;
                 BoundingBox.GetMeshFilterBoundsPoints(clone, bounds, mask);
                 Vector3 centroid = boxInstance.TargetBoundsCenter;
-                GameObject.Destroy(clone);
+                Destroy(clone);
 #if UNITY_2017_1_OR_NEWER
                 Matrix4x4 m = Matrix4x4.Rotate(objectToBound.transform.rotation);
                 for (int i = 0; i < bounds.Count; ++i)

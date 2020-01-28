@@ -87,7 +87,7 @@ namespace HoloToolkit.Unity.Buttons
                 AnimatorControllerParameter[] animParams = null;
 
                 // Validate the AnimButton controls - make sure there's one control for each button state
-                ButtonStateEnum[] buttonStates = (ButtonStateEnum[])System.Enum.GetValues(typeof(ButtonStateEnum));
+                ButtonStateEnum[] buttonStates = (ButtonStateEnum[])Enum.GetValues(typeof(ButtonStateEnum));
                 if (acb.AnimActions == null || acb.AnimActions.Length != buttonStates.Length) {
                     acb.AnimActions = new AnimatorControllerAction[buttonStates.Length];
                 }

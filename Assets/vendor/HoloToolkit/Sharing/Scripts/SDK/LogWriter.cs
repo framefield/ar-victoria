@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class LogWriter : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class LogWriter : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal LogWriter(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal LogWriter(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(LogWriter obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(LogWriter obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~LogWriter() {
@@ -29,14 +29,14 @@ public class LogWriter : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_LogWriter(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -55,8 +55,8 @@ public class LogWriter : global::System.IDisposable {
     SharingClientPINVOKE.LogWriter_director_connect(swigCPtr, swigDelegate0);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(LogWriter));
     return hasDerivedMethod;
   }
@@ -69,7 +69,7 @@ public class LogWriter : global::System.IDisposable {
 
   private SwigDelegateLogWriter_0 swigDelegate0;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(LogSeverity), typeof(string) };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(LogSeverity), typeof(string) };
 }
 
 }

@@ -67,14 +67,14 @@ namespace HoloToolkit.Unity.InputModule
             base.OnCursorStateChange(state);
 
             // the cursor state has changed, reset the animation timer
-            if (mHasHand != this.IsHandVisible || mIsDown != this.IsInputSourceDown || mHasHover != (this.TargetedObject != null))
+            if (mHasHand != IsHandVisible || mIsDown != IsInputSourceDown || mHasHover != (TargetedObject != null))
             {
                 mTimer = 0;
             }
 
-            mHasHand = this.IsHandVisible;
-            mIsDown = this.IsInputSourceDown;
-            mHasHover = this.TargetedObject != null;
+            mHasHand = IsHandVisible;
+            mIsDown = IsInputSourceDown;
+            mHasHover = TargetedObject != null;
 
             mTargetScale = mBaseScale * DefaultScale;
             bool showRing = false;

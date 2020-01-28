@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class ObjectElementListener : Listener {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal ObjectElementListener(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.ObjectElementListener_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal ObjectElementListener(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.ObjectElementListener_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ObjectElementListener obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(ObjectElementListener obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~ObjectElementListener() {
@@ -27,14 +27,14 @@ public class ObjectElementListener : Listener {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_ObjectElementListener(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -95,8 +95,8 @@ public class ObjectElementListener : Listener {
     SharingClientPINVOKE.ObjectElementListener_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2, swigDelegate3, swigDelegate4, swigDelegate5, swigDelegate6, swigDelegate7);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(ObjectElementListener));
     return hasDerivedMethod;
   }
@@ -121,16 +121,16 @@ public class ObjectElementListener : Listener {
     OnDoubleElementChanged(elementID, newValue);
   }
 
-  private void SwigDirectorOnStringElementChanged(long elementID, global::System.IntPtr newValue) {
-    OnStringElementChanged(elementID, (newValue == global::System.IntPtr.Zero) ? null : new XString(newValue, true));
+  private void SwigDirectorOnStringElementChanged(long elementID, System.IntPtr newValue) {
+    OnStringElementChanged(elementID, (newValue == System.IntPtr.Zero) ? null : new XString(newValue, true));
   }
 
-  private void SwigDirectorOnElementAdded(global::System.IntPtr element) {
-    OnElementAdded((element == global::System.IntPtr.Zero) ? null : new Element(element, true));
+  private void SwigDirectorOnElementAdded(System.IntPtr element) {
+    OnElementAdded((element == System.IntPtr.Zero) ? null : new Element(element, true));
   }
 
-  private void SwigDirectorOnElementDeleted(global::System.IntPtr element) {
-    OnElementDeleted((element == global::System.IntPtr.Zero) ? null : new Element(element, true));
+  private void SwigDirectorOnElementDeleted(System.IntPtr element) {
+    OnElementDeleted((element == System.IntPtr.Zero) ? null : new Element(element, true));
   }
 
   public delegate void SwigDelegateObjectElementListener_0(long elementID, bool newValue);
@@ -138,9 +138,9 @@ public class ObjectElementListener : Listener {
   public delegate void SwigDelegateObjectElementListener_2(long elementID, long newValue);
   public delegate void SwigDelegateObjectElementListener_3(long elementID, float newValue);
   public delegate void SwigDelegateObjectElementListener_4(long elementID, double newValue);
-  public delegate void SwigDelegateObjectElementListener_5(long elementID, global::System.IntPtr newValue);
-  public delegate void SwigDelegateObjectElementListener_6(global::System.IntPtr element);
-  public delegate void SwigDelegateObjectElementListener_7(global::System.IntPtr element);
+  public delegate void SwigDelegateObjectElementListener_5(long elementID, System.IntPtr newValue);
+  public delegate void SwigDelegateObjectElementListener_6(System.IntPtr element);
+  public delegate void SwigDelegateObjectElementListener_7(System.IntPtr element);
 
   private SwigDelegateObjectElementListener_0 swigDelegate0;
   private SwigDelegateObjectElementListener_1 swigDelegate1;
@@ -151,14 +151,14 @@ public class ObjectElementListener : Listener {
   private SwigDelegateObjectElementListener_6 swigDelegate6;
   private SwigDelegateObjectElementListener_7 swigDelegate7;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(long), typeof(bool) };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] { typeof(long), typeof(int) };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(long), typeof(long) };
-  private static global::System.Type[] swigMethodTypes3 = new global::System.Type[] { typeof(long), typeof(float) };
-  private static global::System.Type[] swigMethodTypes4 = new global::System.Type[] { typeof(long), typeof(double) };
-  private static global::System.Type[] swigMethodTypes5 = new global::System.Type[] { typeof(long), typeof(XString) };
-  private static global::System.Type[] swigMethodTypes6 = new global::System.Type[] { typeof(Element) };
-  private static global::System.Type[] swigMethodTypes7 = new global::System.Type[] { typeof(Element) };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(long), typeof(bool) };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] { typeof(long), typeof(int) };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(long), typeof(long) };
+  private static System.Type[] swigMethodTypes3 = new System.Type[] { typeof(long), typeof(float) };
+  private static System.Type[] swigMethodTypes4 = new System.Type[] { typeof(long), typeof(double) };
+  private static System.Type[] swigMethodTypes5 = new System.Type[] { typeof(long), typeof(XString) };
+  private static System.Type[] swigMethodTypes6 = new System.Type[] { typeof(Element) };
+  private static System.Type[] swigMethodTypes7 = new System.Type[] { typeof(Element) };
 }
 
 }

@@ -120,11 +120,11 @@ namespace HoloToolkit.UX.Progress
                     // Instantiate our custom object under our animator
                     if (defaultIconPrefab == null)
                     {
-                        UnityEngine.Debug.LogError("No Icon prefab available in loading dialog, spawning without one");
+                        Debug.LogError("No Icon prefab available in loading dialog, spawning without one");
                     }
                     else
                     {
-                        instantiatedCustomObject = GameObject.Instantiate(defaultIconPrefab) as GameObject;
+                        instantiatedCustomObject = Instantiate(defaultIconPrefab) as GameObject;
                         instantiatedCustomObject.transform.localPosition = new Vector3(0.0f, 13.0f, 0.0f);
                         instantiatedCustomObject.transform.localRotation = Quaternion.identity;
                         instantiatedCustomObject.transform.localScale = new Vector3(10.0f, 10.0f, 10.0f);
@@ -137,7 +137,7 @@ namespace HoloToolkit.UX.Progress
                 case IndicatorStyleEnum.AnimatedOrbs:
                     if (defaultOrbsPrefab != null)
                     {
-                        instantiatedCustomObject = GameObject.Instantiate(defaultOrbsPrefab) as GameObject;
+                        instantiatedCustomObject = Instantiate(defaultOrbsPrefab) as GameObject;
                         instantiatedCustomObject.transform.localPosition = new Vector3(0.0f, 25.0f, 0.0f);
                         //instantiatedCustomObject.transform.localRotation = Quaternion.identity;
                         instantiatedCustomObject.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
@@ -151,11 +151,11 @@ namespace HoloToolkit.UX.Progress
                     // Instantiate our custom object under our animator
                     if (defaultPrefab == null && prefab == null)
                     {
-                        UnityEngine.Debug.LogError("No prefab available in loading dialog, spawning without one");
+                        Debug.LogError("No prefab available in loading dialog, spawning without one");
                     }
                     else
                     {
-                        instantiatedCustomObject = GameObject.Instantiate(defaultPrefab) as GameObject;
+                        instantiatedCustomObject = Instantiate(defaultPrefab) as GameObject;
                         instantiatedCustomObject.transform.localPosition = new Vector3(0.0f, 20.0f, 0.0f);
                         instantiatedCustomObject.transform.localRotation = Quaternion.identity;
                         instantiatedCustomObject.transform.localScale = new Vector3(10.0f, 10.0f, 10.0f);
@@ -247,7 +247,7 @@ namespace HoloToolkit.UX.Progress
                     // Destroy our custom object if we made one
                     if (instantiatedCustomObject != null)
                     {
-                        GameObject.Destroy(instantiatedCustomObject);
+                        Destroy(instantiatedCustomObject);
                     }
                 }
             }

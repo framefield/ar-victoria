@@ -79,7 +79,7 @@ namespace HoloToolkit.Unity
 
         public ActiveEvent(AudioEvent audioEvent, GameObject emitter, AudioSource primarySource, AudioSource secondarySource, string messageOnAudioEnd = null)
         {
-            this.AudioEvent = audioEvent;
+            AudioEvent = audioEvent;
             AudioEmitter = emitter;
             PrimarySource = primarySource;
             SecondarySource = secondarySource;
@@ -103,7 +103,7 @@ namespace HoloToolkit.Unity
                 }
             };
 
-            AudioEvent audioEvent = this.AudioEvent;
+            AudioEvent audioEvent = AudioEvent;
             switch (audioEvent.Spatialization)
             {
                 case SpatialPositioningType.TwoD:
@@ -183,7 +183,7 @@ namespace HoloToolkit.Unity
             if (audioEvent.FadeInTime > 0)
             {
                 forEachSource((source) => source.volume = 0f);
-                this.CurrentFade = audioEvent.FadeInTime;
+                CurrentFade = audioEvent.FadeInTime;
                 if (audioEvent.VolumeRandomization != 0)
                 {
                     vol = UnityEngine.Random.Range(audioEvent.VolumeCenter - audioEvent.VolumeRandomization, audioEvent.VolumeCenter + audioEvent.VolumeRandomization);
@@ -192,7 +192,7 @@ namespace HoloToolkit.Unity
                 {
                     vol = audioEvent.VolumeCenter;
                 }
-                this.VolDest = vol;
+                VolDest = vol;
             }
             else
             {
@@ -227,21 +227,21 @@ namespace HoloToolkit.Unity
                 return;
             }
 
-            this.PrimarySource.pitch = newPitch;
+            PrimarySource.pitch = newPitch;
         }
 
         public void Dispose()
         {
-            if (this.primarySource != null)
+            if (primarySource != null)
             {
-                this.primarySource.enabled = false;
-                this.primarySource = null;
+                primarySource.enabled = false;
+                primarySource = null;
             }
 
-            if (this.secondarySource != null)
+            if (secondarySource != null)
             {
-                this.secondarySource.enabled = false;
-                this.secondarySource = null;
+                secondarySource.enabled = false;
+                secondarySource = null;
             }
         }
 

@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class RoomManagerListener : Listener {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal RoomManagerListener(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.RoomManagerListener_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal RoomManagerListener(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.RoomManagerListener_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(RoomManagerListener obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(RoomManagerListener obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~RoomManagerListener() {
@@ -27,14 +27,14 @@ public class RoomManagerListener : Listener {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_RoomManagerListener(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -89,47 +89,47 @@ public class RoomManagerListener : Listener {
     SharingClientPINVOKE.RoomManagerListener_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2, swigDelegate3, swigDelegate4, swigDelegate5, swigDelegate6);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(RoomManagerListener));
     return hasDerivedMethod;
   }
 
-  private void SwigDirectorOnRoomAdded(global::System.IntPtr newRoom) {
-    OnRoomAdded((newRoom == global::System.IntPtr.Zero) ? null : new Room(newRoom, true));
+  private void SwigDirectorOnRoomAdded(System.IntPtr newRoom) {
+    OnRoomAdded((newRoom == System.IntPtr.Zero) ? null : new Room(newRoom, true));
   }
 
-  private void SwigDirectorOnRoomClosed(global::System.IntPtr room) {
-    OnRoomClosed((room == global::System.IntPtr.Zero) ? null : new Room(room, true));
+  private void SwigDirectorOnRoomClosed(System.IntPtr room) {
+    OnRoomClosed((room == System.IntPtr.Zero) ? null : new Room(room, true));
   }
 
-  private void SwigDirectorOnUserJoinedRoom(global::System.IntPtr room, int user) {
-    OnUserJoinedRoom((room == global::System.IntPtr.Zero) ? null : new Room(room, true), user);
+  private void SwigDirectorOnUserJoinedRoom(System.IntPtr room, int user) {
+    OnUserJoinedRoom((room == System.IntPtr.Zero) ? null : new Room(room, true), user);
   }
 
-  private void SwigDirectorOnUserLeftRoom(global::System.IntPtr room, int user) {
-    OnUserLeftRoom((room == global::System.IntPtr.Zero) ? null : new Room(room, true), user);
+  private void SwigDirectorOnUserLeftRoom(System.IntPtr room, int user) {
+    OnUserLeftRoom((room == System.IntPtr.Zero) ? null : new Room(room, true), user);
   }
 
-  private void SwigDirectorOnAnchorsChanged(global::System.IntPtr room) {
-    OnAnchorsChanged((room == global::System.IntPtr.Zero) ? null : new Room(room, true));
+  private void SwigDirectorOnAnchorsChanged(System.IntPtr room) {
+    OnAnchorsChanged((room == System.IntPtr.Zero) ? null : new Room(room, true));
   }
 
-  private void SwigDirectorOnAnchorsDownloaded(bool successful, global::System.IntPtr request, global::System.IntPtr failureReason) {
-    OnAnchorsDownloaded(successful, (request == global::System.IntPtr.Zero) ? null : new AnchorDownloadRequest(request, true), (failureReason == global::System.IntPtr.Zero) ? null : new XString(failureReason, true));
+  private void SwigDirectorOnAnchorsDownloaded(bool successful, System.IntPtr request, System.IntPtr failureReason) {
+    OnAnchorsDownloaded(successful, (request == System.IntPtr.Zero) ? null : new AnchorDownloadRequest(request, true), (failureReason == System.IntPtr.Zero) ? null : new XString(failureReason, true));
   }
 
-  private void SwigDirectorOnAnchorUploadComplete(bool successful, global::System.IntPtr failureReason) {
-    OnAnchorUploadComplete(successful, (failureReason == global::System.IntPtr.Zero) ? null : new XString(failureReason, true));
+  private void SwigDirectorOnAnchorUploadComplete(bool successful, System.IntPtr failureReason) {
+    OnAnchorUploadComplete(successful, (failureReason == System.IntPtr.Zero) ? null : new XString(failureReason, true));
   }
 
-  public delegate void SwigDelegateRoomManagerListener_0(global::System.IntPtr newRoom);
-  public delegate void SwigDelegateRoomManagerListener_1(global::System.IntPtr room);
-  public delegate void SwigDelegateRoomManagerListener_2(global::System.IntPtr room, int user);
-  public delegate void SwigDelegateRoomManagerListener_3(global::System.IntPtr room, int user);
-  public delegate void SwigDelegateRoomManagerListener_4(global::System.IntPtr room);
-  public delegate void SwigDelegateRoomManagerListener_5(bool successful, global::System.IntPtr request, global::System.IntPtr failureReason);
-  public delegate void SwigDelegateRoomManagerListener_6(bool successful, global::System.IntPtr failureReason);
+  public delegate void SwigDelegateRoomManagerListener_0(System.IntPtr newRoom);
+  public delegate void SwigDelegateRoomManagerListener_1(System.IntPtr room);
+  public delegate void SwigDelegateRoomManagerListener_2(System.IntPtr room, int user);
+  public delegate void SwigDelegateRoomManagerListener_3(System.IntPtr room, int user);
+  public delegate void SwigDelegateRoomManagerListener_4(System.IntPtr room);
+  public delegate void SwigDelegateRoomManagerListener_5(bool successful, System.IntPtr request, System.IntPtr failureReason);
+  public delegate void SwigDelegateRoomManagerListener_6(bool successful, System.IntPtr failureReason);
 
   private SwigDelegateRoomManagerListener_0 swigDelegate0;
   private SwigDelegateRoomManagerListener_1 swigDelegate1;
@@ -139,13 +139,13 @@ public class RoomManagerListener : Listener {
   private SwigDelegateRoomManagerListener_5 swigDelegate5;
   private SwigDelegateRoomManagerListener_6 swigDelegate6;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(Room) };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] { typeof(Room) };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(Room), typeof(int) };
-  private static global::System.Type[] swigMethodTypes3 = new global::System.Type[] { typeof(Room), typeof(int) };
-  private static global::System.Type[] swigMethodTypes4 = new global::System.Type[] { typeof(Room) };
-  private static global::System.Type[] swigMethodTypes5 = new global::System.Type[] { typeof(bool), typeof(AnchorDownloadRequest), typeof(XString) };
-  private static global::System.Type[] swigMethodTypes6 = new global::System.Type[] { typeof(bool), typeof(XString) };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(Room) };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] { typeof(Room) };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(Room), typeof(int) };
+  private static System.Type[] swigMethodTypes3 = new System.Type[] { typeof(Room), typeof(int) };
+  private static System.Type[] swigMethodTypes4 = new System.Type[] { typeof(Room) };
+  private static System.Type[] swigMethodTypes5 = new System.Type[] { typeof(bool), typeof(AnchorDownloadRequest), typeof(XString) };
+  private static System.Type[] swigMethodTypes6 = new System.Type[] { typeof(bool), typeof(XString) };
 }
 
 }

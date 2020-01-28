@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class AnchorDownloadRequest : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class AnchorDownloadRequest : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal AnchorDownloadRequest(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal AnchorDownloadRequest(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(AnchorDownloadRequest obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(AnchorDownloadRequest obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~AnchorDownloadRequest() {
@@ -29,26 +29,26 @@ public class AnchorDownloadRequest : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_AnchorDownloadRequest(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
   public virtual XString GetAnchorName() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.AnchorDownloadRequest_GetAnchorName(swigCPtr);
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.AnchorDownloadRequest_GetAnchorName(swigCPtr);
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 
   public virtual Room GetRoom() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.AnchorDownloadRequest_GetRoom(swigCPtr);
-    Room ret = (cPtr == global::System.IntPtr.Zero) ? null : new Room(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.AnchorDownloadRequest_GetRoom(swigCPtr);
+    Room ret = (cPtr == System.IntPtr.Zero) ? null : new Room(cPtr, true);
     return ret; 
   }
 
@@ -58,9 +58,9 @@ public class AnchorDownloadRequest : global::System.IDisposable {
   }
 
   public virtual bool GetData(byte[] data, int dataSize) {
-    global::System.Runtime.InteropServices.GCHandle pinHandle_data = global::System.Runtime.InteropServices.GCHandle.Alloc(data, global::System.Runtime.InteropServices.GCHandleType.Pinned); try {
+    System.Runtime.InteropServices.GCHandle pinHandle_data = System.Runtime.InteropServices.GCHandle.Alloc(data, System.Runtime.InteropServices.GCHandleType.Pinned); try {
     {
-      bool ret = SharingClientPINVOKE.AnchorDownloadRequest_GetData(swigCPtr, (global::System.IntPtr)pinHandle_data.AddrOfPinnedObject(), dataSize);
+      bool ret = SharingClientPINVOKE.AnchorDownloadRequest_GetData(swigCPtr, (System.IntPtr)pinHandle_data.AddrOfPinnedObject(), dataSize);
       return ret;
     }
     } finally { pinHandle_data.Free(); }

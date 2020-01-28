@@ -41,15 +41,15 @@ public class TapToPlaceParent : MonoBehaviour
             {
                 // Move this object's parent object to
                 // where the raycast hit the Spatial Mapping mesh.
-                this.transform.parent.position = hitInfo.point;
+                transform.parent.position = hitInfo.point;
 
-                Debug.Log("Victoria: x: " + this.transform.parent.position.x + ",y: " + this.transform.parent.position.y + ",z: " + this.transform.parent.position.z);
+                Debug.Log("Victoria: x: " + transform.parent.position.x + ",y: " + transform.parent.position.y + ",z: " + transform.parent.position.z);
 
                 // Rotate this object's parent object to face the user.
                 Quaternion toQuat = Camera.main.transform.localRotation;
                 toQuat.x = 0;
                 toQuat.z = 0;
-                this.transform.parent.rotation = toQuat;
+                transform.parent.rotation = toQuat;
             }
         }
     }

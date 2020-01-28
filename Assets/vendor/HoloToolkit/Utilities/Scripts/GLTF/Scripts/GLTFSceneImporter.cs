@@ -484,31 +484,31 @@ namespace UnityGLTF
                 if (def.AlphaMode == AlphaMode.MASK)
                 {
                     material.SetOverrideTag("RenderType", "TransparentCutout");
-                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                    material.SetInt("_SrcBlend", (int)BlendMode.One);
+                    material.SetInt("_DstBlend", (int)BlendMode.Zero);
                     material.SetInt("_ZWrite", 1);
                     material.EnableKeyword("_ALPHATEST_ON");
                     material.DisableKeyword("_ALPHABLEND_ON");
                     material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                    material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.AlphaTest;
+                    material.renderQueue = (int)RenderQueue.AlphaTest;
                     material.SetFloat("_Cutoff", (float)def.AlphaCutoff);
                 }
                 else if (def.AlphaMode == AlphaMode.BLEND)
                 {
                     material.SetOverrideTag("RenderType", "Transparent");
-                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                    material.SetInt("_SrcBlend", (int)BlendMode.SrcAlpha);
+                    material.SetInt("_DstBlend", (int)BlendMode.OneMinusSrcAlpha);
                     material.SetInt("_ZWrite", 0);
                     material.DisableKeyword("_ALPHATEST_ON");
                     material.EnableKeyword("_ALPHABLEND_ON");
                     material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                    material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+                    material.renderQueue = (int)RenderQueue.Transparent;
                 }
                 else
                 {
                     material.SetOverrideTag("RenderType", "Opaque");
-                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                    material.SetInt("_SrcBlend", (int)BlendMode.One);
+                    material.SetInt("_DstBlend", (int)BlendMode.Zero);
                     material.SetInt("_ZWrite", 1);
                     material.DisableKeyword("_ALPHATEST_ON");
                     material.DisableKeyword("_ALPHABLEND_ON");
@@ -668,7 +668,7 @@ namespace UnityGLTF
             {
                 var source = _assetCache.ImageCache[texture.Source.Id];
                 var desiredFilterMode = FilterMode.Bilinear;
-                var desiredWrapMode = UnityEngine.TextureWrapMode.Repeat;
+                var desiredWrapMode = TextureWrapMode.Repeat;
 
                 if (texture.Sampler != null)
                 {
@@ -687,11 +687,11 @@ namespace UnityGLTF
                     switch (sampler.WrapS)
                     {
                         case GLTF.Schema.WrapMode.ClampToEdge:
-                            desiredWrapMode = UnityEngine.TextureWrapMode.Clamp;
+                            desiredWrapMode = TextureWrapMode.Clamp;
                             break;
                         case GLTF.Schema.WrapMode.Repeat:
                         default:
-                            desiredWrapMode = UnityEngine.TextureWrapMode.Repeat;
+                            desiredWrapMode = TextureWrapMode.Repeat;
                             break;
                     }
                 }

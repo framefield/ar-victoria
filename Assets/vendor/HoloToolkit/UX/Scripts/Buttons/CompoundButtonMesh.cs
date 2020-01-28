@@ -32,7 +32,7 @@ namespace HoloToolkit.Unity.Buttons
             /// <summary>
             /// Constructor for mesh button datum
             /// </summary>
-            public MeshButtonDatum(ButtonStateEnum state) { this.ActiveState = state; this.Name = state.ToString(); }
+            public MeshButtonDatum(ButtonStateEnum state) { ActiveState = state; Name = state.ToString(); }
 
             /// <summary>
             /// Name string for datum entry
@@ -85,7 +85,7 @@ namespace HoloToolkit.Unity.Buttons
             if (Renderer != null && instantiatedMaterial != null)
             {
                 Renderer.sharedMaterial = sharedMaterial;
-                GameObject.DestroyImmediate(instantiatedMaterial);
+                DestroyImmediate(instantiatedMaterial);
             }
         }
 #endif

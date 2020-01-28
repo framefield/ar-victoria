@@ -99,7 +99,7 @@ namespace HoloToolkit.Unity.Buttons
 
         private void OnDestroy()
         {
-            if (string.IsNullOrEmpty(this.keyWord))
+            if (string.IsNullOrEmpty(keyWord))
                 return;
 
         }
@@ -134,10 +134,10 @@ namespace HoloToolkit.Unity.Buttons
                 }
 
                 UnityEditor.EditorGUILayout.LabelField("Keyword source", UnityEditor.EditorStyles.miniBoldLabel);
-                speechButton.KeywordSource = (CompoundButtonSpeech.KeywordSourceEnum)UnityEditor.EditorGUILayout.EnumPopup(speechButton.KeywordSource);
+                speechButton.KeywordSource = (KeywordSourceEnum)UnityEditor.EditorGUILayout.EnumPopup(speechButton.KeywordSource);
                 CompoundButtonText text = speechButton.GetComponent<CompoundButtonText>();
                 switch (speechButton.KeywordSource) {
-                    case CompoundButtonSpeech.KeywordSourceEnum.ButtonText:
+                    case KeywordSourceEnum.ButtonText:
                     default:
                         if (text == null) {
                             DrawError("No CompoundButtonText component found.");
@@ -148,11 +148,11 @@ namespace HoloToolkit.Unity.Buttons
                         }
                         break;
 
-                    case CompoundButtonSpeech.KeywordSourceEnum.LocalOverride:
+                    case KeywordSourceEnum.LocalOverride:
                         speechButton.Keyword = UnityEditor.EditorGUILayout.TextField(speechButton.Keyword);
                         break;
 
-                    case CompoundButtonSpeech.KeywordSourceEnum.None:
+                    case KeywordSourceEnum.None:
                         UnityEditor.EditorGUILayout.LabelField("(Speech control disabled)", UnityEditor.EditorStyles.miniBoldLabel);
                         break;
                 }

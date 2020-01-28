@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class PairMaker : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class PairMaker : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal PairMaker(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal PairMaker(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(PairMaker obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(PairMaker obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~PairMaker() {
@@ -29,14 +29,14 @@ public class PairMaker : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_PairMaker(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -51,8 +51,8 @@ public class PairMaker : global::System.IDisposable {
   }
 
   public virtual XString GetAddress(int index) {
-    global::System.IntPtr cPtr = (SwigDerivedClassHasMethod("GetAddress", swigMethodTypes2) ? SharingClientPINVOKE.PairMaker_GetAddressSwigExplicitPairMaker(swigCPtr, index) : SharingClientPINVOKE.PairMaker_GetAddress(swigCPtr, index));
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = (SwigDerivedClassHasMethod("GetAddress", swigMethodTypes2) ? SharingClientPINVOKE.PairMaker_GetAddressSwigExplicitPairMaker(swigCPtr, index) : SharingClientPINVOKE.PairMaker_GetAddress(swigCPtr, index));
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 
@@ -104,8 +104,8 @@ public class PairMaker : global::System.IDisposable {
     SharingClientPINVOKE.PairMaker_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2, swigDelegate3, swigDelegate4, swigDelegate5, swigDelegate6, swigDelegate7);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(PairMaker));
     return hasDerivedMethod;
   }
@@ -118,7 +118,7 @@ public class PairMaker : global::System.IDisposable {
     return GetAddressCount();
   }
 
-  private global::System.IntPtr SwigDirectorGetAddress(int index) {
+  private System.IntPtr SwigDirectorGetAddress(int index) {
     return  XString.getCPtr(GetAddress(index)).Handle ;
   }
 
@@ -144,7 +144,7 @@ public class PairMaker : global::System.IDisposable {
 
   public delegate bool SwigDelegatePairMaker_0();
   public delegate int SwigDelegatePairMaker_1();
-  public delegate global::System.IntPtr SwigDelegatePairMaker_2(int index);
+  public delegate System.IntPtr SwigDelegatePairMaker_2(int index);
   public delegate ushort SwigDelegatePairMaker_3();
   public delegate void SwigDelegatePairMaker_4();
   public delegate bool SwigDelegatePairMaker_5();
@@ -160,14 +160,14 @@ public class PairMaker : global::System.IDisposable {
   private SwigDelegatePairMaker_6 swigDelegate6;
   private SwigDelegatePairMaker_7 swigDelegate7;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(int) };
-  private static global::System.Type[] swigMethodTypes3 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes4 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes5 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes6 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes7 = new global::System.Type[] {  };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(int) };
+  private static System.Type[] swigMethodTypes3 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes4 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes5 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes6 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes7 = new System.Type[] {  };
 }
 
 }

@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class ObjectElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal ObjectElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.ObjectElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal ObjectElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.ObjectElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ObjectElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(ObjectElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~ObjectElement() {
@@ -27,87 +27,87 @@ public class ObjectElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_ObjectElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static ObjectElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_Cast(Element.getCPtr(element));
-    ObjectElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_Cast(Element.getCPtr(element));
+    ObjectElement ret = (cPtr == System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
     return ret; 
   }
 
   public virtual BoolElement CreateBoolElement(XString name, bool value) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateBoolElement(swigCPtr, XString.getCPtr(name), value);
-    BoolElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new BoolElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateBoolElement(swigCPtr, XString.getCPtr(name), value);
+    BoolElement ret = (cPtr == System.IntPtr.Zero) ? null : new BoolElement(cPtr, true);
     return ret; 
   }
 
   public virtual IntElement CreateIntElement(XString name, int value) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateIntElement(swigCPtr, XString.getCPtr(name), value);
-    IntElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new IntElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateIntElement(swigCPtr, XString.getCPtr(name), value);
+    IntElement ret = (cPtr == System.IntPtr.Zero) ? null : new IntElement(cPtr, true);
     return ret; 
   }
 
   public virtual LongElement CreateLongElement(XString name, long value) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateLongElement(swigCPtr, XString.getCPtr(name), value);
-    LongElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new LongElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateLongElement(swigCPtr, XString.getCPtr(name), value);
+    LongElement ret = (cPtr == System.IntPtr.Zero) ? null : new LongElement(cPtr, true);
     return ret; 
   }
 
   public virtual FloatElement CreateFloatElement(XString name, float value) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateFloatElement(swigCPtr, XString.getCPtr(name), value);
-    FloatElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateFloatElement(swigCPtr, XString.getCPtr(name), value);
+    FloatElement ret = (cPtr == System.IntPtr.Zero) ? null : new FloatElement(cPtr, true);
     return ret; 
   }
 
   public virtual DoubleElement CreateDoubleElement(XString name, double value) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateDoubleElement(swigCPtr, XString.getCPtr(name), value);
-    DoubleElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new DoubleElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateDoubleElement(swigCPtr, XString.getCPtr(name), value);
+    DoubleElement ret = (cPtr == System.IntPtr.Zero) ? null : new DoubleElement(cPtr, true);
     return ret; 
   }
 
   public virtual StringElement CreateStringElement(XString name, XString value) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateStringElement(swigCPtr, XString.getCPtr(name), XString.getCPtr(value));
-    StringElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new StringElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateStringElement(swigCPtr, XString.getCPtr(name), XString.getCPtr(value));
+    StringElement ret = (cPtr == System.IntPtr.Zero) ? null : new StringElement(cPtr, true);
     return ret; 
   }
 
   public virtual ObjectElement CreateObjectElement(XString name, XString objectType, User owner) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateObjectElement__SWIG_0(swigCPtr, XString.getCPtr(name), XString.getCPtr(objectType), User.getCPtr(owner));
-    ObjectElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateObjectElement__SWIG_0(swigCPtr, XString.getCPtr(name), XString.getCPtr(objectType), User.getCPtr(owner));
+    ObjectElement ret = (cPtr == System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
     return ret; 
   }
 
   public virtual ObjectElement CreateObjectElement(XString name, XString objectType) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateObjectElement__SWIG_1(swigCPtr, XString.getCPtr(name), XString.getCPtr(objectType));
-    ObjectElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateObjectElement__SWIG_1(swigCPtr, XString.getCPtr(name), XString.getCPtr(objectType));
+    ObjectElement ret = (cPtr == System.IntPtr.Zero) ? null : new ObjectElement(cPtr, true);
     return ret; 
   }
 
   public virtual IntArrayElement CreateIntArrayElement(XString name) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateIntArrayElement(swigCPtr, XString.getCPtr(name));
-    IntArrayElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new IntArrayElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateIntArrayElement(swigCPtr, XString.getCPtr(name));
+    IntArrayElement ret = (cPtr == System.IntPtr.Zero) ? null : new IntArrayElement(cPtr, true);
     return ret; 
   }
 
   public virtual FloatArrayElement CreateFloatArrayElement(XString name) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateFloatArrayElement(swigCPtr, XString.getCPtr(name));
-    FloatArrayElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatArrayElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateFloatArrayElement(swigCPtr, XString.getCPtr(name));
+    FloatArrayElement ret = (cPtr == System.IntPtr.Zero) ? null : new FloatArrayElement(cPtr, true);
     return ret; 
   }
 
   public virtual StringArrayElement CreateStringArrayElement(XString name) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateStringArrayElement(swigCPtr, XString.getCPtr(name));
-    StringArrayElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new StringArrayElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_CreateStringArrayElement(swigCPtr, XString.getCPtr(name));
+    StringArrayElement ret = (cPtr == System.IntPtr.Zero) ? null : new StringArrayElement(cPtr, true);
     return ret; 
   }
 
@@ -117,20 +117,20 @@ public class ObjectElement : Element {
   }
 
   public virtual Element GetElement(long id) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetElement__SWIG_0(swigCPtr, id);
-    Element ret = (cPtr == global::System.IntPtr.Zero) ? null : new Element(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetElement__SWIG_0(swigCPtr, id);
+    Element ret = (cPtr == System.IntPtr.Zero) ? null : new Element(cPtr, true);
     return ret; 
   }
 
   public virtual Element GetElement(XString name) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetElement__SWIG_1(swigCPtr, XString.getCPtr(name));
-    Element ret = (cPtr == global::System.IntPtr.Zero) ? null : new Element(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetElement__SWIG_1(swigCPtr, XString.getCPtr(name));
+    Element ret = (cPtr == System.IntPtr.Zero) ? null : new Element(cPtr, true);
     return ret; 
   }
 
   public virtual Element GetElementAt(int index) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetElementAt(swigCPtr, index);
-    Element ret = (cPtr == global::System.IntPtr.Zero) ? null : new Element(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetElementAt(swigCPtr, index);
+    Element ret = (cPtr == System.IntPtr.Zero) ? null : new Element(cPtr, true);
     return ret; 
   }
 
@@ -160,8 +160,8 @@ public class ObjectElement : Element {
   }
 
   public virtual XString GetObjectType() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetObjectType(swigCPtr);
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.ObjectElement_GetObjectType(swigCPtr);
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 

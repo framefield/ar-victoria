@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class LongElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal LongElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.LongElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal LongElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.LongElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(LongElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(LongElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~LongElement() {
@@ -27,21 +27,21 @@ public class LongElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_LongElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static LongElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.LongElement_Cast(Element.getCPtr(element));
-    LongElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new LongElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.LongElement_Cast(Element.getCPtr(element));
+    LongElement ret = (cPtr == System.IntPtr.Zero) ? null : new LongElement(cPtr, true);
     return ret; 
   }
 

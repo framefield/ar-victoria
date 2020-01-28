@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class NetworkConnection : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class NetworkConnection : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal NetworkConnection(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal NetworkConnection(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(NetworkConnection obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(NetworkConnection obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~NetworkConnection() {
@@ -29,14 +29,14 @@ public class NetworkConnection : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_NetworkConnection(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -127,8 +127,8 @@ public class NetworkConnection : global::System.IDisposable {
   }
 
   public virtual NetworkOutMessage CreateMessage(byte messageType) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.NetworkConnection_CreateMessage(swigCPtr, messageType);
-    NetworkOutMessage ret = (cPtr == global::System.IntPtr.Zero) ? null : new NetworkOutMessage(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.NetworkConnection_CreateMessage(swigCPtr, messageType);
+    NetworkOutMessage ret = (cPtr == System.IntPtr.Zero) ? null : new NetworkOutMessage(cPtr, true);
     return ret; 
   }
 
@@ -141,8 +141,8 @@ public class NetworkConnection : global::System.IDisposable {
   }
 
   public virtual XString GetRemoteAddress() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.NetworkConnection_GetRemoteAddress(swigCPtr);
-    XString ret = (cPtr == global::System.IntPtr.Zero) ? null : new XString(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.NetworkConnection_GetRemoteAddress(swigCPtr);
+    XString ret = (cPtr == System.IntPtr.Zero) ? null : new XString(cPtr, true);
     return ret; 
   }
 

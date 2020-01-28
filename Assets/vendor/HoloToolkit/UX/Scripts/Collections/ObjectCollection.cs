@@ -168,7 +168,7 @@ namespace HoloToolkit.Unity.Collections
 
             for (int i = 0; i < NodeList.Count; i++)
             {
-                if (NodeList[i].transform == null || (IgnoreInactiveTransforms && !NodeList[i].transform.gameObject.activeSelf) || NodeList[i].transform.parent==null || !(NodeList[i].transform.parent.gameObject==this.gameObject))
+                if (NodeList[i].transform == null || (IgnoreInactiveTransforms && !NodeList[i].transform.gameObject.activeSelf) || NodeList[i].transform.parent==null || !(NodeList[i].transform.parent.gameObject==gameObject))
                 {
                     emptyNodes.Add(NodeList[i]);
                 }
@@ -183,9 +183,9 @@ namespace HoloToolkit.Unity.Collections
             emptyNodes.Clear();
 
             // Check when children change and adjust
-            for (int i = 0; i < this.transform.childCount; i++)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                Transform child = this.transform.GetChild(i);
+                Transform child = transform.GetChild(i);
 
                 if (!ContainsNode(child) && (child.gameObject.activeSelf || !IgnoreInactiveTransforms))
                 {
@@ -382,23 +382,23 @@ namespace HoloToolkit.Unity.Collections
             switch (OrientType)
             {
                 case OrientTypeEnum.FaceOrigin:
-                    node.transform.rotation = Quaternion.LookRotation(node.transform.position - this.transform.position, this.transform.up);
+                    node.transform.rotation = Quaternion.LookRotation(node.transform.position - transform.position, transform.up);
                     break;
 
                 case OrientTypeEnum.FaceOriginReversed:
-                    node.transform.rotation = Quaternion.LookRotation(this.transform.position - node.transform.position, this.transform.up);
+                    node.transform.rotation = Quaternion.LookRotation(transform.position - node.transform.position, transform.up);
                     break;
 
                 case OrientTypeEnum.FaceCenterAxis:
-                    centerAxis = Vector3.Project(node.transform.position - this.transform.position, this.transform.up);
-                    pointOnAxisNearestNode = this.transform.position + centerAxis;
-                    node.transform.rotation = Quaternion.LookRotation(node.transform.position - pointOnAxisNearestNode, this.transform.up);
+                    centerAxis = Vector3.Project(node.transform.position - transform.position, transform.up);
+                    pointOnAxisNearestNode = transform.position + centerAxis;
+                    node.transform.rotation = Quaternion.LookRotation(node.transform.position - pointOnAxisNearestNode, transform.up);
                     break;
 
                 case OrientTypeEnum.FaceCenterAxisReversed:
-                    centerAxis = Vector3.Project(node.transform.position - this.transform.position, this.transform.up);
-                    pointOnAxisNearestNode = this.transform.position + centerAxis;
-                    node.transform.rotation = Quaternion.LookRotation(pointOnAxisNearestNode - node.transform.position, this.transform.up);
+                    centerAxis = Vector3.Project(node.transform.position - transform.position, transform.up);
+                    pointOnAxisNearestNode = transform.position + centerAxis;
+                    node.transform.rotation = Quaternion.LookRotation(pointOnAxisNearestNode - node.transform.position, transform.up);
                     break;
 
                 case OrientTypeEnum.FaceFoward:

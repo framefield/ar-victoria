@@ -32,7 +32,7 @@ namespace HoloToolkit.Unity
             FailAction = failAction;
         }
 
-        public ActionEnum Validate(UnityEngine.Object target, System.Object source, out string messageOnFail)
+        public ActionEnum Validate(UnityEngine.Object target, Object source, out string messageOnFail)
         {
             if (source == null)
                 throw new NullReferenceException("Source cannot be null.");
@@ -41,7 +41,7 @@ namespace HoloToolkit.Unity
             if (m == null)
                 throw new MissingMethodException("Method " + MethodName + " not found in type " + source.GetType().ToString());
 
-            bool result = (bool)m.Invoke(source, new System.Object[] { target });
+            bool result = (bool)m.Invoke(source, new Object[] { target });
 
             if (result)
             {

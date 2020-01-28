@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class SessionManagerListener : Listener {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal SessionManagerListener(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.SessionManagerListener_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal SessionManagerListener(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.SessionManagerListener_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SessionManagerListener obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(SessionManagerListener obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~SessionManagerListener() {
@@ -27,14 +27,14 @@ public class SessionManagerListener : Listener {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_SessionManagerListener(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -101,38 +101,38 @@ public class SessionManagerListener : Listener {
     SharingClientPINVOKE.SessionManagerListener_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2, swigDelegate3, swigDelegate4, swigDelegate5, swigDelegate6, swigDelegate7, swigDelegate8);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(SessionManagerListener));
     return hasDerivedMethod;
   }
 
-  private void SwigDirectorOnCreateSucceeded(global::System.IntPtr newSession) {
-    OnCreateSucceeded((newSession == global::System.IntPtr.Zero) ? null : new Session(newSession, true));
+  private void SwigDirectorOnCreateSucceeded(System.IntPtr newSession) {
+    OnCreateSucceeded((newSession == System.IntPtr.Zero) ? null : new Session(newSession, true));
   }
 
-  private void SwigDirectorOnCreateFailed(global::System.IntPtr reason) {
-    OnCreateFailed((reason == global::System.IntPtr.Zero) ? null : new XString(reason, true));
+  private void SwigDirectorOnCreateFailed(System.IntPtr reason) {
+    OnCreateFailed((reason == System.IntPtr.Zero) ? null : new XString(reason, true));
   }
 
-  private void SwigDirectorOnSessionAdded(global::System.IntPtr newSession) {
-    OnSessionAdded((newSession == global::System.IntPtr.Zero) ? null : new Session(newSession, true));
+  private void SwigDirectorOnSessionAdded(System.IntPtr newSession) {
+    OnSessionAdded((newSession == System.IntPtr.Zero) ? null : new Session(newSession, true));
   }
 
-  private void SwigDirectorOnSessionClosed(global::System.IntPtr session) {
-    OnSessionClosed((session == global::System.IntPtr.Zero) ? null : new Session(session, true));
+  private void SwigDirectorOnSessionClosed(System.IntPtr session) {
+    OnSessionClosed((session == System.IntPtr.Zero) ? null : new Session(session, true));
   }
 
-  private void SwigDirectorOnUserJoinedSession(global::System.IntPtr session, global::System.IntPtr newUser) {
-    OnUserJoinedSession((session == global::System.IntPtr.Zero) ? null : new Session(session, true), (newUser == global::System.IntPtr.Zero) ? null : new User(newUser, true));
+  private void SwigDirectorOnUserJoinedSession(System.IntPtr session, System.IntPtr newUser) {
+    OnUserJoinedSession((session == System.IntPtr.Zero) ? null : new Session(session, true), (newUser == System.IntPtr.Zero) ? null : new User(newUser, true));
   }
 
-  private void SwigDirectorOnUserLeftSession(global::System.IntPtr session, global::System.IntPtr user) {
-    OnUserLeftSession((session == global::System.IntPtr.Zero) ? null : new Session(session, true), (user == global::System.IntPtr.Zero) ? null : new User(user, true));
+  private void SwigDirectorOnUserLeftSession(System.IntPtr session, System.IntPtr user) {
+    OnUserLeftSession((session == System.IntPtr.Zero) ? null : new Session(session, true), (user == System.IntPtr.Zero) ? null : new User(user, true));
   }
 
-  private void SwigDirectorOnUserChanged(global::System.IntPtr session, global::System.IntPtr user) {
-    OnUserChanged((session == global::System.IntPtr.Zero) ? null : new Session(session, true), (user == global::System.IntPtr.Zero) ? null : new User(user, true));
+  private void SwigDirectorOnUserChanged(System.IntPtr session, System.IntPtr user) {
+    OnUserChanged((session == System.IntPtr.Zero) ? null : new Session(session, true), (user == System.IntPtr.Zero) ? null : new User(user, true));
   }
 
   private void SwigDirectorOnServerConnected() {
@@ -143,13 +143,13 @@ public class SessionManagerListener : Listener {
     OnServerDisconnected();
   }
 
-  public delegate void SwigDelegateSessionManagerListener_0(global::System.IntPtr newSession);
-  public delegate void SwigDelegateSessionManagerListener_1(global::System.IntPtr reason);
-  public delegate void SwigDelegateSessionManagerListener_2(global::System.IntPtr newSession);
-  public delegate void SwigDelegateSessionManagerListener_3(global::System.IntPtr session);
-  public delegate void SwigDelegateSessionManagerListener_4(global::System.IntPtr session, global::System.IntPtr newUser);
-  public delegate void SwigDelegateSessionManagerListener_5(global::System.IntPtr session, global::System.IntPtr user);
-  public delegate void SwigDelegateSessionManagerListener_6(global::System.IntPtr session, global::System.IntPtr user);
+  public delegate void SwigDelegateSessionManagerListener_0(System.IntPtr newSession);
+  public delegate void SwigDelegateSessionManagerListener_1(System.IntPtr reason);
+  public delegate void SwigDelegateSessionManagerListener_2(System.IntPtr newSession);
+  public delegate void SwigDelegateSessionManagerListener_3(System.IntPtr session);
+  public delegate void SwigDelegateSessionManagerListener_4(System.IntPtr session, System.IntPtr newUser);
+  public delegate void SwigDelegateSessionManagerListener_5(System.IntPtr session, System.IntPtr user);
+  public delegate void SwigDelegateSessionManagerListener_6(System.IntPtr session, System.IntPtr user);
   public delegate void SwigDelegateSessionManagerListener_7();
   public delegate void SwigDelegateSessionManagerListener_8();
 
@@ -163,15 +163,15 @@ public class SessionManagerListener : Listener {
   private SwigDelegateSessionManagerListener_7 swigDelegate7;
   private SwigDelegateSessionManagerListener_8 swigDelegate8;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(Session) };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] { typeof(XString) };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(Session) };
-  private static global::System.Type[] swigMethodTypes3 = new global::System.Type[] { typeof(Session) };
-  private static global::System.Type[] swigMethodTypes4 = new global::System.Type[] { typeof(Session), typeof(User) };
-  private static global::System.Type[] swigMethodTypes5 = new global::System.Type[] { typeof(Session), typeof(User) };
-  private static global::System.Type[] swigMethodTypes6 = new global::System.Type[] { typeof(Session), typeof(User) };
-  private static global::System.Type[] swigMethodTypes7 = new global::System.Type[] {  };
-  private static global::System.Type[] swigMethodTypes8 = new global::System.Type[] {  };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(Session) };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] { typeof(XString) };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(Session) };
+  private static System.Type[] swigMethodTypes3 = new System.Type[] { typeof(Session) };
+  private static System.Type[] swigMethodTypes4 = new System.Type[] { typeof(Session), typeof(User) };
+  private static System.Type[] swigMethodTypes5 = new System.Type[] { typeof(Session), typeof(User) };
+  private static System.Type[] swigMethodTypes6 = new System.Type[] { typeof(Session), typeof(User) };
+  private static System.Type[] swigMethodTypes7 = new System.Type[] {  };
+  private static System.Type[] swigMethodTypes8 = new System.Type[] {  };
 }
 
 }

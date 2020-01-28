@@ -72,7 +72,7 @@ namespace HoloToolkit.Unity
             }
             else
             {
-                ret = base.solverHandler.TransformTarget != null ? base.solverHandler.TransformTarget.forward : Vector3.forward;
+                ret = solverHandler.TransformTarget != null ? solverHandler.TransformTarget.forward : Vector3.forward;
             }
             return ret;
         }
@@ -86,14 +86,14 @@ namespace HoloToolkit.Unity
             Vector3 ret = Vector3.up;
             if (ReferenceDirection == ReferenceDirectionEnum.ObjectOriented)
             {
-                ret = base.solverHandler.TransformTarget != null ? base.solverHandler.TransformTarget.up : Vector3.up;
+                ret = solverHandler.TransformTarget != null ? solverHandler.TransformTarget.up : Vector3.up;
             }
             return ret;
         }
 
         private Vector3 GetReferencePoint()
         {
-            return base.solverHandler.TransformTarget != null ? base.solverHandler.TransformTarget.position : Vector3.zero;
+            return solverHandler.TransformTarget != null ? solverHandler.TransformTarget.position : Vector3.zero;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace HoloToolkit.Unity
         public override void SolverUpdate()
         {
 
-            Vector3 desiredPos = this.WorkingPos;
+            Vector3 desiredPos = WorkingPos;
 
             if (IgnoreAngleClamp)
             {
@@ -140,8 +140,8 @@ namespace HoloToolkit.Unity
                 desiredRot.x = desiredRot.z = 0f;
             }
 
-            this.GoalPosition = desiredPos;
-            this.GoalRotation = desiredRot;
+            GoalPosition = desiredPos;
+            GoalRotation = desiredRot;
 
             UpdateWorkingPosToGoal();
             UpdateWorkingRotToGoal();

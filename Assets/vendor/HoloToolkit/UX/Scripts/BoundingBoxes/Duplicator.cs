@@ -186,7 +186,7 @@ namespace HoloToolkit.Unity.UX
                         if (OnTargetDuplicateStart != null)
                             OnTargetDuplicateStart();
 
-                        GameObject.Instantiate(originalTarget, transform);
+                        Instantiate(originalTarget, transform);
                         Target.name = originalTarget.name;
                         Target.transform.localPosition = targetPos;
                         Target.transform.localRotation = targetRot;

@@ -31,7 +31,7 @@ namespace HoloToolkit.Unity.InputModule
             public PersistentTouch(Touch touch, Ray ray)
             {
                 touchData = touch;
-                this.screenpointRay = ray;
+                screenpointRay = ray;
                 lifetime = 0.0f;
             }
         }
@@ -43,7 +43,7 @@ namespace HoloToolkit.Unity.InputModule
             // Disable the inputsource if not supported by the device
             if (!Input.touchSupported)
             {
-                this.enabled = false;
+                enabled = false;
             }
         }
 

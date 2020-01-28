@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class DiscoveryClient : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class DiscoveryClient : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal DiscoveryClient(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal DiscoveryClient(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DiscoveryClient obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(DiscoveryClient obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~DiscoveryClient() {
@@ -29,20 +29,20 @@ public class DiscoveryClient : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_DiscoveryClient(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
   public static DiscoveryClient Create() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.DiscoveryClient_Create();
-    DiscoveryClient ret = (cPtr == global::System.IntPtr.Zero) ? null : new DiscoveryClient(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.DiscoveryClient_Create();
+    DiscoveryClient ret = (cPtr == System.IntPtr.Zero) ? null : new DiscoveryClient(cPtr, true);
     return ret; 
   }
 
@@ -56,8 +56,8 @@ public class DiscoveryClient : global::System.IDisposable {
   }
 
   public virtual DiscoveredSystem GetDiscoveredSystem(uint index) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.DiscoveryClient_GetDiscoveredSystem(swigCPtr, index);
-    DiscoveredSystem ret = (cPtr == global::System.IntPtr.Zero) ? null : new DiscoveredSystem(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.DiscoveryClient_GetDiscoveredSystem(swigCPtr, index);
+    DiscoveredSystem ret = (cPtr == System.IntPtr.Zero) ? null : new DiscoveredSystem(cPtr, true);
     return ret; 
   }
 

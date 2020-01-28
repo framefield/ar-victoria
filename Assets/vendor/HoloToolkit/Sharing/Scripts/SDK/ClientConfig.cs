@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class ClientConfig : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class ClientConfig : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal ClientConfig(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal ClientConfig(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ClientConfig obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(ClientConfig obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~ClientConfig() {
@@ -29,14 +29,14 @@ public class ClientConfig : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_ClientConfig(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -70,8 +70,8 @@ public class ClientConfig : global::System.IDisposable {
   }
 
   public LogWriter GetLogWriter() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.ClientConfig_GetLogWriter(swigCPtr);
-    LogWriter ret = (cPtr == global::System.IntPtr.Zero) ? null : new LogWriter(cPtr, false);
+    System.IntPtr cPtr = SharingClientPINVOKE.ClientConfig_GetLogWriter(swigCPtr);
+    LogWriter ret = (cPtr == System.IntPtr.Zero) ? null : new LogWriter(cPtr, false);
     return ret;
   }
 

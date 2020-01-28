@@ -33,7 +33,7 @@ public class WikiDataWrapper : IDataService {
     private IEnumerator DownloadFile(Project project, float scale, Vector3 offset)
     {
         string id;
-        if (project.ids.TryGetValue(this.serviceName, out id))
+        if (project.ids.TryGetValue(serviceName, out id))
         {
 
             string query = @"SELECT ?model ?modelLabel

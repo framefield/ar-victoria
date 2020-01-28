@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class RoomManager : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class RoomManager : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal RoomManager(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal RoomManager(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(RoomManager obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(RoomManager obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~RoomManager() {
@@ -29,14 +29,14 @@ public class RoomManager : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_RoomManager(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -54,20 +54,20 @@ public class RoomManager : global::System.IDisposable {
   }
 
   public virtual Room GetRoom(int index) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.RoomManager_GetRoom(swigCPtr, index);
-    Room ret = (cPtr == global::System.IntPtr.Zero) ? null : new Room(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.RoomManager_GetRoom(swigCPtr, index);
+    Room ret = (cPtr == System.IntPtr.Zero) ? null : new Room(cPtr, true);
     return ret; 
   }
 
   public virtual Room GetCurrentRoom() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.RoomManager_GetCurrentRoom(swigCPtr);
-    Room ret = (cPtr == global::System.IntPtr.Zero) ? null : new Room(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.RoomManager_GetCurrentRoom(swigCPtr);
+    Room ret = (cPtr == System.IntPtr.Zero) ? null : new Room(cPtr, true);
     return ret; 
   }
 
   public virtual Room CreateRoom(XString roomName, long roomID, bool keepOpenWhenEmpty) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.RoomManager_CreateRoom(swigCPtr, XString.getCPtr(roomName), roomID, keepOpenWhenEmpty);
-    Room ret = (cPtr == global::System.IntPtr.Zero) ? null : new Room(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.RoomManager_CreateRoom(swigCPtr, XString.getCPtr(roomName), roomID, keepOpenWhenEmpty);
+    Room ret = (cPtr == System.IntPtr.Zero) ? null : new Room(cPtr, true);
     return ret; 
   }
 
@@ -87,9 +87,9 @@ public class RoomManager : global::System.IDisposable {
   }
 
   public virtual bool UploadAnchor(Room room, XString anchorName, byte[] data, int dataSize) {
-    global::System.Runtime.InteropServices.GCHandle pinHandle_data = global::System.Runtime.InteropServices.GCHandle.Alloc(data, global::System.Runtime.InteropServices.GCHandleType.Pinned); try {
+    System.Runtime.InteropServices.GCHandle pinHandle_data = System.Runtime.InteropServices.GCHandle.Alloc(data, System.Runtime.InteropServices.GCHandleType.Pinned); try {
     {
-      bool ret = SharingClientPINVOKE.RoomManager_UploadAnchor(swigCPtr, Room.getCPtr(room), XString.getCPtr(anchorName), (global::System.IntPtr)pinHandle_data.AddrOfPinnedObject(), dataSize);
+      bool ret = SharingClientPINVOKE.RoomManager_UploadAnchor(swigCPtr, Room.getCPtr(room), XString.getCPtr(anchorName), (System.IntPtr)pinHandle_data.AddrOfPinnedObject(), dataSize);
       return ret;
     }
     } finally { pinHandle_data.Free(); }

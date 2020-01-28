@@ -98,7 +98,7 @@ namespace HoloToolkit.Unity
             styleHR.fixedHeight = 2;
             GUILayout.Box("", styleHR);
 
-            System.Array enumVals = Enum.GetValues(enumObj.GetType());
+            Array enumVals = Enum.GetValues(enumObj.GetType());
             int lastvalue = Convert.ToInt32(enumVals.GetValue(enumVals.GetLength(0) - 1));
 
             foreach (object enumVal in enumVals)

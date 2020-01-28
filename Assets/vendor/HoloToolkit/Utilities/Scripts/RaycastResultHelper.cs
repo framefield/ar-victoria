@@ -15,9 +15,9 @@ namespace HoloToolkit.Unity
 
         public RaycastResultHelper(Collider collider, Vector3 point, Vector3 normal, float distance, Vector2 textureCoord, Vector2 textureCoord2, LayerMask surface)
         {
-            this.layer = collider != null ? collider.gameObject.layer : LayerExtensions.Surface;
+            layer = collider != null ? collider.gameObject.layer : LayerExtensions.Surface;
 
-            if (this.layer == surface.value)
+            if (layer == surface.value)
             {
                 // Spoof the mirage raycast result of 'no collider' if we hit a unity SR layer.
                 this.collider = null;
@@ -30,7 +30,7 @@ namespace HoloToolkit.Unity
             this.point = point;
             this.normal = normal;
             this.distance = distance;
-            this.transform = null;
+            transform = null;
             this.textureCoord = textureCoord;
             this.textureCoord2 = textureCoord2;
         }
@@ -38,36 +38,36 @@ namespace HoloToolkit.Unity
         private Collider collider;
         public Collider Collider
         {
-            get { return this.collider; }
-            private set { this.collider = value; }
+            get { return collider; }
+            private set { collider = value; }
         }
 
         private int layer;
         public int Layer
         {
-            get { return this.layer; }
-            private set { this.layer = value; }
+            get { return layer; }
+            private set { layer = value; }
         }
 
         private Vector3 normal;
         public Vector3 Normal
         {
-            get { return this.normal; }
-            private set { this.normal = value; }
+            get { return normal; }
+            private set { normal = value; }
         }
 
         private float distance;
         public float Distance
         {
-            get { return this.distance; }
-            private set { this.distance = value; }
+            get { return distance; }
+            private set { distance = value; }
         }
 
         private Vector3 point;
         public Vector3 Point
         {
-            get { return this.point; }
-            private set { this.point = value; }
+            get { return point; }
+            private set { point = value; }
         }
 
         private Transform transform;
@@ -75,28 +75,28 @@ namespace HoloToolkit.Unity
         {
             get
             {
-                if (this.transform == null &&
-                    this.Collider != null)
+                if (transform == null &&
+                    Collider != null)
                 {
-                    this.transform = this.Collider.transform;
+                    transform = Collider.transform;
                 }
 
-                return this.transform;
+                return transform;
             }
         }
 
         private Vector2 textureCoord;
         public Vector2 TextureCoord
         {
-            get { return this.textureCoord; }
-            private set { this.textureCoord = value; }
+            get { return textureCoord; }
+            private set { textureCoord = value; }
         }
 
         private Vector2 textureCoord2;
         public Vector2 TextureCoord2
         {
-            get { return this.textureCoord2; }
-            private set { this.textureCoord2 = value; }
+            get { return textureCoord2; }
+            private set { textureCoord2 = value; }
         }
 
         public Vector3 GetNormalFromTextureCoord()
@@ -119,13 +119,13 @@ namespace HoloToolkit.Unity
             return string.Format(
                 "Collider: {1}{0}Game object: {2}{0}Distance: {3}{0}Normal: {4}{0}Point: {5}{0}Texture coord: {6}{0}Texture coord 2: {7}",
                 Environment.NewLine,
-                this.Collider != null ? this.Collider.ToString() : "None",
-                this.Collider != null ? this.Collider.gameObject.ToString() : "None",
-                this.Distance,
-                this.Normal,
-                this.Point,
-                this.TextureCoord,
-                this.TextureCoord2);
+                Collider != null ? Collider.ToString() : "None",
+                Collider != null ? Collider.gameObject.ToString() : "None",
+                Distance,
+                Normal,
+                Point,
+                TextureCoord,
+                TextureCoord2);
         }
 
         public static readonly RaycastResultHelper None = default(RaycastResultHelper);

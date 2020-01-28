@@ -76,11 +76,11 @@ namespace HoloToolkit.Unity.InputModule
         private void Update()
         {
             // Undo the last tracker to Unity transforms applied.
-            cameraTransform.Translate(-this.lastTrackerToUnityTranslation, Space.World);
-            cameraTransform.Rotate(-this.lastTrackerToUnityRotation.eulerAngles, Space.World);
+            cameraTransform.Translate(-lastTrackerToUnityTranslation, Space.World);
+            cameraTransform.Rotate(-lastTrackerToUnityRotation.eulerAngles, Space.World);
 
             // Undo the last local Z-axis tilt rotation.
-            float previousZTilt = this.transform.localEulerAngles.z;
+            float previousZTilt = transform.localEulerAngles.z;
             cameraTransform.Rotate(0, 0, -previousZTilt, Space.Self);
 
             // Calculate and apply the camera control movement this frame
@@ -130,8 +130,8 @@ namespace HoloToolkit.Unity.InputModule
             cameraTransform.Rotate(0.0f, 0.0f, rotate.z + previousZTilt, Space.Self);
 
             // Re-apply the last tracker to Unity transform.
-            cameraTransform.Rotate(this.lastTrackerToUnityRotation.eulerAngles, Space.World);
-            cameraTransform.Translate(this.lastTrackerToUnityTranslation, Space.World);
+            cameraTransform.Rotate(lastTrackerToUnityRotation.eulerAngles, Space.World);
+            cameraTransform.Translate(lastTrackerToUnityTranslation, Space.World);
         }
     }
 }

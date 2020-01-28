@@ -8,7 +8,7 @@ public class SimpleCursor : MonoBehaviour
     void Start()
     {
         // Grab the mesh renderer that's on the same object as this script.
-        meshRenderer = this.gameObject.GetComponentInChildren<MeshRenderer>();
+        meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -28,10 +28,10 @@ public class SimpleCursor : MonoBehaviour
             meshRenderer.enabled = true;
 
             // Move thecursor to the point where the raycast hit.
-            this.transform.position = hitInfo.point;
+            transform.position = hitInfo.point;
 
             // Rotate the cursor to hug the surface of the hologram.
-            this.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
         else
         {

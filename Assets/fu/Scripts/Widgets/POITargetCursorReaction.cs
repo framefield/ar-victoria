@@ -13,21 +13,21 @@ public class POITargetCursorReaction : MonoBehaviour, IFocusable {
 
     public void Start()
     {
-        startupSize = this.transform.localScale;
+        startupSize = transform.localScale;
     }
 
     public void OnFocusEnter()
     {
-        this.transform.localScale -= new Vector3(shrinkFactor, 0, shrinkFactor);
+        transform.localScale -= new Vector3(shrinkFactor, 0, shrinkFactor);
     }
 
     public void OnFocusExit()
     {
-        if(this.transform.localScale.x < startupSize.x * maximumShrink)
+        if(transform.localScale.x < startupSize.x * maximumShrink)
         {
             PoIToEnable.enabled = true;
             textToActivate.SetActive(true);
-            this.transform.localScale = startupSize;
+            transform.localScale = startupSize;
         }
     }
 

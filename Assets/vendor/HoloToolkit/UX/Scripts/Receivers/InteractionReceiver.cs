@@ -100,30 +100,30 @@ namespace HoloToolkit.Unity.Receivers
         /// </summary>
         protected virtual void OnDrawGizmosSelected()
         {
-            if (this.interactables.Count > 0)
+            if (interactables.Count > 0)
             {
-                GameObject[] bioList = this.interactables.ToArray();
+                GameObject[] bioList = interactables.ToArray();
 
                 for (int i = 0; i < bioList.Length; i++)
                 {
                     if (bioList[i] != null)
                     {
                         Gizmos.color = Color.green;
-                        Gizmos.DrawLine(this.transform.position, bioList[i].transform.position);
+                        Gizmos.DrawLine(transform.position, bioList[i].transform.position);
                     }
                 }
             }
 
-            if (this.Targets.Count > 0)
+            if (Targets.Count > 0)
             {
-                GameObject[] targetList = this.Targets.ToArray();
+                GameObject[] targetList = Targets.ToArray();
 
                 for (int i = 0; i < targetList.Length; i++)
                 {
                     if (targetList[i] != null)
                     {
                         Gizmos.color = Color.red;
-                        Gizmos.DrawLine(this.transform.position, targetList[i].transform.position);
+                        Gizmos.DrawLine(transform.position, targetList[i].transform.position);
                     }
                 }
             }
@@ -152,7 +152,7 @@ namespace HoloToolkit.Unity.Receivers
 
             for (int i = 0; i < _intList.Length; i++)
             {
-                this.Removeinteractable(_intList[i]);
+                Removeinteractable(_intList[i]);
             }
         }
 

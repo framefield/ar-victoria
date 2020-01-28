@@ -105,7 +105,7 @@ namespace HoloToolkit.Unity
                 }
                 else
                 {
-                    base.DrawDefaultInspector();
+                    DrawDefaultInspector();
                 }
 
                 SaveChanges();
@@ -408,7 +408,7 @@ namespace HoloToolkit.Unity
                 catch (Exception e)
                 {
                     DrawWarning("There was a problem drawing the member " + member.Name + ":");
-                    DrawError(System.Environment.NewLine + e.ToString());
+                    DrawError(Environment.NewLine + e.ToString());
                 }
             }
 
@@ -707,7 +707,7 @@ namespace HoloToolkit.Unity
                 if (DrawSectionStart(target.GetType().Name, profile.name + " (Click to edit)", false, false))
                 {
                     // Draw the profile inspector
-                    Editor inspector = Editor.CreateEditor(profile);
+                    Editor inspector = CreateEditor(profile);
                     ProfileInspector profileInspector = (ProfileInspector)inspector;
                     if (profileInspector != null)
                     {
@@ -749,7 +749,7 @@ namespace HoloToolkit.Unity
         /// <returns></returns>
         private static UnityEngine.Object CreateProfile(Type profileType)
         {
-            UnityEngine.Object asset = ScriptableObject.CreateInstance(profileType);
+            UnityEngine.Object asset = CreateInstance(profileType);
             if (asset != null)
             {
                 AssetDatabase.CreateAsset(asset, "Assets/New" + profileType.Name + ".asset");

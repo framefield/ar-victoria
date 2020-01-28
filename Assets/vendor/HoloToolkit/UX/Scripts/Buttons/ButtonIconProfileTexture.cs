@@ -121,7 +121,7 @@ namespace HoloToolkit.Unity.Buttons
 #if ENABLE_WINMD_SUPPORT && !UNITY_EDITOR
             var fields = GetType().GetTypeInfo().DeclaredFields;
 #else
-            var fields = this.GetType().GetFields();
+            var fields = GetType().GetFields();
 #endif
             foreach (var field in fields)
             {

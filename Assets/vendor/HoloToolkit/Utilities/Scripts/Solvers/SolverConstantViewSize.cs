@@ -106,7 +106,7 @@ namespace HoloToolkit.Unity
             float maxSize = 1f;
 
             Bounds combinedBounds = new Bounds(transform.position, Vector3.zero);
-            Renderer[] renderers = this.GetComponentsInChildren<Renderer>();
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
 
             foreach (Renderer render in renderers)
             {
@@ -164,7 +164,7 @@ namespace HoloToolkit.Unity
                 fovScalar = GetFOVScalar();
 
                 // Set the linked alt scale ahead of our work.  This is an attempt to minimize jittering by having solvers work with an interpolated scale.
-                solverHandler.AltScale.SetGoal(this.transform.localScale);
+                solverHandler.AltScale.SetGoal(transform.localScale);
 
                 // Calculate scale based on distance from view.  Do not interpolate so we can appear at a constant size if possible.  Borrowed from greybox.
                 //bool ignoreParent = false;

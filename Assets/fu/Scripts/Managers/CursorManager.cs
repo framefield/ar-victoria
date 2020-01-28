@@ -36,8 +36,8 @@ public class CursorManager : MonoBehaviour
             foreach (RaycastResult r in raycastResults)
             {
                 focus = r.gameObject;
-                this.transform.position = r.worldPosition;
-                this.transform.rotation = Quaternion.FromToRotation(Vector3.up, r.worldNormal);
+                transform.position = r.worldPosition;
+                transform.rotation = Quaternion.FromToRotation(Vector3.up, r.worldNormal);
                 break;
             }
 
@@ -68,8 +68,8 @@ public class CursorManager : MonoBehaviour
             {
                 GameObject.Find("Managers").GetComponent<GameObjectManager>().setFocus(null);
             }
-            this.transform.position = hitInfo.point;
-            this.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            transform.position = hitInfo.point;
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
         else
         {

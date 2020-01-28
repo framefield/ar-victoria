@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class StringArrayListener : Listener {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal StringArrayListener(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.StringArrayListener_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal StringArrayListener(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.StringArrayListener_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(StringArrayListener obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(StringArrayListener obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~StringArrayListener() {
@@ -27,14 +27,14 @@ public class StringArrayListener : Listener {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_StringArrayListener(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
@@ -65,35 +65,35 @@ public class StringArrayListener : Listener {
     SharingClientPINVOKE.StringArrayListener_director_connect(swigCPtr, swigDelegate0, swigDelegate1, swigDelegate2);
   }
 
-  private bool SwigDerivedClassHasMethod(string methodName, global::System.Type[] methodTypes) {
-    global::System.Reflection.MethodInfo methodInfo = this.GetType().GetMethod(methodName, global::System.Reflection.BindingFlags.Public | global::System.Reflection.BindingFlags.NonPublic | global::System.Reflection.BindingFlags.Instance, null, methodTypes, null);
+  private bool SwigDerivedClassHasMethod(string methodName, System.Type[] methodTypes) {
+    System.Reflection.MethodInfo methodInfo = GetType().GetMethod(methodName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, methodTypes, null);
     bool hasDerivedMethod = methodInfo.DeclaringType.IsSubclassOf(typeof(StringArrayListener));
     return hasDerivedMethod;
   }
 
-  private void SwigDirectorOnValueChanged(int index, global::System.IntPtr newValue) {
-    OnValueChanged(index, (newValue == global::System.IntPtr.Zero) ? null : new XString(newValue, true));
+  private void SwigDirectorOnValueChanged(int index, System.IntPtr newValue) {
+    OnValueChanged(index, (newValue == System.IntPtr.Zero) ? null : new XString(newValue, true));
   }
 
-  private void SwigDirectorOnValueInserted(int index, global::System.IntPtr value) {
-    OnValueInserted(index, (value == global::System.IntPtr.Zero) ? null : new XString(value, true));
+  private void SwigDirectorOnValueInserted(int index, System.IntPtr value) {
+    OnValueInserted(index, (value == System.IntPtr.Zero) ? null : new XString(value, true));
   }
 
-  private void SwigDirectorOnValueRemoved(int index, global::System.IntPtr value) {
-    OnValueRemoved(index, (value == global::System.IntPtr.Zero) ? null : new XString(value, true));
+  private void SwigDirectorOnValueRemoved(int index, System.IntPtr value) {
+    OnValueRemoved(index, (value == System.IntPtr.Zero) ? null : new XString(value, true));
   }
 
-  public delegate void SwigDelegateStringArrayListener_0(int index, global::System.IntPtr newValue);
-  public delegate void SwigDelegateStringArrayListener_1(int index, global::System.IntPtr value);
-  public delegate void SwigDelegateStringArrayListener_2(int index, global::System.IntPtr value);
+  public delegate void SwigDelegateStringArrayListener_0(int index, System.IntPtr newValue);
+  public delegate void SwigDelegateStringArrayListener_1(int index, System.IntPtr value);
+  public delegate void SwigDelegateStringArrayListener_2(int index, System.IntPtr value);
 
   private SwigDelegateStringArrayListener_0 swigDelegate0;
   private SwigDelegateStringArrayListener_1 swigDelegate1;
   private SwigDelegateStringArrayListener_2 swigDelegate2;
 
-  private static global::System.Type[] swigMethodTypes0 = new global::System.Type[] { typeof(int), typeof(XString) };
-  private static global::System.Type[] swigMethodTypes1 = new global::System.Type[] { typeof(int), typeof(XString) };
-  private static global::System.Type[] swigMethodTypes2 = new global::System.Type[] { typeof(int), typeof(XString) };
+  private static System.Type[] swigMethodTypes0 = new System.Type[] { typeof(int), typeof(XString) };
+  private static System.Type[] swigMethodTypes1 = new System.Type[] { typeof(int), typeof(XString) };
+  private static System.Type[] swigMethodTypes2 = new System.Type[] { typeof(int), typeof(XString) };
 }
 
 }

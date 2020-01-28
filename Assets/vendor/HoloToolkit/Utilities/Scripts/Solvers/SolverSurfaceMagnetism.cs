@@ -258,8 +258,8 @@ namespace HoloToolkit.Unity
         public override void SolverUpdate()
         {
             // Pass-through by default
-            this.GoalPosition = WorkingPos;
-            this.GoalRotation = WorkingRot;
+            GoalPosition = WorkingPos;
+            GoalRotation = WorkingRot;
 
             // Determine raycast params
             Ray ray = new Ray(GetRaycastOrigin(), GetRaycastDirection());
@@ -320,7 +320,7 @@ namespace HoloToolkit.Unity
 
                     if (m_BoxCollider == null)
                     {
-                        m_BoxCollider = this.GetComponent<BoxCollider>();
+                        m_BoxCollider = GetComponent<BoxCollider>();
                     }
 
                     Vector3 extents = m_BoxCollider.size;

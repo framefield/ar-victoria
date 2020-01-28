@@ -224,7 +224,7 @@ namespace UnityGLTF.Extensions
             Vector4 rawUnityCol1 = gltfMat.GetColumn(1).ToUnityVector4Raw();
             Vector4 rawUnityCol2 = gltfMat.GetColumn(2).ToUnityVector4Raw();
             Vector4 rawUnityCol3 = gltfMat.GetColumn(3).ToUnityVector4Raw();
-            Matrix4x4 rawUnityMat = new UnityEngine.Matrix4x4();
+            Matrix4x4 rawUnityMat = new Matrix4x4();
             rawUnityMat.SetColumn(0, rawUnityCol0);
             rawUnityMat.SetColumn(1, rawUnityCol1);
             rawUnityMat.SetColumn(2, rawUnityCol2);
@@ -288,19 +288,19 @@ namespace UnityGLTF.Extensions
             return outVecArr;
         }
 
-        public static UnityEngine.Color ToUnityColorRaw(this GLTF.Math.Color color)
+        public static Color ToUnityColorRaw(this GLTF.Math.Color color)
         {
-            return new UnityEngine.Color(color.R, color.G, color.B, color.A);
+            return new Color(color.R, color.G, color.B, color.A);
         }
 
-        public static GLTF.Math.Color ToNumericsColorRaw(this UnityEngine.Color color)
+        public static GLTF.Math.Color ToNumericsColorRaw(this Color color)
         {
             return new GLTF.Math.Color(color.r, color.g, color.b, color.a);
         }
 
-        public static UnityEngine.Color[] ToUnityColorRaw(this GLTF.Math.Color[] inColorArr)
+        public static Color[] ToUnityColorRaw(this GLTF.Math.Color[] inColorArr)
         {
-            UnityEngine.Color[] outColorArr = new UnityEngine.Color[inColorArr.Length];
+            Color[] outColorArr = new Color[inColorArr.Length];
             for (int i = 0; i < inColorArr.Length; ++i)
             {
                 outColorArr[i] = inColorArr[i].ToUnityColorRaw();
@@ -348,9 +348,9 @@ namespace UnityGLTF.Extensions
         /// </summary>
         /// <param name="array">The array to copy from and modify</param>
         /// <returns>Copied Vector2 with coordinates in glTF space</returns>
-        public static UnityEngine.Vector2[] FlipTexCoordArrayVAndCopy(UnityEngine.Vector2[] array)
+        public static Vector2[] FlipTexCoordArrayVAndCopy(Vector2[] array)
         {
-            var returnArray = new UnityEngine.Vector2[array.Length];
+            var returnArray = new Vector2[array.Length];
 
             for (var i = 0; i < array.Length; i++)
             {
@@ -382,9 +382,9 @@ namespace UnityGLTF.Extensions
         /// <param name="array">The array to convert and copy</param>
         /// <param name="coordinateSpaceCoordinateScale">The specified coordinate space</param>
         /// <returns>The copied and converted coordinate space</returns>
-        public static UnityEngine.Vector3[] ConvertVector3CoordinateSpaceAndCopy(Vector3[] array, GLTF.Math.Vector3 coordinateSpaceCoordinateScale)
+        public static Vector3[] ConvertVector3CoordinateSpaceAndCopy(Vector3[] array, GLTF.Math.Vector3 coordinateSpaceCoordinateScale)
         {
-            var returnArray = new UnityEngine.Vector3[array.Length];
+            var returnArray = new Vector3[array.Length];
 
             for (int i = 0; i < array.Length; i++)
             {

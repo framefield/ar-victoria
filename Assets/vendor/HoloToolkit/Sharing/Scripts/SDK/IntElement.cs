@@ -11,14 +11,14 @@
 namespace HoloToolkit.Sharing {
 
 public class IntElement : Element {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal IntElement(global::System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.IntElement_SWIGUpcast(cPtr), cMemoryOwn) {
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  internal IntElement(System.IntPtr cPtr, bool cMemoryOwn) : base(SharingClientPINVOKE.IntElement_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(IntElement obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(IntElement obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~IntElement() {
@@ -27,21 +27,21 @@ public class IntElement : Element {
 
   public override void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_IntElement(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
       base.Dispose();
     }
   }
 
   public static IntElement Cast(Element element) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.IntElement_Cast(Element.getCPtr(element));
-    IntElement ret = (cPtr == global::System.IntPtr.Zero) ? null : new IntElement(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.IntElement_Cast(Element.getCPtr(element));
+    IntElement ret = (cPtr == System.IntPtr.Zero) ? null : new IntElement(cPtr, true);
     return ret; 
   }
 

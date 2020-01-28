@@ -10,17 +10,17 @@
 
 namespace HoloToolkit.Sharing {
 
-public class SessionManager : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class SessionManager : System.IDisposable {
+  private System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal SessionManager(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal SessionManager(System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
-    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    swigCPtr = new System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SessionManager obj) {
-    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  internal static System.Runtime.InteropServices.HandleRef getCPtr(SessionManager obj) {
+    return (obj == null) ? new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~SessionManager() {
@@ -29,14 +29,14 @@ public class SessionManager : global::System.IDisposable {
 
   public virtual void Dispose() {
     lock(this) {
-      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+      if (swigCPtr.Handle != System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
           SharingClientPINVOKE.delete_SessionManager(swigCPtr);
         }
-        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        swigCPtr = new System.Runtime.InteropServices.HandleRef(null, System.IntPtr.Zero);
       }
-      global::System.GC.SuppressFinalize(this);
+      System.GC.SuppressFinalize(this);
     }
   }
 
@@ -64,20 +64,20 @@ public class SessionManager : global::System.IDisposable {
   }
 
   public virtual Session GetSession(int index) {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SessionManager_GetSession(swigCPtr, index);
-    Session ret = (cPtr == global::System.IntPtr.Zero) ? null : new Session(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SessionManager_GetSession(swigCPtr, index);
+    Session ret = (cPtr == System.IntPtr.Zero) ? null : new Session(cPtr, true);
     return ret; 
   }
 
   public virtual Session GetCurrentSession() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SessionManager_GetCurrentSession(swigCPtr);
-    Session ret = (cPtr == global::System.IntPtr.Zero) ? null : new Session(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SessionManager_GetCurrentSession(swigCPtr);
+    Session ret = (cPtr == System.IntPtr.Zero) ? null : new Session(cPtr, true);
     return ret; 
   }
 
   public virtual User GetCurrentUser() {
-    global::System.IntPtr cPtr = SharingClientPINVOKE.SessionManager_GetCurrentUser(swigCPtr);
-    User ret = (cPtr == global::System.IntPtr.Zero) ? null : new User(cPtr, true);
+    System.IntPtr cPtr = SharingClientPINVOKE.SessionManager_GetCurrentUser(swigCPtr);
+    User ret = (cPtr == System.IntPtr.Zero) ? null : new User(cPtr, true);
     return ret; 
   }
 

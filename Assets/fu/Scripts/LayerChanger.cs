@@ -20,11 +20,11 @@ public class LayerChanger : MonoBehaviour {
         get { return _isHidden; }
         set { if (value == true)
               {
-                this.gameObject.layer = 15;
+                gameObject.layer = 15;
               }
               else
               {
-                this.gameObject.layer = 0;
+                gameObject.layer = 0;
               }
               _isHidden = value;
             }
@@ -32,12 +32,12 @@ public class LayerChanger : MonoBehaviour {
 
     public void hideObject()
     {
-        this.gameObject.layer = 15;
+        gameObject.layer = 15;
     }
 
     public void showObject()
     {
-        this.gameObject.layer = 0;
+        gameObject.layer = 0;
     }
 
     

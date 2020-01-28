@@ -430,7 +430,7 @@ namespace HoloToolkit.Unity
         {
             public object Clone()
             {
-                return this.MemberwiseClone();
+                return MemberwiseClone();
             }
 
             public Vector3 Position;

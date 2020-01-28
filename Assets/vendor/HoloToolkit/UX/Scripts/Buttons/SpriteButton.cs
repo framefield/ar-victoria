@@ -32,7 +32,7 @@ namespace HoloToolkit.Unity.Buttons
         public override void OnStateChange(ButtonStateEnum newState)
         {
             if (_renderer == null)
-                _renderer = this.GetComponent<SpriteRenderer>();
+                _renderer = GetComponent<SpriteRenderer>();
 
             if (ButtonStates[(int)newState].ButtonSprite != null)
             {
@@ -40,8 +40,8 @@ namespace HoloToolkit.Unity.Buttons
                 _renderer.color = ButtonStates[(int)newState].SpriteColor;
             }
 
-            if (this.transform.localScale != ButtonStates[(int)newState].Scale)
-                this.transform.localScale = ButtonStates[(int)newState].Scale;
+            if (transform.localScale != ButtonStates[(int)newState].Scale)
+                transform.localScale = ButtonStates[(int)newState].Scale;
 
             base.OnStateChange(newState);
         }

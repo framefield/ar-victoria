@@ -30,7 +30,7 @@ public class GameObjectManager : MonoBehaviour {
     public void SpawnObject(Project project, Vector3 offset, float scale = 1.0f)
     {
         
-        GameObject obj = GameObject.Instantiate(annotatedObjectPrefab);
+        GameObject obj = Instantiate(annotatedObjectPrefab);
         GameObject parent = GameObject.Find("Holograms");
         obj.GetComponent<AnnotatedObject>().project = project;
         obj.name = project.name;

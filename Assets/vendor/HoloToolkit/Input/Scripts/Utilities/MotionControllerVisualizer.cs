@@ -50,7 +50,7 @@ namespace HoloToolkit.Unity.InputModule
 
         [Tooltip("This material will be used on the loaded glTF controller model. This does not affect the above overrides.")]
         [SerializeField]
-        protected UnityEngine.Material GLTFMaterial;
+        protected Material GLTFMaterial;
 
 #if UNITY_WSA && UNITY_2017_2_OR_NEWER
         // This will be used to keep track of our controllers, indexed by their unique source ID.

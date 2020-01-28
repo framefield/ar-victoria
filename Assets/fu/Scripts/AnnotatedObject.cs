@@ -14,7 +14,7 @@ public class AnnotatedObject : IWidget {
     {
         foreach(IWidget w in widgets)
         {
-            IWidget instance = GameObject.Instantiate(w);
+            IWidget instance = Instantiate(w);
             instance.gameObject.SetActive(true);
             addWidget(instance);
         }

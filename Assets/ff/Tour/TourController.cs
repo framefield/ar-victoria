@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TourController : MonoBehaviour
 {
+    
+    
+    
     [SerializeField] private ContentStep[] _steps;
 
     private void  Start()

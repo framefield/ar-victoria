@@ -12,11 +12,15 @@ namespace victoria.interaction
         [SerializeField] private List<InteractiveSegment> _segments;
         [SerializeField] private Camera _camera;
 
+        [Header("External Prefabs")] [SerializeField]
+        private ParticleSystem _hightlightParticles;
+
         public interface IInteractionListener
         {
             void OnBeginHover(InteractiveSegment.SegmentType type);
             void OnStopHover(InteractiveSegment.SegmentType type);
         }
+
 
         void Update()
         {
@@ -37,6 +41,23 @@ namespace victoria.interaction
                 Debug.DrawRay(origin, direction * 1000, Color.white);
                 HandleHit(null);
             }
+
+            RenderModel(_hoveredSegment);
+        }
+
+        private void RenderModel([CanBeNull] InteractiveSegment hoveredSegment)
+        {
+            var isHovering = hoveredSegment != null;
+            _hightlightParticles.gameObject.SetActive(isHovering);
+            
+            if (isHovering)
+            {
+                var hoveredRenderer = hoveredSegment.GetMeshRenderer();
+                if(_hightlightParticles.shape.meshRenderer == hoveredRenderer)
+                    return;
+                var shapeModule = _hightlightParticles.shape;
+                shapeModule.meshRenderer =hoveredRenderer;
+            }
         }
 
         private void HandleHit([CanBeNull] InteractiveSegment hitSegment)
@@ -52,7 +73,7 @@ namespace victoria.interaction
 
             _hoveredSegment = hitSegment;
         }
-        
+
         private IInteractionListener _interactionListener;
         private InteractiveSegment _hoveredSegment;
     }

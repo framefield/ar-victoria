@@ -23,5 +23,10 @@ namespace victoria.tour
         }
         
         public SegmentType Type;
+
+        public MeshRenderer GetMeshRenderer()
+        {
+            return GetComponent<MeshRenderer>();
+        }
     }
 }

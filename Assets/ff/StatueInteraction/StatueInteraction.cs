@@ -1,17 +1,59 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
-using victoria;
-using victoria.bodyParts;
+using victoria.tour;
 
-public class StatueInteraction : MonoBehaviour
+namespace victoria.interaction
 {
-    [SerializeField] private BodyPartData<MeshRenderer> _meshes;
-    [SerializeField] private BodyPartRenderers _renderers;
-    
-    public interface IInteractionListener
+    public class StatueInteraction : MonoBehaviour
     {
-        void OnHover();
-        void OnUnhover();
+        [SerializeField] private List<InteractiveSegment> _segments;
+        [SerializeField] private Camera _camera;
+
+        public interface IInteractionListener
+        {
+            void OnBeginHover(InteractiveSegment.SegmentType type);
+            void OnStopHover(InteractiveSegment.SegmentType type);
+        }
+
+        void Update()
+        {
+            RaycastHit hit;
+            var origin = _camera.transform.position;
+            var direction = _camera.transform.TransformDirection(Vector3.forward);
+            if (Physics.Raycast(origin, direction, out hit, Mathf.Infinity))
+            {
+                Debug.DrawRay(origin, direction * hit.distance, Color.yellow);
+                Func<InteractiveSegment, bool> equalsComparision = s => s.transform == hit.transform;
+                if (_segments.Any(equalsComparision))
+                    HandleHit(_segments.First(equalsComparision));
+                else
+                    HandleHit(null);
+            }
+            else
+            {
+                Debug.DrawRay(origin, direction * 1000, Color.white);
+                HandleHit(null);
+            }
+        }
+
+        private void HandleHit([CanBeNull] InteractiveSegment hitSegment)
+        {
+            if (hitSegment == _hoveredSegment)
+                return;
+
+            if (_hoveredSegment != null)
+                _interactionListener?.OnStopHover(_hoveredSegment.Type);
+
+            if (hitSegment != null)
+                _interactionListener?.OnBeginHover(_hoveredSegment.Type);
+
+            _hoveredSegment = hitSegment;
+        }
+        
+        private IInteractionListener _interactionListener;
+        private InteractiveSegment _hoveredSegment;
     }
 }

@@ -11,7 +11,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using Debug = UnityEngine.Debug;
-
+#pragma warning disable CS0618
 namespace HoloToolkit.Unity
 {
     /// <summary>

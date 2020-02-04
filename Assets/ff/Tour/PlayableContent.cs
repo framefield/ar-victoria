@@ -11,7 +11,7 @@ namespace victoria.tour
     public class PlayableContent : MonoBehaviour
     {
         [FormerlySerializedAs("_interactiveComponent")] [SerializeField]
-        private InteractiveSegment _interactiveSegment = null;
+        public InteractiveSegment.SegmentType Type;
 
         [SerializeField] private AudioClip _audioClip = null;
         [SerializeField] private VisibleObject[] _visibleObjects = null;
@@ -33,6 +33,10 @@ namespace victoria.tour
             {
                 visibleObject.SetVisible(visible);
             }
+
+            gameObject.name = Type.ToString();
+            if (visible)
+                gameObject.name += " >>";
         }
 
 

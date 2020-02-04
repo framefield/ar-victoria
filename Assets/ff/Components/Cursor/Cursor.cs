@@ -4,9 +4,9 @@ namespace victoria
 {
     public class Cursor : MonoBehaviour
     {
-        public void UpdateCursor(Vector3? position, Vector3? normal, bool hasHit, Camera camera)
+        public void UpdateCursor(Vector3? position, Vector3? normal, Controller.Model.State state, Camera camera)
         {
-            if (hasHit)
+            if (state!= Controller.Model.State.Default)
             {
                 var p = position.Value;
                 var n = normal.Value;

@@ -40,7 +40,7 @@ namespace victoria.interaction
             var direction = _camera.transform.TransformDirection(Vector3.forward);
             var hasHit = Physics.Raycast(origin, direction, out var hit, Mathf.Infinity);
 
-            var hitSegment = hit.transform.GetComponent<InteractiveSegment>();
+            var hitSegment = hit.transform?.GetComponent<InteractiveSegment>();
             if (hasHit && hitSegment != null)
             {
                 var eventData = new HoverEventData
@@ -57,6 +57,8 @@ namespace victoria.interaction
                 }
                 else
                 {
+                    if(_lastHitSegment!=null)
+                        _interactionListener.OnStopHover(_lastHitSegment.Type);
                     _lastHitSegment = hitSegment;
                     _interactionListener.OnBeginHover(eventData);
                 }

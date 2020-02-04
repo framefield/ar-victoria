@@ -1,42 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using victoria.interaction;
 
 namespace victoria.tour
 {
     /// <summary>
     /// Holds state of the interaction with the <see cref="PlayableContent"/>. Triggers play on them.
     /// </summary>
-    public class TourController : MonoBehaviour, PlayableContent.IInteractionListener
+    public class TourController : MonoBehaviour, PlayableContent.IInteractionListener, StatueInteraction.IInteractionListener
     {
         [Header("Internal References")]
         [SerializeField] private PlayableContent[] _content;
-        [Header("External Prefabs")]
-        [SerializeField] private ParticleSystem _hightlightParticles;
-        public struct State
-        {
-            private PlayableContent playableContentInFocus;
-            private PlayableContent.State _state;
-        }
 
+        [SerializeField] private StatueInteraction _interaction;
+       
         private void Start()
         {
+            _interaction.Initialize(this);
             foreach (var c in _content)
             {
-                c.Init(_hightlightParticles, this);
+                c.Init( this);
             }
         }
-
-        void PlayableContent.IInteractionListener.Hover()
+        
+        void PlayableContent.IInteractionListener.ContentCompleted(PlayableContent completedContent)
         {
+            
         }
 
-        void PlayableContent.IInteractionListener.Unhover()
+        void StatueInteraction.IInteractionListener.OnBeginHover(InteractiveSegment.SegmentType type)
         {
+//            _interaction.
         }
 
-        void PlayableContent.IInteractionListener.ContentCompleted()
+        void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
         {
+            
         }
     }
 }

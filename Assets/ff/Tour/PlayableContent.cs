@@ -1,54 +1,55 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace victoria.tour
 {
     /// <summary>
     /// The seven content modules in the scene, that are assigned to a segment of the statue. 
     /// </summary>
-    public class PlayableContent : MonoBehaviour, InteractiveComponent.IInteractionListener
+    public class PlayableContent : MonoBehaviour
     {
-        public enum State
-        {
-            Inactive,
-            Hovered,
-            Active
-        }
+        [FormerlySerializedAs("_interactiveComponent")] [SerializeField]
+        private InteractiveSegment _interactiveSegment = null;
 
-        [SerializeField] private AudioClip _audioClip;
-        [SerializeField] private VisibleObject[] _visibleObjects;
+        [SerializeField] private AudioClip _audioClip = null;
+        [SerializeField] private VisibleObject[] _visibleObjects = null;
 
-
-        void InteractiveComponent.IInteractionListener.Hover()
-        {
-            _interactionListener.Hover();
-        }
-
-        void InteractiveComponent.IInteractionListener.Unhover()
-        {
-            _interactionListener.Unhover();
-        }
-        
-        public void Init(ParticleSystem highlightParticles, IInteractionListener listener)
+        public void Init(IInteractionListener listener)
         {
             _interactionListener = listener;
-            _highlightParticles = highlightParticles;
-            GetComponent<InteractiveComponent>().Init(this);
         }
 
-        public void SetState(State state)
+        public void Play()
+        {
+            SetVisible(true);
+            StartCoroutine(ExampleCoroutine());
+        }
+
+        private void SetVisible(bool visible)
         {
             foreach (var visibleObject in _visibleObjects)
             {
-                visibleObject.SetVisible(state == State.Active);
+                visibleObject.SetVisible(visible);
             }
+        }
+
+
+        IEnumerator ExampleCoroutine()
+        {
+            Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+            yield return new WaitForSeconds(5);
+
+            Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+            SetVisible(false);
+            _interactionListener.ContentCompleted(this);
         }
 
         public interface IInteractionListener
         {
-            void Hover();
-            void Unhover();
-            void ContentCompleted(); //animation completed or "exit" interaction
+            void ContentCompleted(PlayableContent completedContent); //animation completed or "exit" interaction
         }
 
         private ParticleSystem _highlightParticles;

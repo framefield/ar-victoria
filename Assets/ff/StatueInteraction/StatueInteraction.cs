@@ -12,8 +12,7 @@ namespace victoria.interaction
         [SerializeField] private List<InteractiveSegment> _segments;
         [SerializeField] private Camera _camera;
 
-        [Header("External Prefabs")] [SerializeField]
-        private ParticleSystem _hightlightParticles;
+        [SerializeField] private View _view; 
 
         public interface IInteractionListener
         {
@@ -21,60 +20,82 @@ namespace victoria.interaction
             void OnStopHover(InteractiveSegment.SegmentType type);
         }
 
-
+        public void Initialize(IInteractionListener listener)
+        {
+            _interactionListener = listener;
+        }
+        
         void Update()
         {
             RaycastHit hit;
             var origin = _camera.transform.position;
             var direction = _camera.transform.TransformDirection(Vector3.forward);
-            if (Physics.Raycast(origin, direction, out hit, Mathf.Infinity))
+            _model.HasHit = Physics.Raycast(origin, direction, out hit, Mathf.Infinity);
+            if (_model.HasHit)
             {
-                Debug.DrawRay(origin, direction * hit.distance, Color.yellow);
+                _model.HitPosition = hit.point;                
+                _model.HitNormal= hit.normal;                
+                
                 Func<InteractiveSegment, bool> equalsComparision = s => s.transform == hit.transform;
                 if (_segments.Any(equalsComparision))
-                    HandleHit(_segments.First(equalsComparision));
+                    UpdateHoverStates(_segments.First(equalsComparision));
                 else
-                    HandleHit(null);
+                    UpdateHoverStates(null);
             }
             else
             {
-                Debug.DrawRay(origin, direction * 1000, Color.white);
-                HandleHit(null);
+                UpdateHoverStates(null);
             }
 
-            RenderModel(_hoveredSegment);
+            RenderModel(_model ,_view, _camera);
         }
 
-        private void RenderModel([CanBeNull] InteractiveSegment hoveredSegment)
+        private static void RenderModel( Model model, View view, Camera camera)
         {
-            var isHovering = hoveredSegment != null;
-            _hightlightParticles.gameObject.SetActive(isHovering);
+            var isHovering =model.HoveredSegment != null;
+            view.HightlightParticles.gameObject.SetActive(isHovering);
+            view.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.HasHit,camera );
             
             if (isHovering)
             {
-                var hoveredRenderer = hoveredSegment.GetMeshRenderer();
-                if(_hightlightParticles.shape.meshRenderer == hoveredRenderer)
+                var hoveredRenderer = model.HoveredSegment.GetMeshRenderer();
+                if (view.HightlightParticles.shape.meshRenderer == hoveredRenderer)
                     return;
-                var shapeModule = _hightlightParticles.shape;
-                shapeModule.meshRenderer =hoveredRenderer;
+                var shapeModule = view.HightlightParticles.shape;
+                shapeModule.meshRenderer = hoveredRenderer;
             }
         }
 
-        private void HandleHit([CanBeNull] InteractiveSegment hitSegment)
+        private void UpdateHoverStates([CanBeNull] InteractiveSegment hitSegment)
         {
-            if (hitSegment == _hoveredSegment)
+            if (hitSegment == _model.HoveredSegment)
                 return;
 
-            if (_hoveredSegment != null)
-                _interactionListener?.OnStopHover(_hoveredSegment.Type);
+            if ( _model.HoveredSegment != null)
+                _interactionListener?.OnStopHover( _model.HoveredSegment.Type);
 
             if (hitSegment != null)
-                _interactionListener?.OnBeginHover(_hoveredSegment.Type);
+                _interactionListener?.OnBeginHover(hitSegment.Type);
 
-            _hoveredSegment = hitSegment;
+            _model.HoveredSegment = hitSegment;
+        }
+        
+        private IInteractionListener _interactionListener;
+        private Model _model;
+        private struct Model
+        {
+            [CanBeNull] public InteractiveSegment HoveredSegment;
+
+            public bool HasHit;
+            public Vector3 HitPosition;
+            public Vector3 HitNormal;
         }
 
-        private IInteractionListener _interactionListener;
-        private InteractiveSegment _hoveredSegment;
+        [Serializable]
+        private struct View
+        {
+            public ParticleSystem HightlightParticles;
+            public Cursor Cursor;
+        }
     }
 }

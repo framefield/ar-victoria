@@ -4,12 +4,14 @@ namespace victoria
 {
     public class Cursor : MonoBehaviour
     {
-        public void UpdateCursor(Vector3 position, Vector3 normal, bool hasHit, Camera camera)
+        public void UpdateCursor(Vector3? position, Vector3? normal, bool hasHit, Camera camera)
         {
             if (hasHit)
             {
-                transform.position = position;
-                transform.LookAt(position-normal);
+                var p = position.Value;
+                var n = normal.Value;
+                transform.position = p;
+                transform.LookAt(p-n);
             }
             else
             {

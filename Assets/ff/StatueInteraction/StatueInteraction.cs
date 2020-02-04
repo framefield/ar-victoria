@@ -9,93 +9,71 @@ namespace victoria.interaction
 {
     public class StatueInteraction : MonoBehaviour
     {
+        // todo: use serializable dictionary / generic struct
         [SerializeField] private List<InteractiveSegment> _segments;
-        [SerializeField] private Camera _camera;
 
-        [SerializeField] private View _view; 
-
-        public interface IInteractionListener
+        public struct HoverEventData
         {
-            void OnBeginHover(InteractiveSegment.SegmentType type);
-            void OnStopHover(InteractiveSegment.SegmentType type);
-        }
-
-        public void Initialize(IInteractionListener listener)
-        {
-            _interactionListener = listener;
-        }
-        
-        void Update()
-        {
-            RaycastHit hit;
-            var origin = _camera.transform.position;
-            var direction = _camera.transform.TransformDirection(Vector3.forward);
-            _model.HasHit = Physics.Raycast(origin, direction, out hit, Mathf.Infinity);
-            if (_model.HasHit)
-            {
-                _model.HitPosition = hit.point;                
-                _model.HitNormal= hit.normal;                
-                
-                Func<InteractiveSegment, bool> equalsComparision = s => s.transform == hit.transform;
-                if (_segments.Any(equalsComparision))
-                    UpdateHoverStates(_segments.First(equalsComparision));
-                else
-                    UpdateHoverStates(null);
-            }
-            else
-            {
-                UpdateHoverStates(null);
-            }
-
-            RenderModel(_model ,_view, _camera);
-        }
-
-        private static void RenderModel( Model model, View view, Camera camera)
-        {
-            var isHovering =model.HoveredSegment != null;
-            view.HightlightParticles.gameObject.SetActive(isHovering);
-            view.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.HasHit,camera );
-            
-            if (isHovering)
-            {
-                var hoveredRenderer = model.HoveredSegment.GetMeshRenderer();
-                if (view.HightlightParticles.shape.meshRenderer == hoveredRenderer)
-                    return;
-                var shapeModule = view.HightlightParticles.shape;
-                shapeModule.meshRenderer = hoveredRenderer;
-            }
-        }
-
-        private void UpdateHoverStates([CanBeNull] InteractiveSegment hitSegment)
-        {
-            if (hitSegment == _model.HoveredSegment)
-                return;
-
-            if ( _model.HoveredSegment != null)
-                _interactionListener?.OnStopHover( _model.HoveredSegment.Type);
-
-            if (hitSegment != null)
-                _interactionListener?.OnBeginHover(hitSegment.Type);
-
-            _model.HoveredSegment = hitSegment;
-        }
-        
-        private IInteractionListener _interactionListener;
-        private Model _model;
-        private struct Model
-        {
-            [CanBeNull] public InteractiveSegment HoveredSegment;
-
-            public bool HasHit;
+            public InteractiveSegment.SegmentType HoveredType;
+            public MeshRenderer HoveredRenderer;
             public Vector3 HitPosition;
             public Vector3 HitNormal;
         }
 
-        [Serializable]
-        private struct View
+        public interface IInteractionListener
         {
-            public ParticleSystem HightlightParticles;
-            public Cursor Cursor;
+            void OnBeginHover(HoverEventData eventData);
+            void OnUpdateHover(HoverEventData eventData);
+            void OnStopHover(InteractiveSegment.SegmentType type);
         }
+
+        public void Initialize(IInteractionListener listener, Camera camera)
+        {
+            _camera = camera;
+            _interactionListener = listener;
+        }
+
+
+        void Update()
+        {
+            var origin = _camera.transform.position;
+            var direction = _camera.transform.TransformDirection(Vector3.forward);
+            var hasHit = Physics.Raycast(origin, direction, out var hit, Mathf.Infinity);
+
+            var hitSegment = hit.transform.GetComponent<InteractiveSegment>();
+            if (hasHit && hitSegment != null)
+            {
+                var eventData = new HoverEventData
+                {
+                    HitPosition = hit.point,
+                    HitNormal = hit.normal,
+                    HoveredType = hitSegment.Type,
+                    HoveredRenderer = hitSegment.GetMeshRenderer()
+                };
+
+                if (hitSegment == _lastHitSegment)
+                {
+                    _interactionListener.OnUpdateHover(eventData);
+                }
+                else
+                {
+                    _lastHitSegment = hitSegment;
+                    _interactionListener.OnBeginHover(eventData);
+                }
+            }
+            else
+            {
+                if (_lastHitSegment != null)
+                {
+                    var type = _lastHitSegment.Type;
+                    _lastHitSegment = null;
+                    _interactionListener.OnStopHover(type);
+                }
+            }
+        }
+        
+        private InteractiveSegment _lastHitSegment;
+        private IInteractionListener _interactionListener;
+        private Camera _camera;
     }
 }

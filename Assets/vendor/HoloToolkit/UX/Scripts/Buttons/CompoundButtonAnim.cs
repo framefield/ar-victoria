@@ -3,7 +3,6 @@
 
 using UnityEngine;
 using System;
-using HoloToolkit.Unity;
 
 namespace HoloToolkit.Unity.Buttons
 {

@@ -6,7 +6,6 @@
 /// Useful for GUI and items that appear in the world space. 
 
 using UnityEngine;
-using System.Collections;
 
 public class ScaleRelativeToCamera : MonoBehaviour
 {

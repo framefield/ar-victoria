@@ -3,8 +3,6 @@
  * 
  **/
 
-using System.Collections;
-using UnityEngine.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

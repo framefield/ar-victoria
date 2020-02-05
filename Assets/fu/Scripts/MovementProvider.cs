@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
-using System;
 
 public class MovementProvider : MonoBehaviour {
     public float intervall = 1.0f;

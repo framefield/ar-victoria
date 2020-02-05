@@ -4,7 +4,6 @@
 using System;
 using System.Reflection;
 using UnityEngine;
-using HoloToolkit.Unity;
 
 namespace HoloToolkit.Unity.Buttons
 {

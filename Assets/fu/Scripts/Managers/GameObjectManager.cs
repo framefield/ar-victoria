@@ -1,14 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
-using System.IO;
-using System.Text;
-using System.Threading;
-using System.Net;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.Windows.Speech;
 
 public class GameObjectManager : MonoBehaviour {
     public GameObject annotatedObjectPrefab;

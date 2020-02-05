@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Web;
 using System.Xml;
 
 public class DBPediaWrapper : IDataService {

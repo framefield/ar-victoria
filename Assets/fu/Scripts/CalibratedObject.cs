@@ -1,6 +1,4 @@
-﻿using HoloToolkit.Unity;
-using UnityEngine;
-using UnityEngine.XR.WSA;
+﻿using UnityEngine;
 
 public class CalibratedObject : MonoBehaviour
 {

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using HoloToolkit.Unity.InputModule;
-using HoloToolkit.UX.Dialog;
+﻿using HoloToolkit.Unity.InputModule;
 using UnityEngine;
 
 public class POIHandler : MonoBehaviour, IFocusable {

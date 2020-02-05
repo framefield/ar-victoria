@@ -4,7 +4,6 @@ Vuforia is a trademark of PTC Inc., registered in the United States and other
 countries.
 ===============================================================================*/
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class AsyncSceneLoader : MonoBehaviour

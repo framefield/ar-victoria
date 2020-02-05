@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using HoloToolkit.Unity;
 using JetBrains.Annotations;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using victoria.interaction;
 using victoria.tour;
@@ -19,7 +16,6 @@ namespace victoria
         [SerializeField] private View _view;
         [SerializeField] private StatueInteraction _interaction;
         [SerializeField] private PlayableContent[] _content;
-
 
         private void Start()
         {
@@ -40,7 +36,7 @@ namespace victoria
             if (_model.CompletedContent.Any(type => type == _model.HoveredSegment))
                 return;
 
-            if (Time.time - _model.HoverStartTime > _selectionTimeThreshold)
+            if (_model.HasCompletedHoverProgress())
             {
                 _model.CurrentState = Model.State.Playing;
                 var contentToPlay = _content.First(content => content.Type == _model.HoveredSegment);
@@ -48,10 +44,10 @@ namespace victoria
             }
         }
 
-
         private static void RenderModel(Model model, View view, Camera camera)
         {
-            view.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentState, camera);
+            view.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentState, camera,
+                model.CalculateNormalizedProgress());
             view.DebugLabel.text = $"{model.CurrentState}";
             if (model.CurrentState == Model.State.Hovering)
                 view.DebugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
@@ -62,7 +58,7 @@ namespace victoria
 //                if (view.HightlightParticles.shape.meshRenderer ==  model.HoveredRenderer)
 //                    return;
                 var shapeModule = view.HightlightParticles.shape;
-                shapeModule.meshRenderer =  model.HoveredRenderer;
+                shapeModule.meshRenderer = model.HoveredRenderer;
                 view.HightlightParticles.Play();
             }
             else
@@ -70,7 +66,6 @@ namespace victoria
                 view.HightlightParticles.Stop();
             }
         }
-
 
         [Serializable]
         private struct View
@@ -87,6 +82,7 @@ namespace victoria
 
             if (_model.CompletedContent.Contains(eventData.HoveredType))
                 return;
+
             _model.CurrentState = Model.State.Hovering;
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
@@ -126,16 +122,29 @@ namespace victoria
         }
 
         [SerializeField] private Model _model;
-        [SerializeField] private float _selectionTimeThreshold;
 
         [Serializable]
         public struct Model
         {
+            private const float SelectionTimeThreshold = 3f;
+
             public enum State
             {
                 Default,
                 Hovering,
                 Playing
+            }
+
+            public float CalculateNormalizedProgress()
+            {
+                if (HoverStartTime == null || CurrentState!=State.Hovering)
+                    return 0f;
+                return (Time.time - HoverStartTime.Value) / SelectionTimeThreshold;
+            }
+
+            public bool HasCompletedHoverProgress()
+            {
+                return CalculateNormalizedProgress() >= 1f;
             }
 
             public InteractiveSegment.SegmentType? HoveredSegment;

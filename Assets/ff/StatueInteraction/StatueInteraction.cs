@@ -6,7 +6,7 @@ namespace victoria.interaction
 {
     public class StatueInteraction : MonoBehaviour
     {
-        // todo: use serializable dictionary / generic struct
+        public const int SegmentCount = 8; 
         [SerializeField] private List<InteractiveSegment> _segments;
 
         public struct HoverEventData

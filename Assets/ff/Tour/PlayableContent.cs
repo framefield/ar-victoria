@@ -14,32 +14,66 @@ namespace victoria.tour
         [SerializeField] public InteractiveSegment.SegmentType Type;
         [SerializeField] private AudioClip _audioClip = null;
 
-        public void Init(IInteractionListener listener)
+        private AudioSource _audioSource;
+
+        public void Init(IInteractionListener listener, AudioSource audioSource)
         {
+            _audioSource = audioSource;
             _interactionListener = listener;
-            SetVisible(false);
+            RenderState(false);
+            GetComponent<Animator>().StopPlayback();
         }
 
         public void Play()
         {
-            SetVisible(true);
+            _completedAnimation = false;
+            _completedAudio = false;
+
+            RenderState(true);
+
             var animator = GetComponent<Animator>();
             var controller = new TimedAnimationController(animator, "visible");
-
             StartCoroutine(PlayClipRoutine(controller, () =>
             {
-                SetVisible(false);
-                _interactionListener.ContentCompleted(this);
+                _completedAnimation = true;
+                TryToCompleteContent();
+            }));
+
+            _audioSource.clip = _audioClip;
+            StartCoroutine(PlayAudioRoutine(_audioSource, () =>
+            {
+                _completedAudio = true;
+                TryToCompleteContent();
             }));
         }
 
-        private void SetVisible(bool visible)
+        private bool _completedAudio;
+        private bool _completedAnimation;
+
+        private void TryToCompleteContent()
+        {
+            if (!_completedAnimation) return;
+            if (!_completedAudio) return;
+
+            RenderState(false);
+            _interactionListener.ContentCompleted(this);
+        }
+
+
+        private void RenderState(bool visible)
         {
             gameObject.name = Type.ToString();
             if (visible)
                 gameObject.name += " >>";
         }
 
+
+        IEnumerator PlayAudioRoutine(AudioSource source, Action onCompleteCallback)
+        {
+            source.Play();
+            yield return new WaitForSeconds(source.clip.length);
+            onCompleteCallback.Invoke();
+        }
 
         IEnumerator PlayClipRoutine(TimedAnimationController animator, Action onCompleteCallback)
         {

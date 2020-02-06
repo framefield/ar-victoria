@@ -16,13 +16,14 @@ namespace victoria
         [SerializeField] private View _view;
         [SerializeField] private StatueInteraction _interaction;
         [SerializeField] private PlayableContent[] _content;
+        [SerializeField] private AudioSource _audioSource;
 
         private void Start()
         {
             _interaction.Initialize(this, _camera);
             foreach (var c in _content)
             {
-                c.Init(this);
+                c.Init(this,_audioSource);
             }
         }
 

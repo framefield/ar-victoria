@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using victoria.tour;
 
@@ -6,16 +8,20 @@ namespace victoria.interaction
 {
     public class StatueInteraction : MonoBehaviour
     {
-        public const int SegmentCount = 8; 
+        public const int SegmentCount = 8;
         [SerializeField] private List<InteractiveSegment> _segments;
 
         public struct HoverEventData
         {
             public InteractiveSegment.SegmentType HoveredType;
-            public MeshRenderer HoveredRenderer;
             public Vector3 HitPosition;
             public Vector3 HitNormal;
         }
+
+        public Func<InteractiveSegment.SegmentType, MeshRenderer> MeshProvider => (type) =>
+        {
+            return _segments.First(segment => segment.Type == type).GetMeshRenderer();
+        };
 
         public interface IInteractionListener
         {
@@ -29,7 +35,6 @@ namespace victoria.interaction
             _camera = camera;
             _interactionListener = listener;
         }
-
 
         void Update()
         {
@@ -45,7 +50,6 @@ namespace victoria.interaction
                     HitPosition = hit.point,
                     HitNormal = hit.normal,
                     HoveredType = hitSegment.Type,
-                    HoveredRenderer = hitSegment.GetMeshRenderer()
                 };
 
                 if (hitSegment == _lastHitSegment)
@@ -54,7 +58,7 @@ namespace victoria.interaction
                 }
                 else
                 {
-                    if(_lastHitSegment!=null)
+                    if (_lastHitSegment != null)
                         _interactionListener.OnStopHover(_lastHitSegment.Type);
                     _lastHitSegment = hitSegment;
                     _interactionListener.OnBeginHover(eventData);
@@ -70,7 +74,7 @@ namespace victoria.interaction
                 }
             }
         }
-        
+
         private InteractiveSegment _lastHitSegment;
         private IInteractionListener _interactionListener;
         private Camera _camera;

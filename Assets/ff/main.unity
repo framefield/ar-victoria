@@ -7512,7 +7512,6 @@ MonoBehaviour:
   - {fileID: 1360110451}
   _model:
     TourMode: 0
-    HoveredRenderer: {fileID: 0}
     CurrentState: 0
     CompletedContent: 
 --- !u!4 &2110409790

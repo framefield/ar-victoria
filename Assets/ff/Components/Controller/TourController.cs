@@ -22,8 +22,8 @@ namespace victoria
         public void Init(ITourEventsListener listener)
         {
             _listener = listener;
-            _interaction.Initialize(this, _camera);
-
+            _interaction.Initialize(this, _camera); 
+            
             foreach (var c in _content)
             {
                 c.Init(this, _audioSource);
@@ -51,7 +51,7 @@ namespace victoria
                 _listener.OnTourCompleted();
             }
 
-            RenderModel(_model, _ui, _camera);
+            RenderModel(_model, _ui, _camera,_interaction.MeshProvider);
             if (_model.CurrentState != Model.State.Hovering)
                 return;
 
@@ -67,7 +67,7 @@ namespace victoria
             }
         }
 
-        private static void RenderModel(Model model, UI ui, Camera camera)
+        private static void RenderModel(Model model, UI ui, Camera camera, Func<InteractiveSegment.SegmentType,MeshRenderer> rendererProvider)
         {
             ui.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentState, camera,
                 model.CalculateNormalizedProgress());
@@ -75,19 +75,30 @@ namespace victoria
             if (model.CurrentState == Model.State.Hovering)
                 ui.DebugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
 
-            if (model.HoveredRenderer)
+            if (model.HoveredSegment!=null)
                 ui.DebugLabel.text += $"\t: {model.HoveredSegment} ";
 
             if (model.CurrentState == Model.State.Hovering)
             {
                 var shapeModule = ui.HightlightParticles.shape;
-                shapeModule.meshRenderer = model.HoveredRenderer;
+                shapeModule.meshRenderer =  rendererProvider?.Invoke(model.HoveredSegment.Value);
                 ui.HightlightParticles.Play();
             }
             else
             {
                 ui.HightlightParticles.Stop();
             }
+
+            var allSegments = Enum.GetValues(typeof(InteractiveSegment.SegmentType))
+                .Cast<InteractiveSegment.SegmentType>();
+            
+            foreach (var segment in allSegments)
+            {
+                var isCompleted = model.CompletedContent.Contains(segment);
+                var color = isCompleted ? Color.yellow : Color.red;
+                rendererProvider(segment).material.color =Color.white-0.2f* color;
+            }
+            
         }
 
         [Serializable]
@@ -110,9 +121,8 @@ namespace victoria
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
-            _model.HoveredRenderer = eventData.HoveredRenderer;
             _model.HoverStartTime = Time.time;
-            RenderModel(_model, _ui, _camera);
+            RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
         }
 
         void StatueInteraction.IInteractionListener.OnUpdateHover(StatueInteraction.HoverEventData eventData)
@@ -125,7 +135,7 @@ namespace victoria
 
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
-            RenderModel(_model, _ui, _camera);
+            RenderModel(_model, _ui, _camera,_interaction.MeshProvider);
         }
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
@@ -140,8 +150,7 @@ namespace victoria
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
-            _model.HoveredRenderer = null;
-            RenderModel(_model, _ui, _camera);
+            RenderModel(_model, _ui, _camera,_interaction.MeshProvider);
         }
 
         [SerializeField] private Model _model;
@@ -154,8 +163,7 @@ namespace victoria
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
-            _model.HoveredRenderer = null;
-            RenderModel(_model, _ui, _camera);
+            RenderModel(_model, _ui, _camera,_interaction.MeshProvider);
         }
 
         public enum TourMode
@@ -199,7 +207,6 @@ namespace victoria
 
             public TourMode TourMode;
             public InteractiveSegment.SegmentType? HoveredSegment;
-            [CanBeNull] public MeshRenderer HoveredRenderer;
             public State CurrentState;
             public Vector3? HitPosition;
             public Vector3? HitNormal;

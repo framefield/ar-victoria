@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,47 +8,50 @@ namespace victoria.tour
     /// <summary>
     /// The seven content modules in the scene, that are assigned to a segment of the statue. 
     /// </summary>
+    [RequireComponent(typeof(Animator))]
     public class PlayableContent : MonoBehaviour
     {
-        [FormerlySerializedAs("_interactiveComponent")] [SerializeField]
-        public InteractiveSegment.SegmentType Type;
-
+        [SerializeField] public InteractiveSegment.SegmentType Type;
         [SerializeField] private AudioClip _audioClip = null;
-        [SerializeField] private VisibleObject[] _visibleObjects = null;
 
         public void Init(IInteractionListener listener)
         {
             _interactionListener = listener;
+            SetVisible(false);
         }
 
         public void Play()
         {
             SetVisible(true);
-            StartCoroutine(ExampleCoroutine());
+            var animator = GetComponent<Animator>();
+            var controller = new TimedAnimationController(animator, "visible");
+
+            StartCoroutine(PlayClipRoutine(controller, () =>
+            {
+                SetVisible(false);
+                _interactionListener.ContentCompleted(this);
+            }));
         }
 
         private void SetVisible(bool visible)
         {
-            foreach (var visibleObject in _visibleObjects)
-            {
-                visibleObject.SetVisible(visible);
-            }
-
             gameObject.name = Type.ToString();
             if (visible)
                 gameObject.name += " >>";
         }
 
 
-        IEnumerator ExampleCoroutine()
+        IEnumerator PlayClipRoutine(TimedAnimationController animator, Action onCompleteCallback)
         {
-            Debug.Log("Started Coroutine at timestamp : " + Time.time);
+            var timePosition = 0f;
+            while (timePosition <= animator.ClipLength)
+            {
+                timePosition += Time.deltaTime;
+                animator.SetTimePosition(timePosition);
+                yield return new WaitForFixedUpdate();
+            }
 
-            yield return new WaitForSeconds(5);
-
-            Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-            SetVisible(false);
-            _interactionListener.ContentCompleted(this);
+            onCompleteCallback.Invoke();
         }
 
         public interface IInteractionListener

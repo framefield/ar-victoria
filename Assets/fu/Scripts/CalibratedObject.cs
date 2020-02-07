@@ -13,12 +13,12 @@ public class CalibratedObject : MonoBehaviour
         Debug.Log("After Loading PlayerPrefs: posX: " + transform.position.x + " posy: " + transform.position.y);
         Debug.Log("ScaleX Loaded from PlayerPrefs: " + PlayerPrefs.GetFloat("scaleX"));
 #else
-        var anchors = FindObjectsOfType<WorldAnchor>();
+        var anchors = FindObjectsOfType<UnityEngine.XR.WSA.WorldAnchor>();
         if (anchors != null)
         {  
             if(PlayerPrefs.HasKey("initialized")){
                 Debug.Log("Before Loading PlayerPrefs: posX: " + this.transform.position.x + " posy: " + this.transform.position.y);        
-                LoadPosition();
+//                LoadPosition();
                 Debug.Log("After Loading PlayerPrefs: posX: " + this.transform.position.x + " posy: " + this.transform.position.y);
                 Debug.Log("ScaleX Loaded from PlayerPrefs: " + PlayerPrefs.GetFloat("scaleX"));
             } else {

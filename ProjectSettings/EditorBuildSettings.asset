@@ -44,7 +44,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/fu/Deprecated Scenes/2-Exhibition06 - Study1ViktoriaV3.unity
     guid: 57457390e676b8640aeb2c2bb6472759
-  - enabled: 1
+  - enabled: 0
     path: Assets/fu/Deprecated Scenes/2-Exhibition06 - Study1ViktoriaV4.unity
     guid: 9dab74c6d7f47cb4cab474050a07202f
+  - enabled: 1
+    path: Assets/ff/main.unity
+    guid: 4a69e33509e4b974dbb791e6bb5947f4
   m_configObjects: {}

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6914524870143606501}
   - component: {fileID: 1725178933849979337}
   - component: {fileID: 7133895349226999510}
-  - component: {fileID: 8037509708196432654}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -203,18 +202,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
---- !u!114 &8037509708196432654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598258453961188089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbbf9a44ab71c8041894431addc00578, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7059231333165184001
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +214,7 @@ GameObject:
   - component: {fileID: 7059231333165184003}
   - component: {fileID: 6701609873376044441}
   m_Layer: 0
-  m_Name: New - ContentStep
+  m_Name: New - TourStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

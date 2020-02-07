@@ -20,13 +20,13 @@ namespace victoria
         public float Tiling = 7f;
         public float RotationSpeed = 0.01f;
 
-        public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.State state, Camera camera,
+        public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState, Camera camera,
             float selectionProgress)
         {
 
             _progressRenderer.material.SetTextureOffset("_MainTex", Vector2.right * selectionProgress / 2f);
 
-            if (state != TourController.Model.State.Default)
+            if (cursorState != TourController.Model.CursorState.Default)
             {
                 var p = position.Value;
                 var n = normal.Value;
@@ -44,19 +44,19 @@ namespace victoria
 
 
             //Render State
-            switch (state)
+            switch (cursorState)
             {
-                case TourController.Model.State.Default:
+                case TourController.Model.CursorState.Default:
                     _currentStyle = DefaultStyle;
                     break;
-                case TourController.Model.State.Hovering:
+                case TourController.Model.CursorState.Hovering:
                     _currentStyle = HoverStyle;
                     break;
-                case TourController.Model.State.Playing:
+                case TourController.Model.CursorState.Playing:
                     _currentStyle = PlayingStyle;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+                    throw new ArgumentOutOfRangeException(nameof(cursorState), cursorState, null);
             }
         }
 

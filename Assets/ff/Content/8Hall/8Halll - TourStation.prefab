@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7059231333165184001, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: m_Name
-      value: 08Conclusion - ContentStep
+      value: 8Halll - TourStation
       objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184000, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
@@ -72,6 +72,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: 114145651169429644, guid: 39005e7935583bf47849426276655844,
+        type: 2}
+    - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[1].key
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184003, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: Content.Array.size
@@ -86,7 +102,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Content.Array.data[0]
       value: 
-      objectReference: {fileID: 5916864906584739978}
+      objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184003, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: AudioClip
@@ -96,7 +112,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _visibleObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 5916864906584739978}
+      objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184003, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: Type
@@ -187,17 +203,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8958467975561848941, guid: ed50d3738e619284c9b8a0ca65a80801, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed50d3738e619284c9b8a0ca65a80801, type: 3}
---- !u!114 &5916864906584739978 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8958467975561848941, guid: ed50d3738e619284c9b8a0ca65a80801,
-    type: 3}
-  m_PrefabInstance: {fileID: 3336659763905100007}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbbf9a44ab71c8041894431addc00578, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7059231333165184001, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: m_Name
-      value: 05
+      value: 5WingsBack - TourStation
       objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184000, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
@@ -66,6 +66,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: 114145651169429644, guid: 39005e7935583bf47849426276655844,
+        type: 2}
+    - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[1].key
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184003, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}

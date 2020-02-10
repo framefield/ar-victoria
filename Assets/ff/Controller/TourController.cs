@@ -82,7 +82,17 @@ namespace victoria
 
         private void PlayContent(InteractiveSegment.SegmentType type)
         {
+            foreach (var c in _content)
+            {
+                if (c.Type == type)
+                    c.Play();
+                else
+                    c.Stop();
+            }
+
             var contentToPlay = _content.First(content => content.Type == type);
+
+
             contentToPlay.Play();
         }
 
@@ -112,22 +122,21 @@ namespace victoria
             var allSegments = Enum.GetValues(typeof(InteractiveSegment.SegmentType))
                 .Cast<InteractiveSegment.SegmentType>();
 
-            
-            
-            
-            
+
             foreach (var segment in allSegments)
             {
                 if (model.CurrentTourState == Model.TourState.Prologue)
                 {
-                    rendererProvider(segment).gameObject.SetActive(segment == InteractiveSegment.SegmentType.WholeStatue0);
+                    rendererProvider(segment).gameObject
+                        .SetActive(segment == InteractiveSegment.SegmentType.WholeStatue0);
                 }
                 else
                 {
-                    rendererProvider(segment).gameObject.SetActive(segment != InteractiveSegment.SegmentType.WholeStatue0);
+                    rendererProvider(segment).gameObject
+                        .SetActive(segment != InteractiveSegment.SegmentType.WholeStatue0);
                 }
-                
-                
+
+
                 Color c;
                 if (segment == model.HoveredSegment)
                 {
@@ -141,6 +150,7 @@ namespace victoria
                 {
                     c = new Color(0f, 1f, 0f, 0.1f);
                 }
+
                 rendererProvider(segment).material.color = c;
             }
         }
@@ -168,7 +178,7 @@ namespace victoria
                 case Model.TourState.Tour:
                     if (_model.CompletedContent.Contains(eventData.HoveredType))
                         return;
-                    if (eventData.HoveredType==InteractiveSegment.SegmentType.Hall8)
+                    if (eventData.HoveredType == InteractiveSegment.SegmentType.Hall8)
                         return;
                     break;
             }
@@ -236,6 +246,7 @@ namespace victoria
                     break;
             }
 
+            Debug.Log("complete");
 
             RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
         }

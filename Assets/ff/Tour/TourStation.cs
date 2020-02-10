@@ -35,6 +35,13 @@ namespace victoria.tour
         private bool isPlaying;
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                
+                isPlaying = false;
+                _interactionListener.ContentCompleted(this);
+                _playableDirector.Stop();
+            } 
             if (isPlaying && _playableDirector.duration == _playableDirector.time)
             {
                 isPlaying = false;

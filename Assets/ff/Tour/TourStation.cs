@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
 
@@ -12,57 +13,55 @@ namespace victoria.tour
     public class TourStation : MonoBehaviour
     {
         [SerializeField] public InteractiveSegment.SegmentType Type;
-        private PlayableDirector _playableDirector;
 
-        public void Init(IInteractionListener listener, AudioSource audioSource)
+        public void Init(IInteractionListener listener)
         {
             _interactionListener = listener;
-            RenderState(false);
-           
             _playableDirector = GetComponent<PlayableDirector>();
-//            _playableDirector.stopped += director =>
-//           {
-////               RenderState(false);
-//               listener.ContentCompleted(this);
-//           };
-            _playableDirector.paused+= director =>
-            {
-//               RenderState(false);
-                listener.ContentCompleted(this);
-            };
+            SetState(State.Stopped);
         }
 
-        private bool isPlaying;
+        private void SetState(State state)
+        {
+            gameObject.name = Type.ToString();
+            gameObject.name +=$" : {state}" ;
+            switch (state)
+            {
+                case State.Stopped:
+                    _playableDirector.Stop();
+                    break;
+                case State.Playing:
+                    _playableDirector.Play();
+                    
+                    break;
+                case State.Idle:
+                    _interactionListener.ContentCompleted(this);
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+            _state = state;
+        }
+        
+        
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                
-                isPlaying = false;
-                _interactionListener.ContentCompleted(this);
-                _playableDirector.Stop();
-            } 
-            if (isPlaying && _playableDirector.duration == _playableDirector.time)
-            {
-                isPlaying = false;
-                _interactionListener.ContentCompleted(this);
-            }
+            if(_state!=State.Playing)
+                return;
+
+            if ( _playableDirector.duration == _playableDirector.time ||Input.GetKeyDown(KeyCode.Q))
+                SetState(State.Idle);
         }
         
         public void Play()
         {
-            gameObject.SetActive(true);
-
-            isPlaying = true;
-            _playableDirector.Play();
-            RenderState(true);
+          SetState(State.Playing);
         }
-
-        private void RenderState(bool visible)
+        
+        public void Stop()
         {
-            gameObject.name = Type.ToString();
-            if (visible)
-                gameObject.name += " >>";
+          SetState(State.Stopped);
         }
 
         public interface IInteractionListener
@@ -72,12 +71,13 @@ namespace victoria.tour
 
         private ParticleSystem _highlightParticles;
         private IInteractionListener _interactionListener;
+        private PlayableDirector _playableDirector;
+        private bool _isPlaying;
+        private State _state;
 
-        public void Stop()
+        private enum State
         {
-            gameObject.SetActive(false);
-            _playableDirector.Stop();
-            RenderState(false);
+            Stopped, Playing, Idle
         }
     }
 }

@@ -9,7 +9,7 @@ namespace victoria.interaction
     public class StatueInteraction : MonoBehaviour
     {
         public const int SegmentCount = 8;
-        [SerializeField] private List<InteractiveSegment> _segments;
+        [SerializeField] private List<InteractiveSegment> _segments = null;
 
         public struct HoverEventData
         {

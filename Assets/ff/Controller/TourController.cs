@@ -14,11 +14,10 @@ namespace victoria
     public class TourController : MonoBehaviour, StatueInteraction.IInteractionListener,
         TourStation.IInteractionListener
     {
-        [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private Camera _camera;
-        [SerializeField] private UI _ui;
-        [SerializeField] private StatueInteraction _interaction;
-        [SerializeField] private TourStation[] _content;
+        [SerializeField] private Camera _camera = null;
+        [SerializeField] private UI _ui = UI.Empty;
+        [SerializeField] private StatueInteraction _interaction = null;
+        [SerializeField] private TourStation[] _content = null;
 
         public void Init(ITourEventsListener listener)
         {
@@ -26,7 +25,7 @@ namespace victoria
             _interaction.Initialize(this, _camera);
             foreach (var c in _content)
             {
-                c.Init(this, _audioSource);
+                c.Init(this);
             }
 
             SetState(Model.TourState.Inactive);
@@ -161,6 +160,12 @@ namespace victoria
             public ParticleSystem HightlightParticles;
             public Cursor Cursor;
             public TMP_Text DebugLabel;
+            public static UI Empty = new UI()
+            {
+                Cursor =  null,
+                DebugLabel = null,
+                HightlightParticles = null
+            };
         }
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)

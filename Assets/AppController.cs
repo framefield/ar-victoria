@@ -3,8 +3,8 @@ using victoria;
 
 public class AppController : MonoBehaviour, TourController.ITourEventsListener
 {
-    [SerializeField] private TourController _tourController;
-    [SerializeField] private GameObject _adminTools;
+    [SerializeField] private TourController _tourController = null;
+    [SerializeField] private GameObject _adminTools = null;
 
     private void Start()
     {

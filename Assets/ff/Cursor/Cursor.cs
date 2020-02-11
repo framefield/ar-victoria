@@ -1,29 +1,32 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace victoria
 {
     public class Cursor : MonoBehaviour
     {
-        [SerializeField] private Style DefaultStyle;
-        [SerializeField] private Style HoverStyle;
-        [SerializeField] private Style PlayingStyle;
-        [SerializeField] private Renderer _cursorRenderer;
-        [SerializeField] private Renderer _progressRenderer;
+        [SerializeField] private Style _defaultStyle = Style.Default;
+        [SerializeField] private Style _hoverStyle = Style.Default;
+        [SerializeField] private Style _playingStyle = Style.Default;
+        [SerializeField] private Renderer _cursorRenderer = null;
+        [SerializeField] private Renderer _progressRenderer = null;
 
         [Serializable]
         public struct Style
         {
             public float AlphaCutoff;
+
+            public static Style Default = new Style()
+            {
+                AlphaCutoff = 0f
+            };
         }
 
-        public float Tiling = 7f;
-        public float RotationSpeed = 0.01f;
-
-        public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState, Camera camera,
+        public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState,
+            Camera cam,
             float selectionProgress)
         {
-
             _progressRenderer.material.SetTextureOffset("_MainTex", Vector2.right * selectionProgress / 2f);
 
             if (cursorState != TourController.Model.CursorState.Default)
@@ -35,7 +38,7 @@ namespace victoria
             }
             else
             {
-                var t = camera.transform;
+                var t = cam.transform;
                 var forward = t.forward;
                 var pos = t.position;
                 _currentPosition = pos + forward;
@@ -47,13 +50,13 @@ namespace victoria
             switch (cursorState)
             {
                 case TourController.Model.CursorState.Default:
-                    _currentStyle = DefaultStyle;
+                    _currentStyle = _defaultStyle;
                     break;
                 case TourController.Model.CursorState.Hovering:
-                    _currentStyle = HoverStyle;
+                    _currentStyle = _hoverStyle;
                     break;
                 case TourController.Model.CursorState.Playing:
-                    _currentStyle = PlayingStyle;
+                    _currentStyle = _playingStyle;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(cursorState), cursorState, null);

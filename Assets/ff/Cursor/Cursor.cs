@@ -1,4 +1,5 @@
 ﻿using System;
+using HoloToolkit.Unity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,27 +10,31 @@ namespace victoria
         [SerializeField] private Style _defaultStyle = Style.Default;
         [SerializeField] private Style _hoverStyle = Style.Default;
         [SerializeField] private Style _playingStyle = Style.Default;
-        [SerializeField] private Renderer _cursorRenderer = null;
-        [SerializeField] private Renderer _progressRenderer = null;
+        [SerializeField] private Circle _cursorCircle = null;
+        [SerializeField] private Circle _progressCircle = null;
 
         [Serializable]
         public struct Style
         {
-            public float AlphaCutoff;
-
             public static Style Default = new Style()
             {
-                AlphaCutoff = 0f
+                Radius = .1f,
+                Width = .2f,
+//                Osscilation =new AnimationCurve(new Keyframe(0f,0f))
             };
+
+            public float Width;
+            public float Radius;
+            public AnimationCurve Osscilation;
         }
 
         public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState,
-            Camera cam,
-            float selectionProgress)
+            Camera cam, float selectionProgress)
         {
-            _progressRenderer.material.SetTextureOffset("_MainTex", Vector2.right * selectionProgress / 2f);
-
-            if (cursorState != TourController.Model.CursorState.Default)
+//            var progress = cursorState == TourController.Model.CursorState.Hovering ? selectionProgress : 1f;
+_progressCircle.gameObject.SetActive(selectionProgress>0f);
+            _progressCircle.FillRatio = selectionProgress;
+            if (cursorState == TourController.Model.CursorState.Hovering)
             {
                 var p = position.Value;
                 var n = normal.Value;
@@ -70,10 +75,15 @@ namespace victoria
 
         private void Update()
         {
-            var currentCutoff = _cursorRenderer.material.GetFloat("_Cutoff");
-            var newCutoff = Mathf.Lerp(currentCutoff, _currentStyle.AlphaCutoff, _lerpFactor);
-            _cursorRenderer.material.SetFloat("_Cutoff", newCutoff);
-
+            var osscilation = _currentStyle.Osscilation.Evaluate(Time.time % _currentStyle.Osscilation.Duration());
+            var r = Mathf.Lerp(_cursorCircle.Radius, _currentStyle.Radius+osscilation, _lerpFactor);
+            var w = Mathf.Lerp(_cursorCircle.Width, _currentStyle.Width, _lerpFactor);
+            
+            _cursorCircle.Radius = r;
+            _progressCircle.Radius = r;
+            
+            _cursorCircle.Width = w;
+            _progressCircle.Width = w;
 
             transform.position = Vector3.Lerp(transform.position, _currentPosition, _lerpFactor);
             transform.rotation = Quaternion.Lerp(transform.rotation, _currentRotation, _lerpFactor);

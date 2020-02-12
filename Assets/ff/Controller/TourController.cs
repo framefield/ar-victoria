@@ -273,7 +273,7 @@ namespace victoria
         [Serializable]
         public struct Model
         {
-            private const float SelectionTimeThreshold = 1f;
+            private const float SelectionTimeThreshold = 3f;
 
             public enum CursorState
             {

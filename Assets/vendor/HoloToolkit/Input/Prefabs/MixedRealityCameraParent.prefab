@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 81867938468442352}
   - component: {fileID: 114061490341948574}
   - component: {fileID: 114504390558679740}
+  - component: {fileID: 568271064818850660}
   m_Layer: 0
   m_Name: MixedRealityCamera
   m_TagString: MainCamera
@@ -240,6 +241,20 @@ MonoBehaviour:
   CameraClearFlags_TransparentDisplay: 2
   BackgroundColor_TransparentDisplay: {r: 0, g: 0, b: 0, a: 0}
   HoloLensQualityLevel: 0
+--- !u!114 &568271064818850660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372541880982678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e261bd4f9ae9d4499431515116b3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0.03
+  _rotationSpeed: 0.003
 --- !u!1 &1472551351789108
 GameObject:
   m_ObjectHideFlags: 0

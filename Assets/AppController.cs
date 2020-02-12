@@ -1,11 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using HoloToolkit.Unity.SpatialMapping;
+using UnityEngine;
 using victoria;
 
 public class AppController : MonoBehaviour, TourController.ITourEventsListener
 {
+    
     [SerializeField] private TourController _tourController = null;
-    [SerializeField] private GameObject _adminTools = null;
+    [SerializeField] private AdminComponents _admincomponents = null;
 
+    [Serializable]
+    private class AdminComponents
+    {
+        public GameObject TransformationTool = null;
+        public TapToPlace CalibratedTransform = null;
+        
+    }
+    
+    
     private void Start()
     {
         _tourController.Init(this);
@@ -52,7 +64,8 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener
     private void SetState(State state)
     {
         _state = state;
-        _adminTools.gameObject.SetActive(_state == State.Admin);
+        _admincomponents.CalibratedTransform.enabled = _state == State.Admin;
+        _admincomponents.TransformationTool.gameObject.SetActive(_state == State.Admin);
     }
     
     private State _state;

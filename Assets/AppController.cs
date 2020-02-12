@@ -21,6 +21,22 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener
         if (Input.GetKeyDown(KeyCode.Alpha3))
             StartTour(TourController.TourMode.Mixed);
     }
+
+    public void StartGuided()
+    {
+        StartTour(TourController.TourMode.Guided);
+    }
+
+    public void StartUnguided()
+    {
+        StartTour(TourController.TourMode.Unguided);
+    }
+
+    public void StartMixed()
+    {
+        StartTour(TourController.TourMode.Mixed);
+    }
+
     
     private void StartTour(TourController.TourMode mode)
     {

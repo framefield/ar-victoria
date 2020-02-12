@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1512494645668136424}
   - component: {fileID: 1512494645668136429}
-  - component: {fileID: 1512494645668136430}
   - component: {fileID: 1512494645668136431}
   m_Layer: 0
   m_Name: HitMeshRenderer
@@ -41,18 +40,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512494645668136425}
   m_Mesh: {fileID: 4300000, guid: f9dd099933cc2644c92334c0f3ce2d20, type: 3}
---- !u!114 &1512494645668136430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512494645668136425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b74dfeaa1af1954a961c5e3a2ba7a6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1512494645668136431
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100,7 +87,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1512494645749955698}
   - component: {fileID: 1512494645749955703}
-  - component: {fileID: 1512494645749955696}
   - component: {fileID: 1512494645749955697}
   m_Layer: 0
   m_Name: OcclusionRenderer
@@ -131,18 +117,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512494645749955699}
   m_Mesh: {fileID: 4300000, guid: f9dd099933cc2644c92334c0f3ce2d20, type: 3}
---- !u!114 &1512494645749955696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512494645749955699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b74dfeaa1af1954a961c5e3a2ba7a6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1512494645749955697
 MeshRenderer:
   m_ObjectHideFlags: 0

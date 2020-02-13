@@ -38,9 +38,10 @@ namespace victoria.interaction
 
         void Update()
         {
+            var layerMask = LayerMask.GetMask("VictoriaCursor");
             var origin = _camera.transform.position;
             var direction = _camera.transform.TransformDirection(Vector3.forward);
-            var hasHit = Physics.Raycast(origin, direction, out var hit, Mathf.Infinity);
+            var hasHit = Physics.Raycast(origin, direction, out var hit, Mathf.Infinity,layerMask);
 
             var hitSegment = hit.transform?.GetComponent<InteractiveSegment>();
             if (hasHit && hitSegment != null)

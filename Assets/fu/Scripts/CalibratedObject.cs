@@ -31,14 +31,7 @@ public class CalibratedObject : MonoBehaviour
             Debug.Log("All PlayerPrefs were Deleted, because no World Anchor found.");
         }
 #endif
-
-
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 
     private void SavePosition()
     {
@@ -57,43 +50,35 @@ public class CalibratedObject : MonoBehaviour
     
     public void ResetCalibration()
     {
-        // PlayerPrefs.DeleteAll();
-        transform.localPosition = new Vector3(0f,0f,0f);
-        transform.eulerAngles = new Vector3(0f,0f,0f);
-        transform.localScale = new Vector3(1,1,1);
+        var t = transform;
+        t.localPosition = new Vector3(0f,0f,0f);
+        t.eulerAngles = new Vector3(0f,0f,0f);
+        t.localScale = new Vector3(1,1,1);
         SavePosition();
     }
-
-
-    public void translateX(float x)
+    public void Translate(Vector3 translation)
     {
-        transform.localPosition += new Vector3(x, 0.0f, 0.0f);
+        transform.localPosition +=translation;
         SavePosition();
     }
-
-    public void translateY(float y)
-    {
-        transform.localPosition += new Vector3(0.0f, y, 0.0f);
-        SavePosition();
-    }
-
-    public void translateZ(float z)
-    {
-        transform.localPosition += new Vector3(0.0f, 0.0f, z);
-        SavePosition();
-    }
-
-    public void rotateY(float y)
+    public void RotateY(float y)
     {
         transform.localEulerAngles += (new Vector3(0.0f, y, 0.0f));
         SavePosition();
     }
-
-    public void scaleUniform(float factor)
+    
+    public void ScaleUniform(float factor)
     {
         
         transform.localScale += new Vector3(factor, factor, factor);
         
+        SavePosition();
+    }
+
+
+    public void SetPosition(Vector3 p)
+    {
+        transform.position = p;
         SavePosition();
     }
 }

@@ -13,12 +13,11 @@ public class SpeechInput : MonoBehaviour {
     private void Start()
     {
         keywordRecognizer = new KeywordRecognizer(_keywords.ToArray());
-        keywordRecognizer.OnPhraseRecognized += onKeywordRecognized;
+        keywordRecognizer.OnPhraseRecognized += OnKeywordRecognized;
         keywordRecognizer.Start();
-        
-    }
+        }
 
-    private void onKeywordRecognized(PhraseRecognizedEventArgs args)
+    private void OnKeywordRecognized(PhraseRecognizedEventArgs args)
     {
         _debug.text = args.text;
         Debug.Log(args.text);

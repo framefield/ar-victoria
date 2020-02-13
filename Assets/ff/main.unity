@@ -6207,6 +6207,7 @@ MonoBehaviour:
   _cursorCircle: {fileID: 768366959}
   _progressCircle: {fileID: 1742347000}
   _lerpFactor: 0.5
+  _cursorToCamDistance: 2
 --- !u!114 &768366959
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,8 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
 {
     [SerializeField] private SpeechInput _speechInput = null;
     [SerializeField] private TourController _tourController = null;
-    [SerializeField] private AdminComponents _admincomponents = null;
+    [SerializeField] private SoundFX _soundFX;
+     [SerializeField] private AdminComponents _admincomponents = null;
 
     [Serializable]
     private class AdminComponents
@@ -19,30 +20,12 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
         public GameObject VirtualVictoria = null;
     }
 
-
     private void Start()
     {
-        _tourController.Init(this);
-        _speechInput.Init(this);
+        _tourController.Init(this, _soundFX);
+        _speechInput.Init(this, _soundFX);
         SetState(State.Admin);
     }
-
-
-    public void StartGuided()
-    {
-        StartTour(TourController.TourMode.Guided);
-    }
-
-    public void StartUnguided()
-    {
-        StartTour(TourController.TourMode.Unguided);
-    }
-
-    public void StartMixed()
-    {
-        StartTour(TourController.TourMode.Mixed);
-    }
-
 
     private void StartTour(TourController.TourMode mode)
     {

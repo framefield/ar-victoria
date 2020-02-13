@@ -28,9 +28,10 @@ public class SpeechInput : MonoBehaviour
         {"calibrate", Command.Calibrate},
     };
 
-    public void Init(ICommandListener listener)
+    public void Init(ICommandListener listener, SoundFX soundFx)
     {
         _listener = listener;
+        _soundFX = soundFx;
     }
 
     private void Start()
@@ -43,23 +44,31 @@ public class SpeechInput : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            _listener.OnCommandDetected(Command.Alpha);
+            FireCommand(Command.Alpha);
         if (Input.GetKeyDown(KeyCode.Alpha2))
-            _listener.OnCommandDetected(Command.Bravo);
+            FireCommand(Command.Bravo);
         if (Input.GetKeyDown(KeyCode.Alpha3))
-            _listener.OnCommandDetected(Command.Charlie);
+            FireCommand(Command.Charlie);
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            _listener.OnCommandDetected(Command.AdminAbort);
+            FireCommand(Command.AdminAbort);
         if (Input.GetKeyDown(KeyCode.Alpha5))
-            _listener.OnCommandDetected(Command.Calibrate);
+            FireCommand(Command.Calibrate);
     }
 
     private void OnKeywordRecognized(PhraseRecognizedEventArgs args)
     {
-        _listener.OnCommandDetected(_textsForCommands[args.text]);
+        FireCommand(_textsForCommands[args.text]);
         _debug.text = args.text;
         Debug.Log(args.text);
     }
+
+    private void FireCommand(Command c)
+    {
+        _soundFX.Play(SoundFX.SoundType.CommandRecognized);
+        _listener.OnCommandDetected(c);
+
+    }
+    
     private KeywordRecognizer _keywordRecognizer = null;
 
     public interface ICommandListener
@@ -68,4 +77,5 @@ public class SpeechInput : MonoBehaviour
     }
 
     private ICommandListener _listener;
+    private SoundFX _soundFX;
 }

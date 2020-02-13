@@ -22,9 +22,10 @@ namespace victoria
         [SerializeField] private TourStation[] _content = null;
 
         // called by the AppController
-        public void Init(ITourEventsListener listener)
+        public void Init(ITourEventsListener listener, SoundFX soundFx)
         {
-            _listener = listener;
+            _soundFX = soundFx;
+                _listener = listener;
             _interaction.Initialize(this, _camera);
             foreach (var c in _content)
             {
@@ -100,6 +101,7 @@ namespace victoria
                     c.Stop();
             }
 
+            _soundFX.Play(SoundFX.SoundType.ContentStarted);
             var contentToPlay = _content.First(content => content.Type == type);
             contentToPlay.Play();
         }
@@ -182,7 +184,8 @@ namespace victoria
                     break;
             }
 
-
+            _soundFX.Play(SoundFX.SoundType.OnHoverBegin);
+            
             _model._currentCursorState = Model.CursorState.Hovering;
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
@@ -212,6 +215,9 @@ namespace victoria
             if (_model._currentCursorState == Model.CursorState.Playing)
                 return;
 
+            
+            _soundFX.Play(SoundFX.SoundType.OnHoverEnd);
+            
             _model._currentCursorState = Model.CursorState.Default;
             _model.HitPosition = null;
             _model.HitNormal = null;
@@ -222,6 +228,7 @@ namespace victoria
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
         {
+            _soundFX.Play(SoundFX.SoundType.ContentCompleted);
             _model.CompletedContent.Add(_model.HoveredSegment.Value);
             _model._currentCursorState = Model.CursorState.Default;
             _model.HitPosition = null;
@@ -249,6 +256,7 @@ namespace victoria
         }
 
         private ITourEventsListener _listener;
+        private SoundFX _soundFX;
 
         #region data structure
 

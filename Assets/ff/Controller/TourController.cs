@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,14 +9,19 @@ using victoria.tour;
 
 namespace victoria
 {
+    /// <summary>
+    /// Controls a tour that consists of TourStations.
+    /// </summary>
     public class TourController : MonoBehaviour, StatueInteraction.IInteractionListener,
         TourStation.IInteractionListener
     {
+        [SerializeField] private Model _model;
         [SerializeField] private Camera _camera = null;
         [SerializeField] private UI _ui = UI.Empty;
         [SerializeField] private StatueInteraction _interaction = null;
         [SerializeField] private TourStation[] _content = null;
 
+        // called by the AppController
         public void Init(ITourEventsListener listener)
         {
             _listener = listener;
@@ -31,6 +34,7 @@ namespace victoria
             SetState(Model.TourState.Inactive);
         }
 
+        // called by the AppController
         public void StartTour(TourMode mode)
         {
             _model = new Model()
@@ -121,7 +125,6 @@ namespace victoria
             var allSegments = Enum.GetValues(typeof(InteractiveSegment.SegmentType))
                 .Cast<InteractiveSegment.SegmentType>();
 
-
             foreach (var segment in allSegments)
             {
                 if (model.CurrentTourState == Model.TourState.Prologue)
@@ -152,20 +155,6 @@ namespace victoria
 
                 rendererProvider(segment).material.color = c;
             }
-        }
-
-        [Serializable]
-        private struct UI
-        {
-            public ParticleSystem HightlightParticles;
-            public Cursor Cursor;
-            public TMP_Text DebugLabel;
-            public static UI Empty = new UI()
-            {
-                Cursor =  null,
-                DebugLabel = null,
-                HightlightParticles = null
-            };
         }
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)
@@ -225,8 +214,6 @@ namespace victoria
             RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
         }
 
-        [SerializeField] private Model _model;
-        private ITourEventsListener _listener;
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
         {
@@ -256,6 +243,24 @@ namespace victoria
             RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
         }
 
+        private ITourEventsListener _listener;
+
+        #region data structure
+        
+        [Serializable]
+        private struct UI
+        {
+            public ParticleSystem HightlightParticles;
+            public Cursor Cursor;
+            public TMP_Text DebugLabel;
+            public static UI Empty = new UI()
+            {
+                Cursor =  null,
+                DebugLabel = null,
+                HightlightParticles = null
+            };
+        }
+        
         public enum TourMode
         {
             Guided,
@@ -263,17 +268,22 @@ namespace victoria
             Mixed
         }
 
-
         public interface ITourEventsListener
         {
             void OnTourCompleted();
         }
 
-
         [Serializable]
         public struct Model
         {
-            private const float SelectionTimeThreshold = 3f;
+            public TourState CurrentTourState;
+            public TourMode TourMode;
+            public InteractiveSegment.SegmentType? HoveredSegment;
+            [FormerlySerializedAs("CurrentState")] public CursorState _currentCursorState;
+            public Vector3? HitPosition;
+            public Vector3? HitNormal;
+            public float? HoverStartTime;
+            public List<InteractiveSegment.SegmentType> CompletedContent;
 
             public enum CursorState
             {
@@ -289,10 +299,7 @@ namespace victoria
                 Tour,
                 Epilogue
             }
-
-            public TourState CurrentTourState;
-
-
+            
             public float CalculateNormalizedProgress()
             {
                 if (HoverStartTime == null || _currentCursorState != CursorState.Hovering)
@@ -305,13 +312,8 @@ namespace victoria
                 return CalculateNormalizedProgress() >= 1f;
             }
 
-            public TourMode TourMode;
-            public InteractiveSegment.SegmentType? HoveredSegment;
-            [FormerlySerializedAs("CurrentState")] public CursorState _currentCursorState;
-            public Vector3? HitPosition;
-            public Vector3? HitNormal;
-            public float? HoverStartTime;
-            public List<InteractiveSegment.SegmentType> CompletedContent;
+            private const float SelectionTimeThreshold = 3f;
         }
+        #endregion
     }
 }

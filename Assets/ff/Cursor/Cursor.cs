@@ -5,6 +5,9 @@ using UnityEngine.Serialization;
 
 namespace victoria
 {
+    /// <summary>
+    /// The gaze cursor with Default, Hover and Playing State
+    /// </summary>
     public class Cursor : MonoBehaviour
     {
         [SerializeField] private Style _defaultStyle = Style.Default;
@@ -12,6 +15,7 @@ namespace victoria
         [SerializeField] private Style _playingStyle = Style.Default;
         [SerializeField] private Circle _cursorCircle = null;
         [SerializeField] private Circle _progressCircle = null;
+        [SerializeField] private float _lerpFactor = 0.5f;
 
         [Serializable]
         public struct Style
@@ -20,7 +24,6 @@ namespace victoria
             {
                 Radius = .1f,
                 Width = .2f,
-//                Osscilation =new AnimationCurve(new Keyframe(0f,0f))
             };
 
             public float Width;
@@ -31,8 +34,7 @@ namespace victoria
         public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState,
             Camera cam, float selectionProgress)
         {
-//            var progress = cursorState == TourController.Model.CursorState.Hovering ? selectionProgress : 1f;
-_progressCircle.gameObject.SetActive(selectionProgress>0f);
+            _progressCircle.gameObject.SetActive(selectionProgress > 0f);
             _progressCircle.FillRatio = selectionProgress;
             if (cursorState == TourController.Model.CursorState.Hovering)
             {
@@ -68,25 +70,24 @@ _progressCircle.gameObject.SetActive(selectionProgress>0f);
             }
         }
 
-        private Style _currentStyle;
-        private Vector3 _currentPosition;
-        private Quaternion _currentRotation;
-        [SerializeField] private float _lerpFactor = 0.5f;
-
         private void Update()
         {
             var osscilation = _currentStyle.Osscilation.Evaluate(Time.time % _currentStyle.Osscilation.Duration());
-            var r = Mathf.Lerp(_cursorCircle.Radius, _currentStyle.Radius+osscilation, _lerpFactor);
+            var r = Mathf.Lerp(_cursorCircle.Radius, _currentStyle.Radius + osscilation, _lerpFactor);
             var w = Mathf.Lerp(_cursorCircle.Width, _currentStyle.Width, _lerpFactor);
-            
+
             _cursorCircle.Radius = r;
             _progressCircle.Radius = r;
-            
+
             _cursorCircle.Width = w;
             _progressCircle.Width = w;
 
             transform.position = Vector3.Lerp(transform.position, _currentPosition, _lerpFactor);
             transform.rotation = Quaternion.Lerp(transform.rotation, _currentRotation, _lerpFactor);
         }
+
+        private Style _currentStyle;
+        private Vector3 _currentPosition;
+        private Quaternion _currentRotation;
     }
 }

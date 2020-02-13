@@ -23,6 +23,7 @@ namespace victoria.tour
 
         private void SetState(State state)
         {
+            gameObject.SetActive(state!=State.Stopped);
             gameObject.name = Type.ToString();
             gameObject.name +=$" : {state}" ;
             switch (state)

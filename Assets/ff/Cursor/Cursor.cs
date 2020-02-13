@@ -16,6 +16,7 @@ namespace victoria
         [SerializeField] private Circle _cursorCircle = null;
         [SerializeField] private Circle _progressCircle = null;
         [SerializeField] private float _lerpFactor = 0.5f;
+        [SerializeField] private float _cursorToCamDistance = 2f;
 
         [Serializable]
         public struct Style
@@ -48,7 +49,7 @@ namespace victoria
                 var t = cam.transform;
                 var forward = t.forward;
                 var pos = t.position;
-                _currentPosition = pos + forward;
+                _currentPosition = pos +_cursorToCamDistance* forward;
                 _currentRotation = Quaternion.LookRotation(2 * forward);
             }
 

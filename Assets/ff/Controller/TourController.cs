@@ -45,6 +45,13 @@ namespace victoria
             SetState(Model.TourState.Prologue);
         }
 
+
+        public void AbortTour()
+        {
+            SetState(Model.TourState.Inactive);
+        }
+
+
         private void SetState(Model.TourState tourState)
         {
             gameObject.SetActive(tourState != Model.TourState.Inactive);
@@ -94,8 +101,6 @@ namespace victoria
             }
 
             var contentToPlay = _content.First(content => content.Type == type);
-
-
             contentToPlay.Play();
         }
 
@@ -246,21 +251,22 @@ namespace victoria
         private ITourEventsListener _listener;
 
         #region data structure
-        
+
         [Serializable]
         private struct UI
         {
             public ParticleSystem HightlightParticles;
             public Cursor Cursor;
             public TMP_Text DebugLabel;
+
             public static UI Empty = new UI()
             {
-                Cursor =  null,
+                Cursor = null,
                 DebugLabel = null,
                 HightlightParticles = null
             };
         }
-        
+
         public enum TourMode
         {
             Guided,
@@ -299,7 +305,7 @@ namespace victoria
                 Tour,
                 Epilogue
             }
-            
+
             public float CalculateNormalizedProgress()
             {
                 if (HoverStartTime == null || _currentCursorState != CursorState.Hovering)
@@ -314,6 +320,7 @@ namespace victoria
 
             private const float SelectionTimeThreshold = 3f;
         }
+
         #endregion
     }
 }

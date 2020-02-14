@@ -119,47 +119,102 @@ namespace victoria
         private static void ToggleInteractiveSegments(Model model,
             StatueInteraction interaction)
         {
-            var allSegments = Enum.GetValues(typeof(InteractiveSegment.SegmentType))
-                .Cast<InteractiveSegment.SegmentType>();
-
-            foreach (var segment in allSegments)
+            Func<InteractiveSegment.SegmentType, bool> shouldBeActiveEvaluation = s => false;
+            switch (model.TourMode)
             {
-                    var shouldBeActive =model.CurrentTourState == Model.TourState.Prologue
+                case TourMode.Guided:
+                    shouldBeActiveEvaluation = segment => segment == model.GetNextUnvisitedSegment();
+                    break;
+                case TourMode.Unguided:
+                    //disable visited segments
+                    shouldBeActiveEvaluation = segment => model.CurrentTourState == Model.TourState.Prologue
                         ? segment == InteractiveSegment.SegmentType.WholeStatue0
                         : segment != InteractiveSegment.SegmentType.WholeStatue0;
-                    interaction.SetSegmentActive(segment, shouldBeActive);
+                    break;
+                case TourMode.Mixed:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
+
+            interaction.SetSegmentsActive(shouldBeActiveEvaluation);
         }
 
         private static void RenderHighlightParticles(Model model, ParticleSystem highlightParticles,
             StatueInteraction interaction)
         {
-            if (model.CurrentCursorState == Model.CursorState.Hovering)
+            switch (model.TourMode)
             {
-                var shapeModule = highlightParticles.shape;
-                var renderer = interaction.GetMeshRender(model.HoveredSegment.Value);
+                case TourMode.Guided:
+                    //particles on next segment
+                    var nextSegment = model.GetNextUnvisitedSegment();
+                    if (nextSegment != null)
+                    {
+                        var shapeModule = highlightParticles.shape;
+                        var renderer = interaction.GetMeshRender(nextSegment.Value);
 
-                // hovered renderer has changed
-                if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
-                {
-                    shapeModule.meshRenderer = renderer;
-                    highlightParticles.Play();
-                }
-            }
-            else
-            {
-                highlightParticles.Stop();
+                        // hovered renderer has changed
+                        if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
+                        {
+                            shapeModule.meshRenderer = renderer;
+                            highlightParticles.Play();
+                        }
+                    }
+                    else
+                    {
+                        highlightParticles.Stop();
+                    }
+
+                    break;
+                case TourMode.Unguided:
+                    //particles on hovered segment
+                    if (model.CurrentCursorState == Model.CursorState.Hovering)
+                    {
+                        var shapeModule = highlightParticles.shape;
+                        var renderer = interaction.GetMeshRender(model.HoveredSegment.Value);
+
+                        // hovered renderer has changed
+                        if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
+                        {
+                            shapeModule.meshRenderer = renderer;
+                            highlightParticles.Play();
+                        }
+                    }
+                    else
+                    {
+                        highlightParticles.Stop();
+                    }
+
+                    break;
+                case TourMode.Mixed:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
         private static void RenderDebugLabel(Model model, TMP_Text debugLabel)
         {
-            debugLabel.text = $"{model.CurrentCursorState}";
-            if (model.CurrentCursorState == Model.CursorState.Hovering)
-                debugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
-            if (model.HoveredSegment != null)
-                debugLabel.text += $"\t: {model.HoveredSegment} ";
+            switch (model.TourMode)
+            {
+                case TourMode.Guided:
+                    debugLabel.text = $"{model.GetNextUnvisitedSegment()}";
+                    break;
+                case TourMode.Unguided:
+                    debugLabel.text = $"{model.CurrentCursorState}";
+                    if (model.CurrentCursorState == Model.CursorState.Hovering)
+                        debugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
+                    if (model.HoveredSegment != null)
+                        debugLabel.text += $"\t: {model.HoveredSegment} ";
+                    break;
+                case TourMode.Mixed:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
+
+        #region interaction handler 
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)
         {
@@ -221,7 +276,6 @@ namespace victoria
             RenderModel(_model, _ui, _camera, _interaction);
         }
 
-
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
         {
             _soundFX.Play(SoundFX.SoundType.ContentCompleted);
@@ -238,7 +292,7 @@ namespace victoria
                     SetState(Model.TourState.Tour);
                     break;
                 case Model.TourState.Tour:
-                    if (_model.CompletedContent.Count == StatueInteraction.SegmentCount - 1)
+                    if (_model.CompletedContent.Count == StatueInteraction.SegmentCount)
                         SetState(Model.TourState.Epilogue);
                     break;
                 case Model.TourState.Epilogue:
@@ -249,6 +303,8 @@ namespace victoria
             Debug.Log("complete");
             RenderModel(_model, _ui, _camera, _interaction);
         }
+
+        #endregion
 
         private ITourEventsListener _listener;
         private SoundFX _soundFX;
@@ -296,6 +352,16 @@ namespace victoria
             public Vector3? HitNormal;
             public float? HoverStartTime;
             public List<InteractiveSegment.SegmentType> CompletedContent;
+
+            public InteractiveSegment.SegmentType? GetNextUnvisitedSegment()
+            {
+                foreach (var segment in InteractiveSegment.AllSegmentTypes())
+                {
+                    if (!CompletedContent.Contains(segment)) return segment;
+                }
+
+                return null;
+            }
 
             public enum CursorState
             {

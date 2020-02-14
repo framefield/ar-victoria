@@ -18,9 +18,12 @@ namespace victoria.interaction
             public Vector3 HitNormal;
         }
 
-        public void SetSegmentActive(InteractiveSegment.SegmentType type, bool active)
+        public void SetSegmentsActive(Func<InteractiveSegment.SegmentType, bool> evaluator)
         {
-             _segments.First(segment => segment.Type == type).gameObject.SetActive(active);
+            foreach (var segment in _segments)
+            {
+                segment.gameObject.SetActive(evaluator(segment.Type));
+            }
         }
         
         public MeshRenderer GetMeshRender(InteractiveSegment.SegmentType type)

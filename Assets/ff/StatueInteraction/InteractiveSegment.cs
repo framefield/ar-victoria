@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace victoria.tour
 {
@@ -9,7 +12,13 @@ namespace victoria.tour
     [RequireComponent(typeof(Collider))]
     public class InteractiveSegment : MonoBehaviour
     {
-        public enum SegmentType {
+        public static IEnumerable<SegmentType> AllSegmentTypes()
+        {
+            return Enum.GetValues(typeof(SegmentType)).Cast<SegmentType>();
+        }
+
+        public enum SegmentType
+        {
             WholeStatue0,
             Arm1,
             Palm2,
@@ -20,8 +29,7 @@ namespace victoria.tour
             Garment7,
             Hall8,
         }
-        
-        public SegmentType Type;
 
+        public SegmentType Type;
     }
 }

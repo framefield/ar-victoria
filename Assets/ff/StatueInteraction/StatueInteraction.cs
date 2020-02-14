@@ -18,10 +18,15 @@ namespace victoria.interaction
             public Vector3 HitNormal;
         }
 
-        public Func<InteractiveSegment.SegmentType, MeshRenderer> MeshProvider => (type) =>
+        public void SetSegmentActive(InteractiveSegment.SegmentType type, bool active)
         {
-            return _segments.First(segment => segment.Type == type).GetMeshRenderer();
-        };
+             _segments.First(segment => segment.Type == type).gameObject.SetActive(active);
+        }
+        
+        public MeshRenderer GetMeshRender(InteractiveSegment.SegmentType type)
+        {
+            return _segments.First(segment => segment.Type == type).GetComponent<MeshRenderer>();
+        }
 
         public interface IInteractionListener
         {

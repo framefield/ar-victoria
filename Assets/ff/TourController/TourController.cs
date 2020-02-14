@@ -75,7 +75,7 @@ namespace victoria
 
         private void Update()
         {
-            RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
+            RenderModel(_model, _ui, _camera, _interaction);
             if (_model.CurrentCursorState != Model.CursorState.Hovering)
                 return;
 
@@ -106,38 +106,38 @@ namespace victoria
         }
 
         private static void RenderModel(Model model, UI ui, Camera camera,
-            Func<InteractiveSegment.SegmentType, MeshRenderer> rendererProvider)
+            StatueInteraction interaction)
         {
             ui.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentCursorState, camera,
                 model.CalculateNormalizedProgress());
 
             RenderDebugLabel(model, ui.DebugLabel);
-            RenderHighlightParticles(model, ui.HightlightParticles, rendererProvider);
-            ToggleInteractiveSegments(model, rendererProvider);
+            RenderHighlightParticles(model, ui.HightlightParticles, interaction);
+            ToggleInteractiveSegments(model, interaction);
         }
 
         private static void ToggleInteractiveSegments(Model model,
-            Func<InteractiveSegment.SegmentType, MeshRenderer> rendererProvider)
+            StatueInteraction interaction)
         {
             var allSegments = Enum.GetValues(typeof(InteractiveSegment.SegmentType))
                 .Cast<InteractiveSegment.SegmentType>();
 
             foreach (var segment in allSegments)
             {
-                rendererProvider(segment).gameObject
-                    .SetActive(model.CurrentTourState == Model.TourState.Prologue
+                    var shouldBeActive =model.CurrentTourState == Model.TourState.Prologue
                         ? segment == InteractiveSegment.SegmentType.WholeStatue0
-                        : segment != InteractiveSegment.SegmentType.WholeStatue0);
+                        : segment != InteractiveSegment.SegmentType.WholeStatue0;
+                    interaction.SetSegmentActive(segment, shouldBeActive);
             }
         }
 
         private static void RenderHighlightParticles(Model model, ParticleSystem highlightParticles,
-            Func<InteractiveSegment.SegmentType, MeshRenderer> rendererProvider)
+            StatueInteraction interaction)
         {
             if (model.CurrentCursorState == Model.CursorState.Hovering)
             {
                 var shapeModule = highlightParticles.shape;
-                var renderer = rendererProvider?.Invoke(model.HoveredSegment.Value);
+                var renderer = interaction.GetMeshRender(model.HoveredSegment.Value);
 
                 // hovered renderer has changed
                 if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
@@ -188,7 +188,7 @@ namespace victoria
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
             _model.HoverStartTime = Time.time;
-            RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
+            RenderModel(_model, _ui, _camera, _interaction);
         }
 
         void StatueInteraction.IInteractionListener.OnUpdateHover(StatueInteraction.HoverEventData eventData)
@@ -201,7 +201,7 @@ namespace victoria
 
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
-            RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
+            RenderModel(_model, _ui, _camera, _interaction);
         }
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
@@ -218,7 +218,7 @@ namespace victoria
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
-            RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
+            RenderModel(_model, _ui, _camera, _interaction);
         }
 
 
@@ -247,7 +247,7 @@ namespace victoria
             }
 
             Debug.Log("complete");
-            RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
+            RenderModel(_model, _ui, _camera, _interaction);
         }
 
         private ITourEventsListener _listener;

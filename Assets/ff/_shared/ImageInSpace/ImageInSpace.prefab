@@ -67,7 +67,7 @@ MonoBehaviour:
   Active: 0
   FadeDuration: 2
   LayerName: visible
-  _activateOnStart: 0
+  _activateOnStart: 1
   _childrenDeactivatedWhenHidden: []
 --- !u!1 &6913290329022976706
 GameObject:
@@ -288,8 +288,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Sample text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68da59206f45e48618041c8d0891dddb, type: 2}

@@ -67,7 +67,7 @@ MonoBehaviour:
   Active: 0
   FadeDuration: 1
   LayerName: visible
-  _activateOnStart: 0
+  _activateOnStart: 1
   _childrenDeactivatedWhenHidden: []
 --- !u!1001 &8978006145883094164
 PrefabInstance:

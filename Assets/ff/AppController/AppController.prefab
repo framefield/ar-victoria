@@ -51,3 +51,4 @@ MonoBehaviour:
     CalibratedTransform: {fileID: 0}
     AnimatedCursor: {fileID: 0}
     VirtualVictoria: {fileID: 0}
+    SpatialMapping: {fileID: 0}

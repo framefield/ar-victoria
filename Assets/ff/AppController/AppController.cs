@@ -18,6 +18,7 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
         public TapToPlace CalibratedTransform = null;
         public AnimatedCursor AnimatedCursor = null;
         public GameObject VirtualVictoria = null;
+        public SpatialMappingManager SpatialMapping = null;
     }
 
     private void Start()
@@ -45,6 +46,7 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
         _admincomponents.TransformationTool.gameObject.SetActive(_state == State.Admin);
         _admincomponents.AnimatedCursor.gameObject.SetActive(_state == State.Admin);
         _admincomponents.VirtualVictoria.gameObject.SetActive(_state == State.Admin);
+        _admincomponents.SpatialMapping.gameObject.SetActive(_state == State.Admin);
     }
 
     private State _state;

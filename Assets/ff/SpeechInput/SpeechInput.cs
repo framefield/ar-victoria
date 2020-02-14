@@ -21,9 +21,9 @@ public class SpeechInput : MonoBehaviour
 
     private Dictionary<string, Command> _textsForCommands = new Dictionary<string, Command>()
     {
-        {"alpha", Command.Alpha},
-        {"bravo", Command.Bravo},
-        {"charlie", Command.Charlie},
+        {"alpha", Command.Alpha}, //start unguided tour
+        {"bravo", Command.Bravo}, //start guided tour
+        {"charlie", Command.Charlie}, //start mixed initiative tour
         {"admin abort", Command.AdminAbort},
         {"calibrate", Command.Calibrate},
     };
@@ -66,7 +66,6 @@ public class SpeechInput : MonoBehaviour
     {
         _soundFX.Play(SoundFX.SoundType.CommandRecognized);
         _listener.OnCommandDetected(c);
-
     }
     
     private KeywordRecognizer _keywordRecognizer = null;

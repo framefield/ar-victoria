@@ -25,7 +25,7 @@ namespace victoria
         public void Init(ITourEventsListener listener, SoundFX soundFx)
         {
             _soundFX = soundFx;
-                _listener = listener;
+            _listener = listener;
             _interaction.Initialize(this, _camera);
             foreach (var c in _content)
             {
@@ -77,7 +77,7 @@ namespace victoria
         private void Update()
         {
             RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
-            if (_model._currentCursorState != Model.CursorState.Hovering)
+            if (_model.CurrentCursorState != Model.CursorState.Hovering)
                 return;
 
             //hovered segment had been played before
@@ -86,7 +86,7 @@ namespace victoria
 
             if (_model.HasCompletedHoverProgress())
             {
-                _model._currentCursorState = Model.CursorState.Playing;
+                _model.CurrentCursorState = Model.CursorState.Playing;
                 PlayContent(_model.HoveredSegment.Value);
             }
         }
@@ -109,20 +109,26 @@ namespace victoria
         private static void RenderModel(Model model, UI ui, Camera camera,
             Func<InteractiveSegment.SegmentType, MeshRenderer> rendererProvider)
         {
-            ui.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model._currentCursorState, camera,
+            ui.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentCursorState, camera,
                 model.CalculateNormalizedProgress());
-            ui.DebugLabel.text = $"{model._currentCursorState}";
-            if (model._currentCursorState == Model.CursorState.Hovering)
+            ui.DebugLabel.text = $"{model.CurrentCursorState}";
+            if (model.CurrentCursorState == Model.CursorState.Hovering)
                 ui.DebugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
 
             if (model.HoveredSegment != null)
                 ui.DebugLabel.text += $"\t: {model.HoveredSegment} ";
 
-            if (model._currentCursorState == Model.CursorState.Hovering)
+            if (model.CurrentCursorState == Model.CursorState.Hovering)
             {
                 var shapeModule = ui.HightlightParticles.shape;
-                shapeModule.meshRenderer = rendererProvider?.Invoke(model.HoveredSegment.Value);
-                ui.HightlightParticles.Play();
+                var renderer = rendererProvider?.Invoke(model.HoveredSegment.Value);
+                
+                // hovered renderer has changed
+                if (renderer != shapeModule.meshRenderer || !ui.HightlightParticles.isPlaying) 
+                {
+                    shapeModule.meshRenderer = renderer;
+                    ui.HightlightParticles.Play();
+                }
             }
             else
             {
@@ -145,20 +151,13 @@ namespace victoria
                         .SetActive(segment != InteractiveSegment.SegmentType.WholeStatue0);
                 }
 
-
                 Color c;
                 if (segment == model.HoveredSegment)
-                {
-                    c = new Color(1f, 0f, 0f, 0.1f);
-                }
+                    c = new Color(1f, 0.7f, 0.7f, 1f);
                 else if (model.CompletedContent.Contains(segment))
-                {
-                    c = new Color(0f, 0f, 1f, 0.1f);
-                }
+                    c = new Color(0.7f, 0.7f, 1f, 1f);
                 else
-                {
-                    c = new Color(0f, 1f, 0f, 0.1f);
-                }
+                    c = new Color(0.7f, 1f, 0.7f, 1f);
 
                 rendererProvider(segment).material.color = c;
             }
@@ -166,7 +165,7 @@ namespace victoria
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)
         {
-            if (_model._currentCursorState == Model.CursorState.Playing)
+            if (_model.CurrentCursorState == Model.CursorState.Playing)
                 return;
 
             switch (_model.CurrentTourState)
@@ -185,8 +184,8 @@ namespace victoria
             }
 
             _soundFX.Play(SoundFX.SoundType.OnHoverBegin);
-            
-            _model._currentCursorState = Model.CursorState.Hovering;
+
+            _model.CurrentCursorState = Model.CursorState.Hovering;
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
@@ -196,7 +195,7 @@ namespace victoria
 
         void StatueInteraction.IInteractionListener.OnUpdateHover(StatueInteraction.HoverEventData eventData)
         {
-            if (_model._currentCursorState == Model.CursorState.Playing)
+            if (_model.CurrentCursorState == Model.CursorState.Playing)
                 return;
 
             if (_model.CompletedContent.Contains(eventData.HoveredType))
@@ -212,13 +211,12 @@ namespace victoria
             if (_model.CompletedContent.Contains(type))
                 return;
 
-            if (_model._currentCursorState == Model.CursorState.Playing)
+            if (_model.CurrentCursorState == Model.CursorState.Playing)
                 return;
 
-            
             _soundFX.Play(SoundFX.SoundType.OnHoverEnd);
-            
-            _model._currentCursorState = Model.CursorState.Default;
+
+            _model.CurrentCursorState = Model.CursorState.Default;
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
@@ -230,7 +228,7 @@ namespace victoria
         {
             _soundFX.Play(SoundFX.SoundType.ContentCompleted);
             _model.CompletedContent.Add(_model.HoveredSegment.Value);
-            _model._currentCursorState = Model.CursorState.Default;
+            _model.CurrentCursorState = Model.CursorState.Default;
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
@@ -251,7 +249,6 @@ namespace victoria
             }
 
             Debug.Log("complete");
-
             RenderModel(_model, _ui, _camera, _interaction.MeshProvider);
         }
 
@@ -293,7 +290,10 @@ namespace victoria
             public TourState CurrentTourState;
             public TourMode TourMode;
             public InteractiveSegment.SegmentType? HoveredSegment;
-            [FormerlySerializedAs("CurrentState")] public CursorState _currentCursorState;
+
+            [FormerlySerializedAs("_currentCursorState")] [FormerlySerializedAs("CurrentState")]
+            public CursorState CurrentCursorState;
+
             public Vector3? HitPosition;
             public Vector3? HitNormal;
             public float? HoverStartTime;
@@ -316,7 +316,7 @@ namespace victoria
 
             public float CalculateNormalizedProgress()
             {
-                if (HoverStartTime == null || _currentCursorState != CursorState.Hovering)
+                if (HoverStartTime == null || CurrentCursorState != CursorState.Hovering)
                     return 0f;
                 return (Time.time - HoverStartTime.Value) / SelectionTimeThreshold;
             }

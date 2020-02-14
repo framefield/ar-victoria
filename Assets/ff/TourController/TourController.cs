@@ -27,6 +27,7 @@ namespace victoria
             _soundFX = soundFx;
             _listener = listener;
             _interaction.Initialize(this, _camera);
+
             foreach (var c in _content)
             {
                 c.Init(this);
@@ -46,17 +47,15 @@ namespace victoria
             SetState(Model.TourState.Prologue);
         }
 
-
+        // called by the AppController
         public void AbortTour()
         {
             SetState(Model.TourState.Inactive);
         }
 
-
         private void SetState(Model.TourState tourState)
         {
             gameObject.SetActive(tourState != Model.TourState.Inactive);
-
             switch (tourState)
             {
                 case Model.TourState.Inactive:
@@ -111,56 +110,55 @@ namespace victoria
         {
             ui.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentCursorState, camera,
                 model.CalculateNormalizedProgress());
-            ui.DebugLabel.text = $"{model.CurrentCursorState}";
-            if (model.CurrentCursorState == Model.CursorState.Hovering)
-                ui.DebugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
 
-            if (model.HoveredSegment != null)
-                ui.DebugLabel.text += $"\t: {model.HoveredSegment} ";
+            RenderDebugLabel(model, ui.DebugLabel);
+            RenderHighlightParticles(model, ui.HightlightParticles, rendererProvider);
+            ToggleInteractiveSegments(model, rendererProvider);
+        }
 
-            if (model.CurrentCursorState == Model.CursorState.Hovering)
-            {
-                var shapeModule = ui.HightlightParticles.shape;
-                var renderer = rendererProvider?.Invoke(model.HoveredSegment.Value);
-                
-                // hovered renderer has changed
-                if (renderer != shapeModule.meshRenderer || !ui.HightlightParticles.isPlaying) 
-                {
-                    shapeModule.meshRenderer = renderer;
-                    ui.HightlightParticles.Play();
-                }
-            }
-            else
-            {
-                ui.HightlightParticles.Stop();
-            }
-
+        private static void ToggleInteractiveSegments(Model model,
+            Func<InteractiveSegment.SegmentType, MeshRenderer> rendererProvider)
+        {
             var allSegments = Enum.GetValues(typeof(InteractiveSegment.SegmentType))
                 .Cast<InteractiveSegment.SegmentType>();
 
             foreach (var segment in allSegments)
             {
-                if (model.CurrentTourState == Model.TourState.Prologue)
-                {
-                    rendererProvider(segment).gameObject
-                        .SetActive(segment == InteractiveSegment.SegmentType.WholeStatue0);
-                }
-                else
-                {
-                    rendererProvider(segment).gameObject
-                        .SetActive(segment != InteractiveSegment.SegmentType.WholeStatue0);
-                }
-
-                Color c;
-                if (segment == model.HoveredSegment)
-                    c = new Color(1f, 0.7f, 0.7f, 1f);
-                else if (model.CompletedContent.Contains(segment))
-                    c = new Color(0.7f, 0.7f, 1f, 1f);
-                else
-                    c = new Color(0.7f, 1f, 0.7f, 1f);
-
-                rendererProvider(segment).material.color = c;
+                rendererProvider(segment).gameObject
+                    .SetActive(model.CurrentTourState == Model.TourState.Prologue
+                        ? segment == InteractiveSegment.SegmentType.WholeStatue0
+                        : segment != InteractiveSegment.SegmentType.WholeStatue0);
             }
+        }
+
+        private static void RenderHighlightParticles(Model model, ParticleSystem highlightParticles,
+            Func<InteractiveSegment.SegmentType, MeshRenderer> rendererProvider)
+        {
+            if (model.CurrentCursorState == Model.CursorState.Hovering)
+            {
+                var shapeModule = highlightParticles.shape;
+                var renderer = rendererProvider?.Invoke(model.HoveredSegment.Value);
+
+                // hovered renderer has changed
+                if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
+                {
+                    shapeModule.meshRenderer = renderer;
+                    highlightParticles.Play();
+                }
+            }
+            else
+            {
+                highlightParticles.Stop();
+            }
+        }
+
+        private static void RenderDebugLabel(Model model, TMP_Text debugLabel)
+        {
+            debugLabel.text = $"{model.CurrentCursorState}";
+            if (model.CurrentCursorState == Model.CursorState.Hovering)
+                debugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
+            if (model.HoveredSegment != null)
+                debugLabel.text += $"\t: {model.HoveredSegment} ";
         }
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)
@@ -318,7 +316,10 @@ namespace victoria
             {
                 if (HoverStartTime == null || CurrentCursorState != CursorState.Hovering)
                     return 0f;
-                return (Time.time - HoverStartTime.Value) / SelectionTimeThreshold;
+                var threshold = TourMode == TourMode.Guided
+                    ? SelectionTimeThresholdGuided
+                    : SelectionTimeThresholdUnguided;
+                return (Time.time - HoverStartTime.Value) / threshold;
             }
 
             public bool HasCompletedHoverProgress()
@@ -326,7 +327,8 @@ namespace victoria
                 return CalculateNormalizedProgress() >= 1f;
             }
 
-            private const float SelectionTimeThreshold = 3f;
+            private const float SelectionTimeThresholdUnguided = 3f;
+            private const float SelectionTimeThresholdGuided = 0.1f;
         }
 
         #endregion

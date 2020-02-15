@@ -1,20 +1,23 @@
 ﻿using System;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity.SpatialMapping;
+using TMPro;
 using UnityEngine;
 using victoria;
 
 public class AppController : MonoBehaviour, TourController.ITourEventsListener, SpeechInput.ICommandListener
 {
     [SerializeField] private SpeechInput _speechInput = null;
+    [SerializeField] private Camera _camera = null;
     [SerializeField] private TourController _tourController = null;
     [SerializeField] private SoundFX _soundFX;
-     [SerializeField] private AdminComponents _admincomponents = null;
+    [SerializeField] private AdminComponents _admincomponents = null;
+    [SerializeField] private NotificationUI _notificationUI;
 
     [Serializable]
     private class AdminComponents
     {
-        public GameObject TransformationTool = null;
+        public TransformationTool TransformationTool = null;
         public TapToPlace CalibratedTransform = null;
         public AnimatedCursor AnimatedCursor = null;
         public Renderer VirtualVictoria = null;
@@ -22,10 +25,14 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
         public SpatialMappingManager SpatialMapping = null;
     }
 
+
     private void Start()
     {
-        _tourController.Init(this, _soundFX);
-        _speechInput.Init(this, _soundFX);
+        _tourController.Initialize(this,_camera, _soundFX, _notificationUI);
+        _speechInput.Initialize(this, _soundFX, _notificationUI);
+        _admincomponents.TransformationTool.Initialize(
+            _admincomponents.CalibratedTransform.GetComponent<CalibratedObject>(),
+            _admincomponents.VirtualVictoria.gameObject);
         SetState(State.Admin);
     }
 
@@ -49,6 +56,7 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
         _admincomponents.VirtualVictoria.gameObject.SetActive(_state == State.Admin);
         _admincomponents.HoldoutVictoria.gameObject.SetActive(_state != State.Admin);
         _admincomponents.SpatialMapping.gameObject.SetActive(_state == State.Admin);
+//        _currentStateLabel.text = $"State: {state.ToString()}";
     }
 
     private State _state;

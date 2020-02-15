@@ -8,8 +8,6 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechInput : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _debug;
-
     public enum Command
     {
         Alpha,
@@ -25,11 +23,12 @@ public class SpeechInput : MonoBehaviour
         {"bravo", Command.Bravo}, //start guided tour
         {"charlie", Command.Charlie}, //start mixed initiative tour
         {"admin", Command.Admin},
-        {"cancel tour", Command.CancelTour},
+        {"cancel tour", Command.CancelTour}
     };
 
-    public void Init(ICommandListener listener, SoundFX soundFx)
+    public void Initialize(ICommandListener listener, SoundFX soundFx, NotificationUI notificationUi)
     {
+        _notificationUI = notificationUi;
         _listener = listener;
         _soundFX = soundFx;
     }
@@ -58,7 +57,7 @@ public class SpeechInput : MonoBehaviour
     private void OnKeywordRecognized(PhraseRecognizedEventArgs args)
     {
         FireCommand(_textsForCommands[args.text]);
-        _debug.text = args.text;
+        _notificationUI.ShowNotifiation($"Command Recognized: {args.text}", 2f); ;
         Debug.Log(args.text);
     }
 
@@ -77,4 +76,5 @@ public class SpeechInput : MonoBehaviour
 
     private ICommandListener _listener;
     private SoundFX _soundFX;
+    private NotificationUI _notificationUI;
 }

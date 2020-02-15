@@ -16,18 +16,19 @@ namespace victoria
         TourStation.IInteractionListener
     {
         [SerializeField] private Model _model;
-        [SerializeField] private Camera _camera = null;
+        private Camera _camera = null;
         [SerializeField] private UI _ui = UI.Empty;
         [SerializeField] private StatueInteraction _interaction = null;
         [SerializeField] private TourStation[] _content = null;
 
         // called by the AppController
-        public void Init(ITourEventsListener listener, SoundFX soundFx)
+        public void Initialize(ITourEventsListener listener, Camera cam, SoundFX soundFx, NotificationUI notificationUi)
         {
+            _camera = cam;
             _soundFX = soundFx;
             _listener = listener;
             _interaction.Initialize(this, _camera);
-
+            _notificationUI = notificationUi;
             foreach (var c in _content)
             {
                 c.Init(this);
@@ -45,6 +46,8 @@ namespace victoria
                 CompletedContent = new List<InteractiveSegment.SegmentType>(),
             };
             SetState(Model.TourState.Prologue);
+            _notificationUI.ShowDebugNotification($"Start tour {mode.ToString()}");
+
         }
 
         // called by the AppController
@@ -87,6 +90,7 @@ namespace victoria
             {
                 _model.CurrentCursorState = Model.CursorState.Playing;
                 PlayContent(_model.HoveredSegment.Value);
+                _notificationUI.ShowDebugNotification($"Play {_model.HoveredSegment.Value.ToString()}");
             }
         }
 
@@ -196,7 +200,7 @@ namespace victoria
         private static void RenderDebugLabel(Model model, TMP_Text debugLabel)
         {
             switch (model.TourMode)
-            { 
+            {
                 case TourMode.Guided:
                     debugLabel.text = $"{model.GetNextUnvisitedSegment()}";
                     break;
@@ -244,6 +248,8 @@ namespace victoria
             _model.HoveredSegment = eventData.HoveredType;
             _model.HoverStartTime = Time.time;
             RenderModel(_model, _ui, _camera, _interaction);
+            _notificationUI.ShowDebugNotification($"Hover {eventData.HoveredType.ToString()}");
+
         }
 
         void StatueInteraction.IInteractionListener.OnUpdateHover(StatueInteraction.HoverEventData eventData)
@@ -274,6 +280,7 @@ namespace victoria
             _model.HitNormal = null;
             _model.HoveredSegment = null;
             RenderModel(_model, _ui, _camera, _interaction);
+            _notificationUI.ShowDebugNotification($"Unhover {type.ToString()}");
         }
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
@@ -284,6 +291,9 @@ namespace victoria
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
+            _notificationUI.ShowDebugNotification(
+                $"Completed {completedChapter.Type}, {_model.CompletedContent.Count}/{StatueInteraction.SegmentCount}"
+            );
 
             //change states
             switch (_model.CurrentTourState)
@@ -300,7 +310,6 @@ namespace victoria
                     break;
             }
 
-            Debug.Log("complete");
             RenderModel(_model, _ui, _camera, _interaction);
         }
 
@@ -308,6 +317,7 @@ namespace victoria
 
         private ITourEventsListener _listener;
         private SoundFX _soundFX;
+        private NotificationUI _notificationUI;
 
         #region data structure
 

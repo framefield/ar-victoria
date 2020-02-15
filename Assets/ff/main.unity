@@ -2227,22 +2227,22 @@ PrefabInstance:
     - target: {fileID: 368295558502862746, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 368295558502862746, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 368295558502862746, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 368295558502862746, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 368295558502862746, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}

@@ -37,7 +37,7 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
 
     void TourController.ITourEventsListener.OnTourCompleted()
     {
-        SetState(State.Admin);
+        SetState(State.Home);
     }
 
     private void SetState(State state)
@@ -56,7 +56,8 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
     private enum State
     {
         Admin,
-        Tour
+        Tour,
+        Home
     }
 
     void SpeechInput.ICommandListener.OnCommandDetected(SpeechInput.Command command)
@@ -64,27 +65,25 @@ public class AppController : MonoBehaviour, TourController.ITourEventsListener, 
         switch (command)
         {
             case SpeechInput.Command.Alpha:
-                if (_state == State.Admin)
+                if (_state != State.Tour)
                     StartTour(TourController.TourMode.Guided);
                 break;
             case SpeechInput.Command.Bravo:
-                if (_state == State.Admin)
+                if (_state != State.Tour)
                     StartTour(TourController.TourMode.Unguided);
                 break;
             case SpeechInput.Command.Charlie:
-                if (_state == State.Admin)
+                if (_state != State.Tour)
                     StartTour(TourController.TourMode.Mixed);
                 break;
-            case SpeechInput.Command.AdminAbort:
+            case SpeechInput.Command.CancelTour:
                 if (_state == State.Tour)
                     _tourController.AbortTour();
                 break;
-            case SpeechInput.Command.Calibrate:
-                if (_state == State.Admin)
+            case SpeechInput.Command.Admin:
+                if (_state == State.Home)
                 {
-                    var camV = Camera.main.transform.TransformVector(Vector3.forward);
-                    _admincomponents.CalibratedTransform.GetComponent<CalibratedObject>()
-                        .SetPosition(Camera.main.transform.position + 3 * camV);
+                    SetState(State.Admin);
                 }
 
                 break;

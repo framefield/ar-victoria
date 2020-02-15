@@ -196,7 +196,7 @@ namespace victoria
         private static void RenderDebugLabel(Model model, TMP_Text debugLabel)
         {
             switch (model.TourMode)
-            {
+            { 
                 case TourMode.Guided:
                     debugLabel.text = $"{model.GetNextUnvisitedSegment()}";
                     break;

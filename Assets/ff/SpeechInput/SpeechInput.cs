@@ -15,8 +15,8 @@ public class SpeechInput : MonoBehaviour
         Alpha,
         Bravo,
         Charlie,
-        AdminAbort,
-        Calibrate,
+        CancelTour,
+        Admin
     }
 
     private Dictionary<string, Command> _textsForCommands = new Dictionary<string, Command>()
@@ -24,8 +24,8 @@ public class SpeechInput : MonoBehaviour
         {"alpha", Command.Alpha}, //start unguided tour
         {"bravo", Command.Bravo}, //start guided tour
         {"charlie", Command.Charlie}, //start mixed initiative tour
-        {"admin abort", Command.AdminAbort},
-        {"calibrate", Command.Calibrate},
+        {"admin", Command.Admin},
+        {"cancel tour", Command.CancelTour},
     };
 
     public void Init(ICommandListener listener, SoundFX soundFx)
@@ -50,9 +50,9 @@ public class SpeechInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
             FireCommand(Command.Charlie);
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            FireCommand(Command.AdminAbort);
+            FireCommand(Command.CancelTour);
         if (Input.GetKeyDown(KeyCode.Alpha5))
-            FireCommand(Command.Calibrate);
+            FireCommand(Command.Admin);
     }
 
     private void OnKeywordRecognized(PhraseRecognizedEventArgs args)

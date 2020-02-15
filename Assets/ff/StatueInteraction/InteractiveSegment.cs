@@ -17,6 +17,17 @@ namespace victoria.interaction
             return Enum.GetValues(typeof(SegmentType)).Cast<SegmentType>();
         }
 
+        public static IEnumerable<SegmentType> AllMainSegmentTypesInMixedMode()
+        {
+            return new List<SegmentType>()
+            {
+                SegmentType.WholeStatue0, SegmentType.Arm1,
+                SegmentType.Palm2, SegmentType.Timeline6,
+                SegmentType.Head4
+            };
+        }
+
+
         public enum SegmentType
         {
             WholeStatue0,

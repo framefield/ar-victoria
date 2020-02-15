@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
+using victoria.interaction;
 
 namespace victoria.tour
 {
@@ -32,6 +33,7 @@ namespace victoria.tour
                     _playableDirector.Stop();
                     break;
                 case State.Playing:
+                    _playableDirector.time = 0f;
                     _playableDirector.Play();
                     
                     break;
@@ -50,7 +52,7 @@ namespace victoria.tour
         {
             if(_state!=State.Playing)
                 return;
-
+            
             if ( _playableDirector.duration == _playableDirector.time ||Input.GetKeyDown(KeyCode.Q))
                 SetState(State.Idle);
         }

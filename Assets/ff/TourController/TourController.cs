@@ -4,13 +4,15 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using victoria.audio;
 using victoria.interaction;
 using victoria.tour;
+using victoria.ui;
 
-namespace victoria
+namespace victoria.controller
 {
     /// <summary>
-    /// Controls a tour that consists of TourStations.
+    /// Controls a tour that consists of TourStations. 
     /// </summary>
     public class TourController : MonoBehaviour, StatueInteraction.IInteractionListener,
         TourStation.IInteractionListener
@@ -330,7 +332,7 @@ namespace victoria
         private struct UI
         {
             public ParticleSystem HightlightParticles;
-            public Cursor Cursor;
+            public StatueCursor Cursor;
             public TMP_Text DebugLabel;
 
             public static UI Empty = new UI()

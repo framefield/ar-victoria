@@ -1287,6 +1287,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8810013714674213526, guid: eb1de0052e19a4d448b584bd1730e641,
+        type: 3}
+      propertyPath: ShapeModule.m_MeshRenderer
+      value: 
+      objectReference: {fileID: 6961035355682258566}
     - target: {fileID: 2406294048214309871, guid: eb1de0052e19a4d448b584bd1730e641,
         type: 3}
       propertyPath: m_Mesh
@@ -1372,6 +1377,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bafdad7205bf64a886a80935691f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &6961035355682258566 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2625654605611683829, guid: eb1de0052e19a4d448b584bd1730e641,
+    type: 3}
+  m_PrefabInstance: {fileID: 4965959889965445491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5993706913457108186
 PrefabInstance:
   m_ObjectHideFlags: 0

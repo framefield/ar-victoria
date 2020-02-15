@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class NotificationUI : MonoBehaviour
+namespace victoria.ui
 {
-    [SerializeField] private TMP_Text _label;
-    [SerializeField] private bool _showDebugNotifications;
-
-    public void ShowNotifiation(string text, float durationInSeconds = 2f)
+    /// <summary>
+    /// Simple lower third notification ui. Used for debugging as well.
+    /// </summary>
+    public class NotificationUI : MonoBehaviour
     {
-        _timeLeftToShowNotification = durationInSeconds;
-        _label.text = text;
-    }
+        [SerializeField] private TMP_Text _label;
+        [SerializeField] private bool _showDebugNotifications;
 
-    public void ShowDebugNotification(string text, float durationInSeconds = 2f)
-    {
-        if (_showDebugNotifications)
-            ShowNotifiation(text, durationInSeconds);
-    }
+        public void ShowNotifiation(string text, float durationInSeconds = 2f)
+        {
+            _timeLeftToShowNotification = durationInSeconds;
+            _label.text = text;
+        }
 
-    private void Update()
-    {
-        if (_timeLeftToShowNotification < 0)
-            return;
+        public void ShowDebugNotification(string text, float durationInSeconds = 2f)
+        {
+            if (_showDebugNotifications)
+                ShowNotifiation(text, durationInSeconds);
+        }
 
-        _timeLeftToShowNotification -= Time.deltaTime;
-        _label.gameObject.SetActive(_timeLeftToShowNotification >= 0);
+        private void Update()
+        {
+            if (_timeLeftToShowNotification < 0)
+                return;
+
+            _timeLeftToShowNotification -= Time.deltaTime;
+            _label.gameObject.SetActive(_timeLeftToShowNotification >= 0);
+        }
+
+        private float _timeLeftToShowNotification;
     }
-    
-    private float _timeLeftToShowNotification;
 }

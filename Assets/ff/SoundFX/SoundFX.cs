@@ -5,32 +5,36 @@ using System.Linq;
 using System.Xml;
 using UnityEngine;
 
-public class SoundFX : MonoBehaviour
+namespace victoria.audio
 {
-    [Serializable]
-    private struct Sound
+    /// <summary>
+    /// Holds the data on sound fx and plays them.
+    /// </summary>
+    public class SoundFX : MonoBehaviour
     {
-        public SoundType Type;
-        public AudioClip Clip;
+        [Serializable]
+        private class Sound
+        {
+            public SoundType Type = default;
+            public AudioClip Clip = null;
+        }
+
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private List<Sound> _sounds = new List<Sound>();
+
+        public enum SoundType
+        {
+            CommandRecognized,
+            ContentCompleted,
+            ContentStarted,
+            OnDwellTimerBegin,
+            OnDwellTimerCanceled,
+        }
+        
+        public void Play(SoundType type)
+        {
+            _audioSource.clip = _sounds.First(s => s.Type == type).Clip;
+            _audioSource.Play();
+        }
     }
-
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private List<Sound> _sounds = new List<Sound>();
-
-    public enum SoundType
-    {
-        CommandRecognized,
-        ContentCompleted,
-        ContentStarted,
-        OnDwellTimerBegin,
-        OnDwellTimerCanceled,
-    }
-
-
-    public void Play(SoundType type)
-    {
-        _audioSource.clip = _sounds.First(s => s.Type == type).Clip;
-        _audioSource.Play();
-    }
-
 }

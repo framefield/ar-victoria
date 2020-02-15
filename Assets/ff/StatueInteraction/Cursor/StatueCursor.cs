@@ -2,13 +2,14 @@
 using HoloToolkit.Unity;
 using UnityEngine;
 using UnityEngine.Serialization;
+using victoria.controller;
 
-namespace victoria
+namespace victoria.ui
 {
     /// <summary>
     /// The gaze cursor with Default, Hover and Playing State
     /// </summary>
-    public class Cursor : MonoBehaviour
+    public class StatueCursor : MonoBehaviour
     {
         [SerializeField] private Style _defaultStyle = Style.Default;
         [SerializeField] private Style _hoverStyle = Style.Default;

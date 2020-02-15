@@ -6,6 +6,9 @@ using victoria.tour;
 
 namespace victoria.interaction
 {
+    /// <summary>
+    /// Does raycast interaction with the segments of the statue.
+    /// </summary>
     public class StatueInteraction : MonoBehaviour
     {
         public const int SegmentCount = 8;

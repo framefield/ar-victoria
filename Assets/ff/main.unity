@@ -1522,6 +1522,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8757688546527156782, guid: 3a839633d085a19418aee96777090e35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8757688546132705600, guid: 3a839633d085a19418aee96777090e35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907066721514009713, guid: 3a839633d085a19418aee96777090e35,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515376489884227939, guid: 3a839633d085a19418aee96777090e35,
+        type: 3}
+      propertyPath: _segments.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6451860145032344672, guid: 3a839633d085a19418aee96777090e35,
         type: 3}
       propertyPath: m_Mesh

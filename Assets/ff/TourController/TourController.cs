@@ -33,7 +33,6 @@ namespace victoria
             {
                 c.Init(this);
             }
-
             SetState(Model.TourState.Inactive);
         }
 
@@ -47,7 +46,6 @@ namespace victoria
             };
             SetState(Model.TourState.Prologue);
             _notificationUI.ShowDebugNotification($"Start tour {mode.ToString()}");
-
         }
 
         // called by the AppController
@@ -72,7 +70,6 @@ namespace victoria
                     PlayContent(InteractiveSegment.SegmentType.Hall8);
                     break;
             }
-
             _model.CurrentTourState = tourState;
         }
 

@@ -22,8 +22,8 @@ public class SoundFX : MonoBehaviour
         CommandRecognized,
         ContentCompleted,
         ContentStarted,
-        OnHoverBegin,
-        OnHoverEnd,
+        OnDwellTimerBegin,
+        OnDwellTimerCanceled,
     }
 
 

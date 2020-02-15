@@ -37,7 +37,7 @@ namespace victoria
         {
             _progressCircle.gameObject.SetActive(selectionProgress > 0f);
             _progressCircle.FillRatio = selectionProgress;
-            if (cursorState == TourController.Model.CursorState.Hovering)
+            if (cursorState == TourController.Model.CursorState.DwellTimer)
             {
                 var p = position.Value;
                 var n = normal.Value;
@@ -60,7 +60,7 @@ namespace victoria
                 case TourController.Model.CursorState.Default:
                     _currentStyle = _defaultStyle;
                     break;
-                case TourController.Model.CursorState.Hovering:
+                case TourController.Model.CursorState.DwellTimer:
                     _currentStyle = _hoverStyle;
                     break;
                 case TourController.Model.CursorState.Playing:

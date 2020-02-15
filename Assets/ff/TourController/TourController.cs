@@ -33,6 +33,7 @@ namespace victoria
             {
                 c.Init(this);
             }
+
             SetState(Model.TourState.Inactive);
         }
 
@@ -70,17 +71,14 @@ namespace victoria
                     PlayContent(InteractiveSegment.SegmentType.Hall8);
                     break;
             }
+
             _model.CurrentTourState = tourState;
         }
 
         private void Update()
         {
             RenderModel(_model, _ui, _camera, _interaction);
-            if (_model.CurrentCursorState != Model.CursorState.Hovering)
-                return;
-
-            //hovered segment had been played before
-            if (_model.CompletedContent.Any(type => type == _model.HoveredSegment))
+            if (_model.CurrentCursorState != Model.CursorState.DwellTimer)
                 return;
 
             if (_model.HasCompletedHoverProgress())
@@ -169,7 +167,7 @@ namespace victoria
                     break;
                 case TourMode.Unguided:
                     //particles on hovered segment
-                    if (model.CurrentCursorState == Model.CursorState.Hovering)
+                    if (model.CurrentCursorState == Model.CursorState.DwellTimer)
                     {
                         var shapeModule = highlightParticles.shape;
                         var renderer = interaction.GetMeshRender(model.HoveredSegment.Value);
@@ -178,6 +176,14 @@ namespace victoria
                         if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
                         {
                             shapeModule.meshRenderer = renderer;
+                            highlightParticles.Play();
+                        }
+
+                        var rate = model.CompletedContent.Contains(model.HoveredSegment.Value) ? 500 : 2000;
+                        var emissionModule = highlightParticles.emission;
+                        if (emissionModule.rateOverTimeMultiplier != rate)
+                        {
+                            emissionModule.rateOverTimeMultiplier = rate;
                             highlightParticles.Play();
                         }
                     }
@@ -203,8 +209,8 @@ namespace victoria
                     break;
                 case TourMode.Unguided:
                     debugLabel.text = $"{model.CurrentCursorState}";
-                    if (model.CurrentCursorState == Model.CursorState.Hovering)
-                        debugLabel.text += $"\t: {Time.time - model.HoverStartTime} ";
+                    if (model.CurrentCursorState == Model.CursorState.DwellTimer)
+                        debugLabel.text += $"\t: {Time.time - model.DwellTimerStartTime} ";
                     if (model.HoveredSegment != null)
                         debugLabel.text += $"\t: {model.HoveredSegment} ";
                     break;
@@ -219,8 +225,8 @@ namespace victoria
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)
         {
-            if (_model.CurrentCursorState == Model.CursorState.Playing)
-                return;
+//            if (_model.CurrentCursorState == Model.CursorState.Playing)
+//                return;
 
             switch (_model.CurrentTourState)
             {
@@ -228,35 +234,39 @@ namespace victoria
                     if (eventData.HoveredType != InteractiveSegment.SegmentType.WholeStatue0)
                         return;
                     break;
-
-                case Model.TourState.Tour:
-                    if (_model.CompletedContent.Contains(eventData.HoveredType))
-                        return;
-                    if (eventData.HoveredType == InteractiveSegment.SegmentType.Hall8)
-                        return;
-                    break;
             }
 
-            _soundFX.Play(SoundFX.SoundType.OnHoverBegin);
-
-            _model.CurrentCursorState = Model.CursorState.Hovering;
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
-            _model.HoverStartTime = Time.time;
-            RenderModel(_model, _ui, _camera, _interaction);
-            _notificationUI.ShowDebugNotification($"Hover {eventData.HoveredType.ToString()}");
 
+            if (_model.CurrentCursorState != Model.CursorState.Playing)
+            {
+                BeginDwellTimerForHoveredSegment();
+            }
+            RenderModel(_model, _ui, _camera, _interaction);
         }
+
+        private void BeginDwellTimerForHoveredSegment()
+        {
+            _model.CurrentCursorState = Model.CursorState.DwellTimer;
+            _model.DwellTimerStartTime = Time.time;
+            _soundFX.Play(SoundFX.SoundType.OnDwellTimerBegin);
+            _notificationUI.ShowDebugNotification($"Start Dwell Timer {_model.HoveredSegment}");
+        }
+
+
+        private void CancelDwellTimerForHoveredSegment()
+        {
+            _model.CurrentCursorState = Model.CursorState.Default;
+            _model.DwellTimerStartTime = float.PositiveInfinity;
+            _soundFX.Play(SoundFX.SoundType.OnDwellTimerCanceled);
+            _notificationUI.ShowDebugNotification($"Cancel Dwell Timer {_model.HoveredSegment}");
+        }
+
 
         void StatueInteraction.IInteractionListener.OnUpdateHover(StatueInteraction.HoverEventData eventData)
         {
-            if (_model.CurrentCursorState == Model.CursorState.Playing)
-                return;
-
-            if (_model.CompletedContent.Contains(eventData.HoveredType))
-                return;
-
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
             RenderModel(_model, _ui, _camera, _interaction);
@@ -264,34 +274,22 @@ namespace victoria
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
         {
-            if (_model.CompletedContent.Contains(type))
-                return;
-
-            if (_model.CurrentCursorState == Model.CursorState.Playing)
-                return;
-
-            _soundFX.Play(SoundFX.SoundType.OnHoverEnd);
-
-            _model.CurrentCursorState = Model.CursorState.Default;
             _model.HitPosition = null;
             _model.HitNormal = null;
             _model.HoveredSegment = null;
+            if (_model.CurrentCursorState == Model.CursorState.DwellTimer)
+                CancelDwellTimerForHoveredSegment();
             RenderModel(_model, _ui, _camera, _interaction);
-            _notificationUI.ShowDebugNotification($"Unhover {type.ToString()}");
         }
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
         {
+            _model.CompletedContent.Add(completedChapter.Type);
             _soundFX.Play(SoundFX.SoundType.ContentCompleted);
-            _model.CompletedContent.Add(_model.HoveredSegment.Value);
-            _model.CurrentCursorState = Model.CursorState.Default;
-            _model.HitPosition = null;
-            _model.HitNormal = null;
-            _model.HoveredSegment = null;
             _notificationUI.ShowDebugNotification(
                 $"Completed {completedChapter.Type}, {_model.CompletedContent.Count}/{StatueInteraction.SegmentCount}"
             );
-
+            
             //change states
             switch (_model.CurrentTourState)
             {
@@ -307,6 +305,16 @@ namespace victoria
                     break;
             }
 
+            // check if cursor is on a segment, if so, start dwell timer for it
+            if (_model.HoveredSegment != null)
+            {
+                _model.CurrentCursorState = Model.CursorState.DwellTimer;
+                BeginDwellTimerForHoveredSegment();
+            }
+            else
+            {
+                _model.CurrentCursorState = Model.CursorState.Default;
+            }
             RenderModel(_model, _ui, _camera, _interaction);
         }
 
@@ -350,6 +358,8 @@ namespace victoria
         {
             public TourState CurrentTourState;
             public TourMode TourMode;
+
+            [FormerlySerializedAs("SegmentUnderCursor")]
             public InteractiveSegment.SegmentType? HoveredSegment;
 
             [FormerlySerializedAs("_currentCursorState")] [FormerlySerializedAs("CurrentState")]
@@ -357,7 +367,10 @@ namespace victoria
 
             public Vector3? HitPosition;
             public Vector3? HitNormal;
-            public float? HoverStartTime;
+
+            [FormerlySerializedAs("HoverStartTime")]
+            public float? DwellTimerStartTime;
+
             public List<InteractiveSegment.SegmentType> CompletedContent;
 
             public InteractiveSegment.SegmentType? GetNextUnvisitedSegment()
@@ -373,7 +386,7 @@ namespace victoria
             public enum CursorState
             {
                 Default,
-                Hovering,
+                DwellTimer,
                 Playing
             }
 
@@ -387,12 +400,27 @@ namespace victoria
 
             public float CalculateNormalizedProgress()
             {
-                if (HoverStartTime == null || CurrentCursorState != CursorState.Hovering)
+                if (DwellTimerStartTime == null || CurrentCursorState != CursorState.DwellTimer)
                     return 0f;
-                var threshold = TourMode == TourMode.Guided
-                    ? SelectionTimeThresholdGuided
-                    : SelectionTimeThresholdUnguided;
-                return (Time.time - HoverStartTime.Value) / threshold;
+
+                float threshold = 0f;
+                switch (TourMode)
+                {
+                    case TourMode.Guided:
+                        threshold = SelectionTimeThresholdGuided;
+                        break;
+                    case TourMode.Unguided:
+                        threshold = SelectionTimeThresholdUnguided;
+                        if (CompletedContent.Contains(HoveredSegment.Value))
+                            threshold *= 2f;
+                        break;
+                    case TourMode.Mixed:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                
+                return (Time.time - DwellTimerStartTime.Value) / threshold;
             }
 
             public bool HasCompletedHoverProgress()

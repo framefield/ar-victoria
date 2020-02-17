@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Ruhmeshalle_FrontLayer
   m_Shader: {fileID: 4800000, guid: d45c0efca53019e43891b0f610f8146e, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _ALPHATEST_ON _BORDER_LIGHT_USES_HOVER_COLOR

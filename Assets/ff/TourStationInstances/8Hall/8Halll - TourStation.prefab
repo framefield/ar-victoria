@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7059231333165184001, guid: fa04b7e69424af043b23bcd377d92d0b,
-        type: 3}
-      propertyPath: m_Name
-      value: 8Halll - TourStation
-      objectReference: {fileID: 0}
     - target: {fileID: 7059231333165184000, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,15 +62,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6996260391275451435, guid: fa04b7e69424af043b23bcd377d92d0b,
+    - target: {fileID: 7059231333165184001, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_Name
+      value: 8Halll - TourStation
       objectReference: {fileID: 0}
     - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
@@ -128,7 +123,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SceneBindings.Array.data[9].key
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 114941021980927594, guid: 2550ee22f36f0f94fb86b70399dd6690,
+        type: 2}
     - target: {fileID: 2486606995913474611, guid: fa04b7e69424af043b23bcd377d92d0b,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[10].key
@@ -174,6 +170,11 @@ PrefabInstance:
       propertyPath: _audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 0a902b4c54fcf384c9128a707c1fa7dd, type: 3}
+    - target: {fileID: 6996260391275451435, guid: fa04b7e69424af043b23bcd377d92d0b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa04b7e69424af043b23bcd377d92d0b, type: 3}
 --- !u!4 &4970805383354815499 stripped
@@ -189,16 +190,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4970805383354815499}
     m_Modifications:
-    - target: {fileID: 8986985140903434672, guid: ed50d3738e619284c9b8a0ca65a80801,
-        type: 3}
-      propertyPath: m_Name
-      value: Ruhmehalle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8986985140903434672, guid: ed50d3738e619284c9b8a0ca65a80801,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8986985140903434675, guid: ed50d3738e619284c9b8a0ca65a80801,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,6 +244,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986985140903434672, guid: ed50d3738e619284c9b8a0ca65a80801,
+        type: 3}
+      propertyPath: m_Name
+      value: Ruhmehalle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986985140903434672, guid: ed50d3738e619284c9b8a0ca65a80801,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8958467975561848941, guid: ed50d3738e619284c9b8a0ca65a80801, type: 3}

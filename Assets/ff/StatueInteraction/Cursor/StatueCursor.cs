@@ -79,10 +79,10 @@ namespace victoria.ui
             var w = Mathf.Lerp(_cursorCircle.Width, _currentStyle.Width, _lerpFactor);
 
             _cursorCircle.Radius = r;
-            _progressCircle.Radius = r;
+//            _progressCircle.Radius = r;
 
             _cursorCircle.Width = w;
-            _progressCircle.Width = w;
+//            _progressCircle.Width = w;
 
             transform.position = Vector3.Lerp(transform.position, _currentPosition, _lerpFactor);
             transform.rotation = Quaternion.Lerp(transform.rotation, _currentRotation, _lerpFactor);

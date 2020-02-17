@@ -181,13 +181,13 @@ namespace victoria.controller
                         highlightParticles.Play();
                     }
 
-                    var rate = model.CompletedContent.Contains(model.HoveredSegment.Value) ? 500 : 2000;
-                    var emissionModule = highlightParticles.emission;
-                    if (emissionModule.rateOverTimeMultiplier != rate)
-                    {
-                        emissionModule.rateOverTimeMultiplier = rate;
-                        highlightParticles.Play();
-                    }
+//                    var rate = model.CompletedContent.Contains(model.HoveredSegment.Value) ? 500 : 2000;
+//                    var emissionModule = highlightParticles.emission;
+//                    if (emissionModule.rateOverTimeMultiplier != rate)
+//                    {
+//                        emissionModule.rateOverTimeMultiplier = rate;
+//                        highlightParticles.Play();
+//                    }
                 }
                 else
                 {

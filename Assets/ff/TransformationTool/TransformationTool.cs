@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Experimental.PlayerLoop;
+using victoria.controller;
 
 namespace victoria.admintools
 {
@@ -25,8 +26,12 @@ namespace victoria.admintools
         [SerializeField] private EventTrigger _reset = null;
         [SerializeField] private EventTrigger _showHitMesh = null;
         [SerializeField] private EventTrigger _hideHitMesh = null;
+        [SerializeField] private EventTrigger _startAlpha = null;
+        [SerializeField] private EventTrigger _startBravo = null;
+        [SerializeField] private EventTrigger _startCharlie = null;
 
-        public void Initialize(CalibratedObject calibratedObject, GameObject virtualVictoria)
+        //todo: refactor this using a interaction interface
+        public void Initialize(CalibratedObject calibratedObject, GameObject virtualVictoria, Action<TourController.TourMode> tourStartCallback)
         {
             _calibratedObject = calibratedObject;
             _virtualVictoria = virtualVictoria;
@@ -46,6 +51,10 @@ namespace victoria.admintools
             AddTrigger(_reset, () => _calibratedObject.ResetCalibration());
             AddTrigger(_showHitMesh, () => _virtualVictoria.gameObject.SetActive(true));
             AddTrigger(_hideHitMesh, () => _virtualVictoria.gameObject.SetActive(false));
+            
+            AddTrigger(_startAlpha, () => tourStartCallback.Invoke(TourController.TourMode.Unguided));
+            AddTrigger(_startBravo, () => tourStartCallback.Invoke(TourController.TourMode.Guided));
+            AddTrigger(_startCharlie, () => tourStartCallback.Invoke(TourController.TourMode.Mixed));
         }
 
         private static void AddTrigger(EventTrigger trigger, Action action)

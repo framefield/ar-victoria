@@ -38,7 +38,8 @@ namespace victoria.controller
             _speechInput.Initialize(this, _soundFX, _notificationUI);
             _admincomponents.TransformationTool.Initialize(
                 _admincomponents.CalibratedTransform.GetComponent<CalibratedObject>(),
-                _admincomponents.VirtualVictoria.gameObject);
+                _admincomponents.VirtualVictoria.gameObject,
+                StartTour);
             SetState(State.Admin);
         }
 

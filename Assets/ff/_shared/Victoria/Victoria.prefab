@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1512494645668136429}
   - component: {fileID: 1512494645668136431}
   m_Layer: 0
-  m_Name: HitMeshRenderer
+  m_Name: VirtualVictoria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512494645668136425}
-  m_Mesh: {fileID: 4300000, guid: f9dd099933cc2644c92334c0f3ce2d20, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a196cc40fe90dd0449a00fb6b27e8cd5, type: 3}
 --- !u!23 &1512494645668136431
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 1512494645749955703}
   - component: {fileID: 1512494645749955697}
   m_Layer: 0
-  m_Name: OcclusionRenderer
+  m_Name: HoldoutVicotria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512494645749955699}
-  m_Mesh: {fileID: 4300000, guid: f9dd099933cc2644c92334c0f3ce2d20, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a196cc40fe90dd0449a00fb6b27e8cd5, type: 3}
 --- !u!23 &1512494645749955697
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512494646093666857}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -216,4 +216,4 @@ Transform:
   - {fileID: 1512494645749955698}
   m_Father: {fileID: 1512494645991889754}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}

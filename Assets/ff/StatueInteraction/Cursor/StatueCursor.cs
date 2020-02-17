@@ -33,6 +33,12 @@ namespace victoria.ui
             public AnimationCurve Osscilation;
         }
 
+        public void Initialize()
+        {
+            _currentStyle = _defaultStyle;
+        }
+        
+        
         public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState,
             Camera cam, float selectionProgress)
         {

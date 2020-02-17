@@ -31,6 +31,7 @@ namespace victoria.controller
             _listener = listener;
             _interaction.Initialize(this, _camera);
             _notificationUI = notificationUi;
+            _ui.Cursor.Initialize();
             foreach (var c in _content)
             {
                 c.Init(this);

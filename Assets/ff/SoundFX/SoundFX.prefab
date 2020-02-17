@@ -174,12 +174,12 @@ MonoBehaviour:
   _audioSource: {fileID: 3075962680243321854}
   _sounds:
   - Type: 0
-    Clip: {fileID: 8300000, guid: 3e02fd1f3f328ea42b4541d47535d5a5, type: 3}
+    Clip: {fileID: 8300000, guid: 357a3de567c814099a721b313674bf9e, type: 3}
   - Type: 1
-    Clip: {fileID: 8300000, guid: 0a902b4c54fcf384c9128a707c1fa7dd, type: 3}
+    Clip: {fileID: 8300000, guid: e5ed12e4cb2a04ec4ae03c66f7236d2e, type: 3}
   - Type: 2
-    Clip: {fileID: 8300000, guid: 0a902b4c54fcf384c9128a707c1fa7dd, type: 3}
+    Clip: {fileID: 8300000, guid: a44c90fe2f6244cacbde6cee04439b64, type: 3}
   - Type: 3
-    Clip: {fileID: 8300000, guid: 1e6758bd9d63c6c4ea09d8a9faae1346, type: 3}
+    Clip: {fileID: 8300000, guid: 963d796993b9a4dfeb3ef0e6d9351eb6, type: 3}
   - Type: 4
-    Clip: {fileID: 8300000, guid: 1d2f074c3d210af40bf5c3a755f42b47, type: 3}
+    Clip: {fileID: 8300000, guid: cc113633938b34ba9a154aea465b72ed, type: 3}

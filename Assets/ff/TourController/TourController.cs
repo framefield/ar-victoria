@@ -66,9 +66,11 @@ namespace victoria.controller
         private void SetState(Model.TourState tourState)
         {
             gameObject.SetActive(tourState != Model.TourState.Inactive);
+
             switch (tourState)
             {
                 case Model.TourState.Inactive:
+                    PlayContent(null);
                     _listener.OnTourCompleted();
                     break;
                 case Model.TourState.Prologue:
@@ -76,7 +78,6 @@ namespace victoria.controller
                 case Model.TourState.Tour:
                     break;
                 case Model.TourState.Epilogue:
-                    PlayContent(InteractiveSegment.SegmentType.Hall8);
                     break;
             }
 
@@ -97,7 +98,7 @@ namespace victoria.controller
             }
         }
 
-        private void PlayContent(InteractiveSegment.SegmentType type)
+        private void PlayContent(InteractiveSegment.SegmentType? type)
         {
             foreach (var c in _content)
             {
@@ -106,10 +107,9 @@ namespace victoria.controller
                 else
                     c.Stop();
             }
-
+            if(type.HasValue)
             _soundFX.Play(SoundFX.SoundType.ContentStarted);
-            var contentToPlay = _content.First(content => content.Type == type);
-            contentToPlay.Play();
+     
         }
 
         private static void RenderModel(Model model, UI ui, Camera camera,
@@ -129,15 +129,26 @@ namespace victoria.controller
 
             if (model.IsInGuidedModeOrInMixedModeGuided())
             {
-                    shouldBeActiveEvaluation = segment => segment == model.GetSegmentToGuideTo();
-                
+                shouldBeActiveEvaluation = segment => segment == model.GetSegmentToGuideTo();
             }
             else
             {
                 shouldBeActiveEvaluation = segment =>
-                    model.CurrentTourState == Model.TourState.Prologue
-                        ? segment == InteractiveSegment.SegmentType.WholeStatue0
-                        : segment != InteractiveSegment.SegmentType.WholeStatue0;
+                {
+                    switch (model.CurrentTourState)
+                    {
+                        case Model.TourState.Prologue:
+                            return segment == InteractiveSegment.SegmentType.WholeStatue0;
+                        
+                        case Model.TourState.Tour:
+                            return segment != InteractiveSegment.SegmentType.WholeStatue0 &&
+                                   segment != InteractiveSegment.SegmentType.Hall8;
+                        
+                        case Model.TourState.Epilogue:
+                            return segment == InteractiveSegment.SegmentType.Hall8;
+                    }
+                    return false;
+                };
             }
 
             interaction.SetSegmentsActive(shouldBeActiveEvaluation);

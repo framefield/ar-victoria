@@ -349,7 +349,7 @@ MonoBehaviour:
   Active: 0
   FadeDuration: 2
   LayerName: visible
-  _activateOnStart: 0
+  _activateOnStart: 1
   _childrenDeactivatedWhenHidden: []
 --- !u!1 &3111336553608564080
 GameObject:

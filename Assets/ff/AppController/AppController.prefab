@@ -239,11 +239,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710903091569325320}
     m_Modifications:
-    - target: {fileID: 368295557305072179, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
-        type: 3}
-      propertyPath: m_Name
-      value: TransformationTool
-      objectReference: {fileID: 0}
     - target: {fileID: 368295557305072178, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -298,6 +293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 368295557305072179, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
+        type: 3}
+      propertyPath: m_Name
+      value: TransformationTool
       objectReference: {fileID: 0}
     - target: {fileID: 368295558533544461, guid: 47eaf1dabe0ad4a4fb596f4793130c7e,
         type: 3}
@@ -1090,11 +1090,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5399505708721284114}
     m_Modifications:
-    - target: {fileID: 1512494645991524218, guid: 4597dfbe88d8bce4590f7d0892b559eb,
-        type: 3}
-      propertyPath: m_Name
-      value: Victoria
-      objectReference: {fileID: 0}
     - target: {fileID: 1512494645991889754, guid: 4597dfbe88d8bce4590f7d0892b559eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1149,6 +1144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512494645991524218, guid: 4597dfbe88d8bce4590f7d0892b559eb,
+        type: 3}
+      propertyPath: m_Name
+      value: Victoria
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4597dfbe88d8bce4590f7d0892b559eb, type: 3}
@@ -1177,11 +1177,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5399505708721284114}
     m_Modifications:
-    - target: {fileID: 8810013713979364763, guid: eb1de0052e19a4d448b584bd1730e641,
-        type: 3}
-      propertyPath: m_Name
-      value: TourController
-      objectReference: {fileID: 0}
     - target: {fileID: 8810013713979364761, guid: eb1de0052e19a4d448b584bd1730e641,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1236,6 +1231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810013713979364763, guid: eb1de0052e19a4d448b584bd1730e641,
+        type: 3}
+      propertyPath: m_Name
+      value: TourController
       objectReference: {fileID: 0}
     - target: {fileID: 8810013715321143510, guid: eb1de0052e19a4d448b584bd1730e641,
         type: 3}
@@ -1650,11 +1650,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mock-Environment
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263699444617016414, guid: 529580b851a06a545907143ab498a40f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3263699444617016413, guid: 529580b851a06a545907143ab498a40f,
         type: 3}

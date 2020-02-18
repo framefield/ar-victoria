@@ -2113,6 +2113,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8757688546132705600, guid: 3a839633d085a19418aee96777090e35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 357946412295111663, guid: 3a839633d085a19418aee96777090e35,
         type: 3}
       propertyPath: m_SceneBindings.Array.size

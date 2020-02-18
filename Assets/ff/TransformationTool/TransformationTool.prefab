@@ -1507,7 +1507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be8bd2ebd8277c448d6d81c75517fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagalongDistance: 2
+  TagalongDistance: 3
   EnforceDistance: 1
   PositionUpdateSpeed: 9.8
   SmoothMotion: 1
@@ -5567,10 +5567,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295557501470616}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5626,6 +5622,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -5652,10 +5652,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295556608640320}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5711,6 +5707,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -5737,10 +5737,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295558711089777}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5797,6 +5793,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
       propertyPath: m_Text
@@ -5822,14 +5822,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295556743224005}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5885,6 +5877,14 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -5916,10 +5916,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295557585668986}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5975,6 +5971,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6001,10 +6001,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295557468891027}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6060,6 +6056,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6086,10 +6086,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295557872217236}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6145,6 +6141,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6171,10 +6171,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295558501191688}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6231,6 +6227,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
       propertyPath: m_Text
@@ -6256,10 +6256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295558533544461}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6312,6 +6308,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
       propertyPath: m_Text
@@ -6337,10 +6337,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295556626231056}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6396,6 +6392,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6422,10 +6422,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295558207700390}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6481,6 +6477,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6507,10 +6507,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295558643324475}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6566,6 +6562,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6592,10 +6592,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295556875471382}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6651,6 +6647,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6677,10 +6677,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295556670385489}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6736,6 +6732,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6762,10 +6762,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 368295556797748101}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6822,6 +6818,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
       propertyPath: m_Text
@@ -6847,10 +6847,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9190588915380568618}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6906,6 +6902,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -6932,10 +6932,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6440470523358960528}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6991,6 +6987,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}
@@ -7017,10 +7017,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7009642343503013816}
     m_Modifications:
-    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
-      propertyPath: m_Name
-      value: 3DTextPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7076,6 +7072,10 @@ PrefabInstance:
     - target: {fileID: 4000010330146594, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013198843976, guid: bfdc7f60d7205c84f82a4806a5352d60, type: 3}
+      propertyPath: m_Name
+      value: 3DTextPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 102000010767390410, guid: bfdc7f60d7205c84f82a4806a5352d60,
         type: 3}

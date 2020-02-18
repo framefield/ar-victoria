@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NextId: 0
   m_Tracks:
-  - {fileID: 114005416069360024}
+  - {fileID: 114661651489446238}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 0
   m_Version: 0
---- !u!114 &114005416069360024
+--- !u!114 &114661651489446238
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -2113462093, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: Audio Track
+  m_Name: Audio Track (1)
   m_EditorClassIdentifier: 
   m_Locked: 0
   m_Muted: 0
@@ -39,12 +39,12 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
-  - m_Start: 0.000000007813742541884494
+  - m_Start: 0.000000007813743485574065
     m_ClipIn: 0
-    m_Asset: {fileID: 114903851160233962}
+    m_Asset: {fileID: 114976855376289322}
     m_Duration: 25.33877551020408
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114005416069360024}
+    m_ParentTrack: {fileID: 114661651489446238}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -106,10 +106,10 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 0Welcome
+    m_DisplayName: 0_Intro
     m_Version: 1
   m_Version: 2
---- !u!114 &114903851160233962
+--- !u!114 &114976855376289322
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: -1977359656, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 71465ad7729d22f44847374dfd4f4c20, type: 3}
+  m_Clip: {fileID: 8300000, guid: 8ce68c58e311b0343a06d48eba72cbe9, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1

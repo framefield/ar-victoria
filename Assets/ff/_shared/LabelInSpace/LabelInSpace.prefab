@@ -211,8 +211,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Gewicht ohne Fl\xFCgel"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fd3166668cf44e7483992ebd7b79c0b, type: 2}
@@ -416,8 +414,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 4,5 t
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a2394ff59c83a49d0931cd48cbec9ff6, type: 2}
@@ -558,7 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SizeFactor: 0.0224
   MinSize: 0.0088
-  _adaptSize: 1
+  _adaptSize: 0
   _onlyApplyYAxis: 0
   _rotationMode: 0
 --- !u!1 &6271162328660768208
@@ -599,10 +595,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7850806628079889572}
     m_Modifications:
-    - target: {fileID: 100000, guid: 76d5fbba243da4a478ff178982111a05, type: 3}
-      propertyPath: m_Name
-      value: line
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 76d5fbba243da4a478ff178982111a05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -658,6 +650,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 76d5fbba243da4a478ff178982111a05, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 76d5fbba243da4a478ff178982111a05, type: 3}
+      propertyPath: m_Name
+      value: line
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 76d5fbba243da4a478ff178982111a05, type: 3}
       propertyPath: m_Materials.Array.data[0]

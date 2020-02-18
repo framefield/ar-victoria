@@ -555,7 +555,7 @@ MonoBehaviour:
   SizeFactor: 0.0224
   MinSize: 0.0088
   _adaptSize: 0
-  _onlyApplyYAxis: 0
+  _onlyApplyYAxis: 1
   _rotationMode: 0
 --- !u!1 &6271162328660768208
 GameObject:

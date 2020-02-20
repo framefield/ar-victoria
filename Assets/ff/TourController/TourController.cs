@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -19,7 +18,9 @@ namespace victoria.controller
         TourStation.IInteractionListener
     {
         [SerializeField] private Model _model;
-        [SerializeField] private UI _ui = UI.Empty;
+
+//        [SerializeField] private UI _ui = UI.Empty;
+        [SerializeField] private InteractionUI _interactionUI;
         [SerializeField] private StatueInteraction _interaction = null;
         [SerializeField] private TourStation[] _content = null;
 
@@ -31,7 +32,8 @@ namespace victoria.controller
             _listener = listener;
             _interaction.Initialize(this, _camera);
             _notificationUI = notificationUi;
-            _ui.Cursor.Initialize();
+//            _ui.Cursor.Initialize();
+            _interactionUI.Initialize(PlayHoveredSegment);
             foreach (var c in _content)
             {
                 c.Init(this);
@@ -87,16 +89,21 @@ namespace victoria.controller
 
         private void Update()
         {
-            RenderModel(_model, _ui, _camera, _interaction);
+            RenderModel(_interactionUI,_model,  _interaction);
             if (_model.CurrentCursorState != Model.CursorState.DwellTimer)
                 return;
 
             if (_model.HasCompletedHoverProgress())
             {
-                _model.CurrentCursorState = Model.CursorState.Playing;
-                PlayContent(_model.HoveredSegment.Value);
-                _notificationUI.ShowDebugNotification($"Play {_model.HoveredSegment.Value.ToString()}");
+                PlayHoveredSegment();
             }
+        }
+
+        private void PlayHoveredSegment()
+        {
+            _model.CurrentCursorState = Model.CursorState.Playing;
+            PlayContent(_model.HoveredSegment.Value);
+            _notificationUI.ShowDebugNotification($"Play {_model.HoveredSegment.Value.ToString()}");
         }
 
         private void PlayContent(InteractiveSegment.SegmentType? type)
@@ -108,18 +115,15 @@ namespace victoria.controller
                 else
                     c.Stop();
             }
-            if(type.HasValue)
-            _soundFX.Play(SoundFX.SoundType.ContentStarted);
-     
+
+            if (type.HasValue)
+                _soundFX.Play(SoundFX.SoundType.ContentStarted);
         }
 
-        private static void RenderModel(Model model, UI ui, Camera camera,
-            StatueInteraction interaction)
+        private static void RenderModel(InteractionUI interactionUi,Model model,StatueInteraction interaction)
         {
-            ui.Cursor.UpdateCursor(model.HitPosition, model.HitNormal, model.CurrentCursorState, camera,
-                model.CalculateNormalizedProgress());
-
-            RenderHighlightParticles(model, ui.HightlightParticles, interaction);
+            interactionUi.UpdateCursor(model.HitPosition, model.HitNormal);
+            RenderHighlightParticles(model, interaction,interactionUi);
             ToggleInteractiveSegments(model, interaction);
         }
 
@@ -140,14 +144,15 @@ namespace victoria.controller
                     {
                         case Model.TourState.Prologue:
                             return segment == InteractiveSegment.SegmentType.WholeStatue0;
-                        
+
                         case Model.TourState.Tour:
                             return segment != InteractiveSegment.SegmentType.WholeStatue0 &&
                                    segment != InteractiveSegment.SegmentType.Hall8;
-                        
+
                         case Model.TourState.Epilogue:
                             return false;
                     }
+
                     return false;
                 };
             }
@@ -155,49 +160,23 @@ namespace victoria.controller
             interaction.SetSegmentsActive(shouldBeActiveEvaluation);
         }
 
-        private static void RenderHighlightParticles(Model model, ParticleSystem highlightParticles,
-            StatueInteraction interaction)
+        private static void RenderHighlightParticles(Model model,StatueInteraction interaction, InteractionUI interactionUi)
         {
             if (model.IsInGuidedModeOrInMixedModeGuided())
             {
                 //particles on next segment
                 var nextSegment = model.GetSegmentToGuideTo();
-                if (nextSegment != null)
-                {
-                    var shapeModule = highlightParticles.shape;
-                    var renderer = interaction.GetMeshRender(nextSegment.Value);
-
-                    // hovered renderer has changed
-                    if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
-                    {
-                        shapeModule.meshRenderer = renderer;
-                        highlightParticles.Play();
-                    }
-                }
-                else
-                {
-                    highlightParticles.Stop();
-                }
+                interactionUi.UpdateHighlightedMeshRenderer(nextSegment != null
+                    ? interaction.GetMeshRender(nextSegment.Value)
+                    : null);
             }
             else
             {
                 //particles on hovered segment
                 if (model.CurrentCursorState == Model.CursorState.DwellTimer)
-                {
-                    var shapeModule = highlightParticles.shape;
-                    var renderer = interaction.GetMeshRender(model.HoveredSegment.Value);
-
-                    // hovered renderer has changed
-                    if (renderer != shapeModule.meshRenderer || !highlightParticles.isPlaying)
-                    {
-                        shapeModule.meshRenderer = renderer;
-                        highlightParticles.Play();
-                    }
-                }
+                    interactionUi.UpdateHighlightedMeshRenderer(interaction.GetMeshRender(model.HoveredSegment.Value));
                 else
-                {
-                    highlightParticles.Stop();
-                }
+                    interactionUi.UpdateHighlightedMeshRenderer(null);
             }
         }
 
@@ -205,14 +184,6 @@ namespace victoria.controller
 
         void StatueInteraction.IInteractionListener.OnBeginHover(StatueInteraction.HoverEventData eventData)
         {
-            switch (_model.CurrentTourState)
-            {
-                case Model.TourState.Prologue:
-                    if (eventData.HoveredType != InteractiveSegment.SegmentType.WholeStatue0)
-                        return;
-                    break;
-            }
-
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
@@ -222,11 +193,17 @@ namespace victoria.controller
                 BeginDwellTimerForHoveredSegment();
             }
 
-            RenderModel(_model, _ui, _camera, _interaction);
+            RenderModel(_interactionUI,_model,  _interaction);
         }
 
         private void BeginDwellTimerForHoveredSegment()
         {
+                var mode = _model.IsInGuidedModeOrInMixedModeGuided()
+                    ? InteractionUI.Mode.Guided
+                    : InteractionUI.Mode.Unguided;
+                _interactionUI.StartSelectionTimer(mode);
+                
+                
             _model.CurrentCursorState = Model.CursorState.DwellTimer;
             _model.DwellTimerStartTime = Time.time;
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerBegin);
@@ -236,10 +213,13 @@ namespace victoria.controller
 
         private void CancelDwellTimerForHoveredSegment()
         {
+            _interactionUI.CancelSelectionTimer();
+            
             _model.CurrentCursorState = Model.CursorState.Default;
             _model.DwellTimerStartTime = float.PositiveInfinity;
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerCanceled);
             _notificationUI.ShowDebugNotification($"Cancel Dwell Timer {_model.HoveredSegment}");
+            
         }
 
 
@@ -247,7 +227,7 @@ namespace victoria.controller
         {
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
-            RenderModel(_model, _ui, _camera, _interaction);
+            RenderModel(_interactionUI,_model,  _interaction);
         }
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
@@ -257,7 +237,7 @@ namespace victoria.controller
             _model.HoveredSegment = null;
             if (_model.CurrentCursorState == Model.CursorState.DwellTimer)
                 CancelDwellTimerForHoveredSegment();
-            RenderModel(_model, _ui, _camera, _interaction);
+            RenderModel(_interactionUI,_model,  _interaction);
         }
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
@@ -309,7 +289,7 @@ namespace victoria.controller
                 _model.CurrentCursorState = Model.CursorState.Default;
             }
 
-            RenderModel(_model, _ui, _camera, _interaction);
+            RenderModel(_interactionUI,_model,  _interaction);
         }
 
         #endregion

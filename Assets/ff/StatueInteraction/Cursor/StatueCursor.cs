@@ -42,8 +42,8 @@ namespace victoria.ui
         public void UpdateCursor(Vector3? position, Vector3? normal, TourController.Model.CursorState cursorState,
             Camera cam, float selectionProgress)
         {
-            _progressCircle.gameObject.SetActive(selectionProgress > 0f);
-            _progressCircle.FillRatio = selectionProgress;
+//            _progressCircle.gameObject.SetActive(selectionProgress > 0f);
+//            _progressCircle.FillRatio = selectionProgress;
             if (cursorState == TourController.Model.CursorState.DwellTimer)
             {
                 var p = position.Value;
@@ -78,21 +78,6 @@ namespace victoria.ui
             }
         }
 
-        private void Update()
-        {
-            var osscilation = _currentStyle.Osscilation.Evaluate(Time.time % _currentStyle.Osscilation.Duration());
-            var r = Mathf.Lerp(_cursorCircle.Radius, _currentStyle.Radius + osscilation, _lerpFactor);
-            var w = Mathf.Lerp(_cursorCircle.Width, _currentStyle.Width, _lerpFactor);
-
-            _cursorCircle.Radius = r;
-//            _progressCircle.Radius = r;
-
-            _cursorCircle.Width = w;
-//            _progressCircle.Width = w;
-
-            transform.position = Vector3.Lerp(transform.position, _currentPosition, _lerpFactor);
-            transform.rotation = Quaternion.Lerp(transform.rotation, _currentRotation, _lerpFactor);
-        }
 
         private Style _currentStyle;
         private Vector3 _currentPosition;

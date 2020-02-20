@@ -19,7 +19,7 @@ namespace victoria.controller
         [SerializeField] private TourController _tourController = null;
         [SerializeField] private SoundFX _soundFX = null;
         [SerializeField] private AdminComponents _admincomponents = null;
-        [SerializeField] private NotificationUI _notificationUI;
+        [SerializeField] private NotificationUI _notificationUI=null;
 
         [Serializable]
         private class AdminComponents

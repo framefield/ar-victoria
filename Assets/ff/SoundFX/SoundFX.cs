@@ -19,7 +19,7 @@ namespace victoria.audio
             public AudioClip Clip = null;
         }
 
-        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _audioSource=null;
         [SerializeField] private List<Sound> _sounds = new List<Sound>();
 
         public enum SoundType

@@ -415,7 +415,6 @@ namespace victoria.controller
                                CompletedContent.Contains(InteractiveSegment.SegmentType.Palm2) &&
                                CompletedContent.Contains(InteractiveSegment.SegmentType.Timeline6) &&
                                CompletedContent.Contains(InteractiveSegment.SegmentType.Head4);
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -443,7 +442,7 @@ namespace victoria.controller
 
                 var isGuided = TourMode == TourMode.Guided || TourMode == TourMode.Mixed &&
                                CurrentMixedInitiativeState == MixedInitiativeState.Guided;
-                float threshold = isGuided ? SelectionTimeThresholdGuided : SelectionTimeThresholdUnguided;
+                var threshold = isGuided ? SelectionTimeThresholdGuided : SelectionTimeThresholdUnguided;
                 return (Time.time - DwellTimerStartTime.Value) / threshold;
             }
 

@@ -10,8 +10,8 @@ namespace victoria.ui
     /// </summary>
     public class NotificationUI : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _label;
-        [SerializeField] private bool _showDebugNotifications;
+        [SerializeField] private TMP_Text _label = null;
+        [SerializeField] private bool _showDebugNotifications = default;
 
         public void ShowNotifiation(string text, float durationInSeconds = 2f)
         {

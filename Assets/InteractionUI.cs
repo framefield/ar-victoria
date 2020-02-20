@@ -27,26 +27,33 @@ public class InteractionUI : MonoBehaviour
             if (!_hasStopBeenTriggeredManually)
             {
                 selectionHandler.Invoke();
-                gameObject.SetActive(false);
             }
         };
-        gameObject.SetActive(false);
     }
 
     private void Update()
     {
-       _cursorTransform.position = Vector3.Lerp(_cursorTransform.position, _cursorPosition, _lerpFactor);
-       _cursorTransform.rotation = Quaternion.Lerp(_cursorTransform.rotation, _cursorRotation, _lerpFactor);
+        _cursorTransform.position = Vector3.Lerp(_cursorTransform.position, _cursorPosition, _lerpFactor);
+        _cursorTransform.rotation = Quaternion.Lerp(_cursorTransform.rotation, _cursorRotation, _lerpFactor);
     }
 
-    public void UpdateCursor(Vector3? position, Vector3? normal)
+    public void UpdateCursor(Vector3? position, Vector3? normal, Camera camera)
     {
         if (!position.HasValue)
-            return;
-        var p = position.Value;
-        var n = normal.Value;
-        _cursorPosition = p;
-        _cursorRotation = Quaternion.LookRotation(-n);
+        {
+            var t = camera.transform;
+            var forward = t.forward;
+            var pos = t.position;
+            _cursorPosition = pos + _cursorToCamDistance * forward;
+            _cursorRotation = Quaternion.LookRotation(2 * forward);
+        }
+        else
+        {
+            var p = position.Value;
+            var n = normal.Value;
+            _cursorPosition = p;
+            _cursorRotation = Quaternion.LookRotation(-n);
+        }
     }
 
     public void UpdateHighlightedMeshRenderer(MeshRenderer rendererToHighlight)
@@ -59,8 +66,13 @@ public class InteractionUI : MonoBehaviour
             shapeModule.meshRenderer = rendererToHighlight;
             _particles.Play();
         }
+
+        if (rendererToHighlight == null)
+        {
+            _particles.Stop();
+        }
     }
-  
+
     private Vector3 _cursorPosition;
     private Quaternion _cursorRotation;
 
@@ -79,16 +91,19 @@ public class InteractionUI : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
         }
 
-        gameObject.SetActive(true);
+        Debug.Log("play");
         _playableDirector.Play();
     }
 
     public void CancelSelectionTimer()
     {
+        Debug.Log("Cancel");
         _hasStopBeenTriggeredManually = true;
         _playableDirector.Stop();
-        gameObject.SetActive(false);
+        _playableDirector.time = 0f;
+        _playableDirector.Evaluate();
     }
 
     private bool _hasStopBeenTriggeredManually;
+    [SerializeField] private float _cursorToCamDistance = 3.5f;
 }

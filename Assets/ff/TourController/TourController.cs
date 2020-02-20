@@ -89,7 +89,7 @@ namespace victoria.controller
 
         private void Update()
         {
-            RenderModel(_interactionUI,_model,  _interaction);
+            RenderModel(_interactionUI, _model, _interaction,_camera);
             if (_model.CurrentCursorState != Model.CursorState.DwellTimer)
                 return;
 
@@ -120,10 +120,10 @@ namespace victoria.controller
                 _soundFX.Play(SoundFX.SoundType.ContentStarted);
         }
 
-        private static void RenderModel(InteractionUI interactionUi,Model model,StatueInteraction interaction)
+        private static void RenderModel(InteractionUI interactionUi, Model model, StatueInteraction interaction, Camera camera)
         {
-            interactionUi.UpdateCursor(model.HitPosition, model.HitNormal);
-            RenderHighlightParticles(model, interaction,interactionUi);
+            interactionUi.UpdateCursor(model.HitPosition, model.HitNormal,camera);
+            RenderHighlightParticles(model, interaction, interactionUi);
             ToggleInteractiveSegments(model, interaction);
         }
 
@@ -160,7 +160,8 @@ namespace victoria.controller
             interaction.SetSegmentsActive(shouldBeActiveEvaluation);
         }
 
-        private static void RenderHighlightParticles(Model model,StatueInteraction interaction, InteractionUI interactionUi)
+        private static void RenderHighlightParticles(Model model, StatueInteraction interaction,
+            InteractionUI interactionUi)
         {
             if (model.IsInGuidedModeOrInMixedModeGuided())
             {
@@ -193,17 +194,16 @@ namespace victoria.controller
                 BeginDwellTimerForHoveredSegment();
             }
 
-            RenderModel(_interactionUI,_model,  _interaction);
+            RenderModel(_interactionUI, _model, _interaction,_camera);
         }
 
         private void BeginDwellTimerForHoveredSegment()
         {
-                var mode = _model.IsInGuidedModeOrInMixedModeGuided()
-                    ? InteractionUI.Mode.Guided
-                    : InteractionUI.Mode.Unguided;
-                _interactionUI.StartSelectionTimer(mode);
-                
-                
+            var mode = _model.IsInGuidedModeOrInMixedModeGuided()
+                ? InteractionUI.Mode.Guided
+                : InteractionUI.Mode.Unguided;
+            _interactionUI.StartSelectionTimer(mode);
+
             _model.CurrentCursorState = Model.CursorState.DwellTimer;
             _model.DwellTimerStartTime = Time.time;
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerBegin);
@@ -214,12 +214,10 @@ namespace victoria.controller
         private void CancelDwellTimerForHoveredSegment()
         {
             _interactionUI.CancelSelectionTimer();
-            
             _model.CurrentCursorState = Model.CursorState.Default;
             _model.DwellTimerStartTime = float.PositiveInfinity;
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerCanceled);
             _notificationUI.ShowDebugNotification($"Cancel Dwell Timer {_model.HoveredSegment}");
-            
         }
 
 
@@ -227,7 +225,7 @@ namespace victoria.controller
         {
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
-            RenderModel(_interactionUI,_model,  _interaction);
+            RenderModel(_interactionUI, _model, _interaction,_camera);
         }
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
@@ -237,7 +235,7 @@ namespace victoria.controller
             _model.HoveredSegment = null;
             if (_model.CurrentCursorState == Model.CursorState.DwellTimer)
                 CancelDwellTimerForHoveredSegment();
-            RenderModel(_interactionUI,_model,  _interaction);
+            RenderModel(_interactionUI, _model, _interaction,_camera);
         }
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
@@ -289,7 +287,7 @@ namespace victoria.controller
                 _model.CurrentCursorState = Model.CursorState.Default;
             }
 
-            RenderModel(_interactionUI,_model,  _interaction);
+            RenderModel(_interactionUI, _model, _interaction,_camera);
         }
 
         #endregion
@@ -343,24 +341,14 @@ namespace victoria.controller
                        CurrentMixedInitiativeState == MixedInitiativeState.Guided;
             }
 
-
             [CanBeNull] public MixedInitiativeState CurrentMixedInitiativeState;
-
             public TourState CurrentTourState;
             public TourMode TourMode;
-
-            [FormerlySerializedAs("SegmentUnderCursor")]
             public InteractiveSegment.SegmentType? HoveredSegment;
-
-            [FormerlySerializedAs("_currentCursorState")] [FormerlySerializedAs("CurrentState")]
             public CursorState CurrentCursorState;
-
             public Vector3? HitPosition;
             public Vector3? HitNormal;
-
-            [FormerlySerializedAs("HoverStartTime")]
             public float? DwellTimerStartTime;
-
             public List<InteractiveSegment.SegmentType> CompletedContent;
 
             public InteractiveSegment.SegmentType? GetSegmentToGuideTo()
@@ -408,7 +396,7 @@ namespace victoria.controller
                 Epilogue
             }
 
-            public float CalculateNormalizedProgress()
+            private float CalculateNormalizedProgress()
             {
                 if (DwellTimerStartTime == null || CurrentCursorState != CursorState.DwellTimer)
                     return 0f;

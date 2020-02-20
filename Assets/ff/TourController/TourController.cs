@@ -78,6 +78,7 @@ namespace victoria.controller
                 case Model.TourState.Tour:
                     break;
                 case Model.TourState.Epilogue:
+                    PlayContent(InteractiveSegment.SegmentType.Hall8);
                     break;
             }
 
@@ -145,7 +146,7 @@ namespace victoria.controller
                                    segment != InteractiveSegment.SegmentType.Hall8;
                         
                         case Model.TourState.Epilogue:
-                            return segment == InteractiveSegment.SegmentType.Hall8;
+                            return false;
                     }
                     return false;
                 };
@@ -192,14 +193,6 @@ namespace victoria.controller
                         shapeModule.meshRenderer = renderer;
                         highlightParticles.Play();
                     }
-
-//                    var rate = model.CompletedContent.Contains(model.HoveredSegment.Value) ? 500 : 2000;
-//                    var emissionModule = highlightParticles.emission;
-//                    if (emissionModule.rateOverTimeMultiplier != rate)
-//                    {
-//                        emissionModule.rateOverTimeMultiplier = rate;
-//                        highlightParticles.Play();
-//                    }
                 }
                 else
                 {

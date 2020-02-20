@@ -22,11 +22,17 @@ public class InteractionUI : MonoBehaviour
     public void Initialize(Action selectionHandler)
     {
         _playableDirector = GetComponent<PlayableDirector>();
+        _playableDirector.Stop();
+        _playableDirector.time = 0f;
+        _playableDirector.Evaluate();
         _playableDirector.stopped += director =>
         {
             if (!_hasStopBeenTriggeredManually)
             {
                 selectionHandler.Invoke();
+                _playableDirector.Stop();
+                _playableDirector.time = 0f;
+                _playableDirector.Evaluate();
             }
         };
     }

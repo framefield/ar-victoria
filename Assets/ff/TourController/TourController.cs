@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -89,14 +90,14 @@ namespace victoria.controller
 
         private void Update()
         {
-            RenderModel(_interactionUI, _model, _interaction,_camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera);
             if (_model.CurrentCursorState != Model.CursorState.DwellTimer)
                 return;
 
-            if (_model.HasCompletedHoverProgress())
-            {
-                PlayHoveredSegment();
-            }
+//            if (_model.HasCompletedHoverProgress())
+//            {
+//                PlayHoveredSegment();
+//            }
         }
 
         private void PlayHoveredSegment()
@@ -120,9 +121,10 @@ namespace victoria.controller
                 _soundFX.Play(SoundFX.SoundType.ContentStarted);
         }
 
-        private static void RenderModel(InteractionUI interactionUi, Model model, StatueInteraction interaction, Camera camera)
+        private static void RenderModel(InteractionUI interactionUi, Model model, StatueInteraction interaction,
+            Camera camera)
         {
-            interactionUi.UpdateCursor(model.HitPosition, model.HitNormal,camera);
+            interactionUi.UpdateCursor(model.HitPosition, model.HitNormal, camera);
             RenderHighlightParticles(model, interaction, interactionUi);
             ToggleInteractiveSegments(model, interaction);
         }
@@ -147,7 +149,8 @@ namespace victoria.controller
 
                         case Model.TourState.Tour:
                             return segment != InteractiveSegment.SegmentType.WholeStatue0 &&
-                                   segment != InteractiveSegment.SegmentType.Hall8;
+                                   segment != InteractiveSegment.SegmentType.Hall8 &&
+                                   segment != model.CompletedContent.Last();
 
                         case Model.TourState.Epilogue:
                             return false;
@@ -194,7 +197,7 @@ namespace victoria.controller
                 BeginDwellTimerForHoveredSegment();
             }
 
-            RenderModel(_interactionUI, _model, _interaction,_camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera);
         }
 
         private void BeginDwellTimerForHoveredSegment()
@@ -225,7 +228,7 @@ namespace victoria.controller
         {
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
-            RenderModel(_interactionUI, _model, _interaction,_camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera);
         }
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
@@ -235,12 +238,13 @@ namespace victoria.controller
             _model.HoveredSegment = null;
             if (_model.CurrentCursorState == Model.CursorState.DwellTimer)
                 CancelDwellTimerForHoveredSegment();
-            RenderModel(_interactionUI, _model, _interaction,_camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera);
         }
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
         {
             _model.CompletedContent.Add(completedChapter.Type);
+
             _soundFX.Play(SoundFX.SoundType.ContentCompleted);
             _notificationUI.ShowDebugNotification(
                 $"Completed {completedChapter.Type}, {_model.CompletedContent.Count}/{StatueInteraction.SegmentCount}"
@@ -287,7 +291,7 @@ namespace victoria.controller
                 _model.CurrentCursorState = Model.CursorState.Default;
             }
 
-            RenderModel(_interactionUI, _model, _interaction,_camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera);
         }
 
         #endregion
@@ -370,7 +374,7 @@ namespace victoria.controller
                 {
                     case TourMode.Guided:
                     case TourMode.Unguided:
-                        return CompletedContent.Count == StatueInteraction.SegmentCount;
+                        return CompletedContent.Distinct().Count() == StatueInteraction.SegmentCount;
                     case TourMode.Mixed:
                         return CompletedContent.Contains(InteractiveSegment.SegmentType.Arm1) &&
                                CompletedContent.Contains(InteractiveSegment.SegmentType.Palm2) &&

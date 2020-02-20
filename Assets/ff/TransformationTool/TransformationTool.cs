@@ -13,6 +13,12 @@ namespace victoria.admintools
     /// </summary>
     public class TransformationTool : MonoBehaviour
     {
+        [Header("Parameters")]
+        [SerializeField] private float _translationSensitivity = 0.1f;
+        [SerializeField] private float _rotationSensitivity = 0.1f;
+        [SerializeField] private float _scaleSensitivity = 0.1f;
+        
+        [Header("Internal References")]
         [SerializeField] private EventTrigger _translateXPos = null;
         [SerializeField] private EventTrigger _translateXNeg = null;
         [SerializeField] private EventTrigger _translateYPos = null;
@@ -35,18 +41,18 @@ namespace victoria.admintools
         {
             _calibratedObject = calibratedObject;
             _virtualVictoria = virtualVictoria;
-            AddTrigger(_translateXPos, () => _calibratedObject.Translate(Vector3.right));
-            AddTrigger(_translateXNeg, () => _calibratedObject.Translate(Vector3.left));
-            AddTrigger(_translateYPos, () => _calibratedObject.Translate(Vector3.up));
-            AddTrigger(_translateYNeg, () => _calibratedObject.Translate(Vector3.down));
-            AddTrigger(_translateZPos, () => _calibratedObject.Translate(Vector3.forward));
-            AddTrigger(_translateZNeg, () => _calibratedObject.Translate(Vector3.back));
+            AddTrigger(_translateXPos, () => _calibratedObject.Translate(_translationSensitivity*Vector3.right));
+            AddTrigger(_translateXNeg, () => _calibratedObject.Translate(_translationSensitivity*Vector3.left));
+            AddTrigger(_translateYPos, () => _calibratedObject.Translate(_translationSensitivity*Vector3.up));
+            AddTrigger(_translateYNeg, () => _calibratedObject.Translate(_translationSensitivity*Vector3.down));
+            AddTrigger(_translateZPos, () => _calibratedObject.Translate(_translationSensitivity*Vector3.forward));
+            AddTrigger(_translateZNeg, () => _calibratedObject.Translate(_translationSensitivity*Vector3.back));
 
-            AddTrigger(_rotYPos, () => _calibratedObject.RotateY(1f));
-            AddTrigger(_rotYNeg, () => _calibratedObject.RotateY(-1f));
+            AddTrigger(_rotYPos, () => _calibratedObject.RotateY(_rotationSensitivity*1f));
+            AddTrigger(_rotYNeg, () => _calibratedObject.RotateY(_rotationSensitivity*-1f));
 
-            AddTrigger(_scalePos, () => _calibratedObject.ScaleUniform(1f));
-            AddTrigger(_scaleNeg, () => _calibratedObject.ScaleUniform(-1f));
+            AddTrigger(_scalePos, () => _calibratedObject.ScaleUniform(_scaleSensitivity*1f));
+            AddTrigger(_scaleNeg, () => _calibratedObject.ScaleUniform(_scaleSensitivity*-1f));
 
             AddTrigger(_reset, () => _calibratedObject.ResetCalibration());
             AddTrigger(_showHitMesh, () => _virtualVictoria.gameObject.SetActive(true));
@@ -59,8 +65,7 @@ namespace victoria.admintools
 
         private static void AddTrigger(EventTrigger trigger, Action action)
         {
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerDown;
+            var entry = new EventTrigger.Entry {eventID = EventTriggerType.PointerDown};
             entry.callback.AddListener((data) => action.Invoke());
             trigger.triggers.Add(entry);
         }

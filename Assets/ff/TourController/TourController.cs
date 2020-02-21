@@ -33,7 +33,6 @@ namespace victoria.controller
             _listener = listener;
             _interaction.Initialize(this, _camera);
             _notificationUI = notificationUi;
-//            _ui.Cursor.Initialize();
             _interactionUI.Initialize(PlayHoveredSegment);
             foreach (var c in _content)
             {

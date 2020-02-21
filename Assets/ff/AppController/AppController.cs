@@ -5,6 +5,7 @@ using UnityEngine;
 using victoria.admintools;
 using victoria.audio;
 using victoria.input;
+using victoria.logging;
 using victoria.ui;
 
 namespace victoria.controller
@@ -14,12 +15,15 @@ namespace victoria.controller
     /// </summary>
     public class AppController : MonoBehaviour, TourController.ITourEventsListener, SpeechInput.ICommandListener
     {
-        [SerializeField] private SpeechInput _speechInput = null;
+        [Header("External Reference")]
         [SerializeField] private Camera _camera = null;
+        [Header("Internal Reference")]
+        [SerializeField] private SpeechInput _speechInput = null;
+        [SerializeField] private TourLog _tourLog = null;
         [SerializeField] private TourController _tourController = null;
         [SerializeField] private SoundFX _soundFX = null;
-        [SerializeField] private AdminComponents _admincomponents = null;
         [SerializeField] private NotificationUI _notificationUI=null;
+        [SerializeField] private AdminComponents _admincomponents = null;
 
         [Serializable]
         private class AdminComponents
@@ -46,12 +50,14 @@ namespace victoria.controller
         private void StartTour(TourController.TourMode mode)
         {
             _tourController.StartTour(mode);
+            _tourLog.StartLog(_camera.transform,mode);
             SetState(State.Tour);
         }
 
         void TourController.ITourEventsListener.OnTourCompleted()
         {
             SetState(State.Home);
+            _tourLog.CompleteLog();
         }
 
         private void SetState(State state)
@@ -63,7 +69,6 @@ namespace victoria.controller
             _admincomponents.VirtualVictoria.gameObject.SetActive(_state == State.Admin);
             _admincomponents.HoldoutVictoria.gameObject.SetActive(_state != State.Admin);
             _admincomponents.SpatialMapping.gameObject.SetActive(_state == State.Admin);
-//        _currentStateLabel.text = $"State: {state.ToString()}";
         }
 
         private State _state;
@@ -93,7 +98,10 @@ namespace victoria.controller
                     break;
                 case SpeechInput.Command.CancelTour:
                     if (_state == State.Tour)
+                    {
                         _tourController.AbortTour();
+                        _tourLog.CompleteLog();
+                    }
                     break;
                 case SpeechInput.Command.Admin:
                     if (_state == State.Home)

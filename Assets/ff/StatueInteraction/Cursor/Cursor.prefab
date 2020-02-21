@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824e719911e0ce0428d9c1f3a67b509a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 1
-  Width: 0.1
+  Radius: 0.5
+  Width: 0.2
   StartAngle: 0
   FillAngle: 360
   FillRatio: 1
@@ -986,7 +986,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2000
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4944,8 +4944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824e719911e0ce0428d9c1f3a67b509a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 1.6
-  Width: 0.85
+  Radius: 1
+  Width: 0.35
   StartAngle: 0
   FillAngle: 360
   FillRatio: 0

@@ -10,7 +10,6 @@ public class InteractionUI : MonoBehaviour
     [SerializeField] private TimelineAsset _unguidedTimeline;
     [SerializeField] private Transform _cursorTransform;
     [SerializeField] private ParticleSystem _particles;
-    [SerializeField] private ParticleSystem _cursorParticles;
     [SerializeField] private float _lerpFactor = 0.5f;
 
     public enum Mode

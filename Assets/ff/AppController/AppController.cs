@@ -2,6 +2,7 @@
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity.SpatialMapping;
 using UnityEngine;
+using UnityEngine.Serialization;
 using victoria.admintools;
 using victoria.audio;
 using victoria.input;
@@ -13,16 +14,20 @@ namespace victoria.controller
     /// <summary>
     /// Main App Controller. Handles the 3 app state - Home, Tour & Admin. Initializes and connects all components in the scene.
     /// </summary>
-    public class AppController : MonoBehaviour, TourController.ITourEventsListener, SpeechInput.ICommandListener, TransformationTool.IInteractionListener
+    public class AppController : MonoBehaviour, TourController.ITourEventsListener, SpeechInput.ICommandListener,
+        TransformationTool.IInteractionListener
     {
-        [Header("External Reference")]
-        [SerializeField] private Camera _camera = null;
-        [Header("Internal Reference")]
-        [SerializeField] private SpeechInput _speechInput = null;
+        [Header("External Reference")] [SerializeField]
+        private Camera _camera = null;
+
+        [Header("Internal Reference")] [SerializeField]
+        private SpeechInput _speechInput = null;
+
         [SerializeField] private TourLog _tourLog = null;
         [SerializeField] private TourController _tourController = null;
         [SerializeField] private SoundFX _soundFX = null;
-        [SerializeField] private NotificationUI _notificationUI=null;
+        [SerializeField] private NotificationUI _notificationUI = null;
+        [SerializeField] private GameObject _mockEnviroment = null;
         [SerializeField] private AdminComponents _admincomponents = null;
 
         [Serializable]
@@ -45,12 +50,13 @@ namespace victoria.controller
                 _admincomponents.CalibratedTransform.GetComponent<CalibratedObject>(),
                 _admincomponents.VirtualVictoria.gameObject);
             SetState(State.Admin);
+            _mockEnviroment.SetActive(Application.isEditor);
         }
 
         private void StartTour(TourController.TourMode mode)
         {
             _tourController.StartTour(mode);
-            _tourLog.StartLog(_camera.transform,mode);
+            _tourLog.StartLog(_camera.transform, mode);
             SetState(State.Tour);
         }
 
@@ -102,6 +108,7 @@ namespace victoria.controller
                         _tourController.AbortTour();
                         _tourLog.CompleteLog();
                     }
+
                     break;
                 case SpeechInput.Command.Admin:
                     if (_state == State.Home)

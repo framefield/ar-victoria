@@ -55,7 +55,8 @@ namespace victoria.interaction
             var hasHit = Physics.Raycast(origin, direction, out var hit, Mathf.Infinity,layerMask);
 
             var hitSegment = hit.transform?.GetComponent<InteractiveSegment>();
-            if (hasHit && hitSegment != null)
+            var hitNormalIsPointingTowardsCam = _camera.transform.InverseTransformVector(hit.normal).z < 0;
+            if (hasHit && hitSegment != null&&hitNormalIsPointingTowardsCam)
             {
                 var eventData = new HoverEventData
                 {

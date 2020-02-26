@@ -209,12 +209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bb8de0cb7045e43a175616583400b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cursorToCamDistance: 30
   _guidedTimeline: {fileID: 11400000, guid: 04e50cfddd7b38c429f7997e7d0bcbf0, type: 2}
   _unguidedTimeline: {fileID: 11400000, guid: 727c5949d8ba47b48bb48d9660689d12, type: 2}
   _cursorTransform: {fileID: 8810013715321143509}
   _particles: {fileID: 8810013714674213526}
   _lerpFactor: 0.8
-  _cursorToCamDistance: 30
 --- !u!1 &8810013713809827976
 GameObject:
   m_ObjectHideFlags: 0

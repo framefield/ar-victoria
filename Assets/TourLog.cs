@@ -1,53 +1,60 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using victoria.controller;
+using victoria.interaction;
 
-namespace victoria.logging
+namespace victoria.log
 {
+    /// <summary>
+    /// Log the camera transform and interaction events to csv file.
+    /// </summary>
     public class TourLog : MonoBehaviour
     {
         [SerializeField] float _logRate = 0.05f;
 
-        [ContextMenu("Start")]
         public void StartLog(Transform transformToLog, TourController.TourMode mode)
         {
-            _shouldCompleteLogging = false;
-            StartCoroutine(WriteTimeIntoFile(transformToLog, mode));
+            _shouldCompleteLogForTour = false;
+
+            var pathBase = GeneratePathBase(mode);
+            var transformFile = pathBase + $"{1f / _logRate}sps.csv";
+            var eventFile = pathBase + "events.csv";
+
+            StartCoroutine(WriteTransformIntoFile(transformToLog, transformFile));
+            StartCoroutine(WriteReceivedEventsIntoFile(eventFile));
         }
 
-        [ContextMenu("Complete")]
         public void CompleteLog()
         {
-            _shouldCompleteLogging = true;
+            _shouldCompleteLogForTour = true;
         }
 
-        private IEnumerator WriteTimeIntoFile(Transform transformToLog, TourController.TourMode mode)
+        public void LogEvent(TourEvent eventType, InteractiveSegment.SegmentType segment)
         {
-            using (var sw = new StreamWriter(GeneratePath(mode, _logRate)))
-            {
-                sw.Write(GenerateHeader());
-                while (!_shouldCompleteLogging)
-                {
-                    _timeSinceLastLog += Time.deltaTime;
-                    if (_timeSinceLastLog > _logRate)
-                    {
-                        _timeSinceLastLog -= _logRate;
-                        var csvLine = SampleToCSV(transformToLog);
-                        sw.Write(csvLine);
-                    }
+            _receivedTourEvents.Enqueue((eventType, segment));
+        }
 
-                    yield return null;
-                }
-            }
+        public enum TourEvent
+        {
+            Play,
+            Complete
         }
 
         private static string SampleToCSV(Transform t)
         {
             var pos = t.position;
             var rot = t.rotation.eulerAngles;
-            return $"{pos.x}, {pos.y}, {pos.z}, {rot.x}, {rot.y}, {rot.z}\n";
+            return $"{pos.x}\t {pos.y}\t {pos.z}\t {rot.x}\t {rot.y}\t {rot.z}\n";
+        }
+
+        private static string EventToCSV((TourEvent eventType, InteractiveSegment.SegmentType segment) eventData)
+        {
+            var now = DateTime.Now;
+            return
+                $"{now.Year}_{now.Month}_{now.Day}T{now.Hour}h{now.Minute}m{now.Second}s\t {eventData.eventType.ToString()}\t {eventData.segment.ToString()}\n";
         }
 
         private static string GenerateHeader()
@@ -63,7 +70,47 @@ namespace victoria.logging
             return header;
         }
 
-        private static string GeneratePath(TourController.TourMode mode, float rate)
+        private IEnumerator WriteReceivedEventsIntoFile(string path)
+        {
+            using (var sw = new StreamWriter(path))
+            {
+                while (true)
+                {
+                    while (_receivedTourEvents.Count > 0)
+                        sw.Write(EventToCSV(_receivedTourEvents.Dequeue()));
+
+                    if (_shouldCompleteLogForTour)
+                        break;
+
+                    yield return null;
+                }
+            }
+        }
+
+        private IEnumerator WriteTransformIntoFile(Transform transformToLog, string path)
+        {
+            using (var sw = new StreamWriter(path))
+            {
+                sw.Write(GenerateHeader());
+                while (true)
+                {
+                    _timeSinceLastLog += Time.deltaTime;
+                    if (_timeSinceLastLog > _logRate)
+                    {
+                        _timeSinceLastLog -= _logRate;
+                        var csvLine = SampleToCSV(transformToLog);
+                        sw.Write(csvLine);
+                    }
+
+                    if (_shouldCompleteLogForTour)
+                        break;
+
+                    yield return null;
+                }
+            }
+        }
+
+        private static string GeneratePathBase(TourController.TourMode mode)
         {
             var exists = Directory.Exists(SubfolderPath);
             if (!exists)
@@ -86,13 +133,20 @@ namespace victoria.logging
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
 
-            var filename =
-                $"{modeString}_{now.Year}_{now.Month}_{now.Day}T{now.Hour}h{now.Minute}m{now.Second}s_{1f / rate}sps.csv";
-            return SubfolderPath + filename;
+            var filenamePrefix =
+                $"{modeString}_{now.Year}_{now.Month}_{now.Day}T{now.Hour}h{now.Minute}m{now.Second}s_";
+
+            return SubfolderPath + filenamePrefix;
         }
 
+
+        private readonly Queue<(TourEvent eventType, InteractiveSegment.SegmentType segment)> _receivedTourEvents =
+            new Queue<(TourEvent, InteractiveSegment.SegmentType)>();
+
         private float _timeSinceLastLog;
-        private bool _shouldCompleteLogging;
+        private bool _shouldCompleteLogForTour;
+        private StreamWriter _eventLogger;
+
         private const string SubfolderPath = "logs/";
     }
 }

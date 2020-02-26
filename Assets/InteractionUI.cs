@@ -3,13 +3,18 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
+/// <summary>
+/// Visualize hover and selection for the two <see cref="TourMode"/>s. The selection is triggered when the timeline has
+/// been played completely. To configure duration and appearance of the animations, simply change the according timeline
+/// asset.
+/// </summary>
 public class InteractionUI : MonoBehaviour
 {
-    private PlayableDirector _playableDirector;
-    [SerializeField] private TimelineAsset _guidedTimeline;
-    [SerializeField] private TimelineAsset _unguidedTimeline;
-    [SerializeField] private Transform _cursorTransform;
-    [SerializeField] private ParticleSystem _particles;
+    [SerializeField] private float _cursorToCamDistance = 3.5f;
+    [SerializeField] private TimelineAsset _guidedTimeline = null;
+    [SerializeField] private TimelineAsset _unguidedTimeline = null;
+    [SerializeField] private Transform _cursorTransform = null;
+    [SerializeField] private ParticleSystem _particles = null;
     [SerializeField] private float _lerpFactor = 0.5f;
 
     public enum Mode
@@ -26,13 +31,12 @@ public class InteractionUI : MonoBehaviour
         _playableDirector.Evaluate();
         _playableDirector.stopped += director =>
         {
-            if (!_hasStopBeenTriggeredManually)
-            {
-                selectionHandler.Invoke();
-                _playableDirector.Stop();
-                _playableDirector.time = 0f;
-                _playableDirector.Evaluate();
-            }
+            if (_hasStopBeenTriggeredManually)
+                return;
+            selectionHandler.Invoke();
+            _playableDirector.Stop();
+            _playableDirector.time = 0f;
+            _playableDirector.Evaluate();
         };
     }
 
@@ -42,11 +46,11 @@ public class InteractionUI : MonoBehaviour
         _cursorTransform.rotation = Quaternion.Lerp(_cursorTransform.rotation, _cursorRotation, _lerpFactor);
     }
 
-    public void UpdateCursor(Vector3? position, Vector3? normal, Camera camera)
+    public void UpdateCursor(Vector3? position, Vector3? normal, Camera cam)
     {
         if (!position.HasValue)
         {
-            var t = camera.transform;
+            var t = cam.transform;
             var forward = t.forward;
             var pos = t.position;
             _cursorPosition = pos + _cursorToCamDistance * forward;
@@ -78,9 +82,6 @@ public class InteractionUI : MonoBehaviour
         }
     }
 
-    private Vector3 _cursorPosition;
-    private Quaternion _cursorRotation;
-
     public void StartSelectionTimer(Mode mode)
     {
         _hasStopBeenTriggeredManually = false;
@@ -96,19 +97,19 @@ public class InteractionUI : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
         }
 
-        Debug.Log("play");
         _playableDirector.Play();
     }
 
     public void CancelSelectionTimer()
     {
-        Debug.Log("Cancel");
         _hasStopBeenTriggeredManually = true;
         _playableDirector.Stop();
         _playableDirector.time = 0f;
         _playableDirector.Evaluate();
     }
 
+    private Vector3 _cursorPosition;
+    private Quaternion _cursorRotation;
     private bool _hasStopBeenTriggeredManually;
-    [SerializeField] private float _cursorToCamDistance = 3.5f;
+    private PlayableDirector _playableDirector;
 }

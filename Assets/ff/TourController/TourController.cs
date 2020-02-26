@@ -4,9 +4,9 @@ using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using victoria.audio;
 using victoria.interaction;
+using victoria.log;
 using victoria.tour;
 using victoria.ui;
 
@@ -19,14 +19,13 @@ namespace victoria.controller
         TourStation.IInteractionListener
     {
         [SerializeField] private Model _model;
-
-//        [SerializeField] private UI _ui = UI.Empty;
-        [SerializeField] private InteractionUI _interactionUI;
+        [SerializeField] private InteractionUI _interactionUI = null;
         [SerializeField] private StatueInteraction _interaction = null;
         [SerializeField] private TourStation[] _content = null;
 
         // called by the AppController
-        public void Initialize(ITourEventsListener listener, Camera cam, SoundFX soundFx, NotificationUI notificationUi)
+        public void Initialize(ITourEventsListener listener, Camera cam, SoundFX soundFx, NotificationUI notificationUi,
+            TourLog tourLog)
         {
             _camera = cam;
             _soundFX = soundFx;
@@ -34,6 +33,7 @@ namespace victoria.controller
             _interaction.Initialize(this, _camera);
             _notificationUI = notificationUi;
             _interactionUI.Initialize(PlayHoveredSegment);
+            _tourLog = tourLog;
             foreach (var c in _content)
             {
                 c.Init(this);
@@ -90,19 +90,14 @@ namespace victoria.controller
         private void Update()
         {
             RenderModel(_interactionUI, _model, _interaction, _camera);
-            if (_model.CurrentCursorState != Model.CursorState.DwellTimer)
-                return;
-
-//            if (_model.HasCompletedHoverProgress())
-//            {
-//                PlayHoveredSegment();
-//            }
         }
 
         private void PlayHoveredSegment()
         {
             _model.CurrentCursorState = Model.CursorState.Playing;
             PlayContent(_model.HoveredSegment.Value);
+
+            _tourLog.LogEvent(TourLog.TourEvent.Play, _model.HoveredSegment.Value);
             _notificationUI.ShowDebugNotification($"Play {_model.HoveredSegment.Value.ToString()}");
         }
 
@@ -212,7 +207,6 @@ namespace victoria.controller
             _notificationUI.ShowDebugNotification($"Start Dwell Timer {_model.HoveredSegment}");
         }
 
-
         private void CancelDwellTimerForHoveredSegment()
         {
             _interactionUI.CancelSelectionTimer();
@@ -221,7 +215,6 @@ namespace victoria.controller
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerCanceled);
             _notificationUI.ShowDebugNotification($"Cancel Dwell Timer {_model.HoveredSegment}");
         }
-
 
         void StatueInteraction.IInteractionListener.OnUpdateHover(StatueInteraction.HoverEventData eventData)
         {
@@ -244,6 +237,7 @@ namespace victoria.controller
         {
             _model.CompletedContent.Add(completedChapter.Type);
 
+            _tourLog.LogEvent(TourLog.TourEvent.Complete, completedChapter.Type);
             _soundFX.Play(SoundFX.SoundType.ContentCompleted);
             _notificationUI.ShowDebugNotification(
                 $"Completed {completedChapter.Type}, {_model.CompletedContent.Count}/{StatueInteraction.SegmentCount}"
@@ -299,6 +293,7 @@ namespace victoria.controller
         private SoundFX _soundFX;
         private Camera _camera;
         private NotificationUI _notificationUI;
+        private TourLog _tourLog;
 
         #region data structure
 
@@ -306,12 +301,10 @@ namespace victoria.controller
         private struct UI
         {
             public ParticleSystem HightlightParticles;
-            public StatueCursor Cursor;
             public TMP_Text DebugLabel;
 
             public static UI Empty = new UI()
             {
-                Cursor = null,
                 DebugLabel = null,
                 HightlightParticles = null
             };
@@ -397,22 +390,6 @@ namespace victoria.controller
                 Prologue,
                 Tour,
                 Epilogue
-            }
-
-            private float CalculateNormalizedProgress()
-            {
-                if (DwellTimerStartTime == null || CurrentCursorState != CursorState.DwellTimer)
-                    return 0f;
-
-                var isGuided = TourMode == TourMode.Guided || TourMode == TourMode.Mixed &&
-                               CurrentMixedInitiativeState == MixedInitiativeState.Guided;
-                var threshold = isGuided ? SelectionTimeThresholdGuided : SelectionTimeThresholdUnguided;
-                return (Time.time - DwellTimerStartTime.Value) / threshold;
-            }
-
-            public bool HasCompletedHoverProgress()
-            {
-                return CalculateNormalizedProgress() >= 1f;
             }
 
             private const float SelectionTimeThresholdUnguided = 3f;

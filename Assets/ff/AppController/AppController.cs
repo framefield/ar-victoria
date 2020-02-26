@@ -5,7 +5,7 @@ using UnityEngine;
 using victoria.admintools;
 using victoria.audio;
 using victoria.input;
-using victoria.logging;
+using victoria.log;
 using victoria.ui;
 
 namespace victoria.controller
@@ -13,7 +13,7 @@ namespace victoria.controller
     /// <summary>
     /// Main App Controller. Handles the 3 app state - Home, Tour & Admin. Initializes and connects all components in the scene.
     /// </summary>
-    public class AppController : MonoBehaviour, TourController.ITourEventsListener, SpeechInput.ICommandListener
+    public class AppController : MonoBehaviour, TourController.ITourEventsListener, SpeechInput.ICommandListener, TransformationTool.IInteractionListener
     {
         [Header("External Reference")]
         [SerializeField] private Camera _camera = null;
@@ -38,12 +38,12 @@ namespace victoria.controller
 
         private void Start()
         {
-            _tourController.Initialize(this, _camera, _soundFX, _notificationUI);
+            _tourController.Initialize(this, _camera, _soundFX, _notificationUI, _tourLog);
             _speechInput.Initialize(this, _soundFX, _notificationUI);
             _admincomponents.TransformationTool.Initialize(
+                this,
                 _admincomponents.CalibratedTransform.GetComponent<CalibratedObject>(),
-                _admincomponents.VirtualVictoria.gameObject,
-                StartTour);
+                _admincomponents.VirtualVictoria.gameObject);
             SetState(State.Admin);
         }
 
@@ -113,6 +113,11 @@ namespace victoria.controller
                 default:
                     throw new ArgumentOutOfRangeException(nameof(command), command, null);
             }
+        }
+
+        void TransformationTool.IInteractionListener.StartTourCommand(TourController.TourMode mode)
+        {
+            StartTour(mode);
         }
     }
 }

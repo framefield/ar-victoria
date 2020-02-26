@@ -37,8 +37,9 @@ namespace victoria.admintools
         [SerializeField] private EventTrigger _startCharlie = null;
 
         //todo: refactor this using a interaction interface
-        public void Initialize(CalibratedObject calibratedObject, GameObject virtualVictoria, Action<TourController.TourMode> tourStartCallback)
+        public void Initialize(IInteractionListener listener, CalibratedObject calibratedObject, GameObject virtualVictoria)
         {
+            _listener = listener;
             _calibratedObject = calibratedObject;
             _virtualVictoria = virtualVictoria;
             AddTrigger(_translateXPos, () => _calibratedObject.Translate(_translationSensitivity*Vector3.right));
@@ -58,9 +59,9 @@ namespace victoria.admintools
             AddTrigger(_showHitMesh, () => _virtualVictoria.gameObject.SetActive(true));
             AddTrigger(_hideHitMesh, () => _virtualVictoria.gameObject.SetActive(false));
             
-            AddTrigger(_startAlpha, () => tourStartCallback.Invoke(TourController.TourMode.Unguided));
-            AddTrigger(_startBravo, () => tourStartCallback.Invoke(TourController.TourMode.Guided));
-            AddTrigger(_startCharlie, () => tourStartCallback.Invoke(TourController.TourMode.Mixed));
+            AddTrigger(_startAlpha, () => _listener.StartTourCommand(TourController.TourMode.Unguided));
+            AddTrigger(_startBravo, () => _listener.StartTourCommand(TourController.TourMode.Unguided));
+            AddTrigger(_startCharlie, () => _listener.StartTourCommand(TourController.TourMode.Unguided));
         }
 
         private static void AddTrigger(EventTrigger trigger, Action action)
@@ -72,5 +73,11 @@ namespace victoria.admintools
 
         private CalibratedObject _calibratedObject;
         private GameObject _virtualVictoria;
+        private IInteractionListener _listener;
+        
+        public interface IInteractionListener
+        {
+            void StartTourCommand(TourController.TourMode mode);
+        }
     }
 }

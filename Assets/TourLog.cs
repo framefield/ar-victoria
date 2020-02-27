@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 using victoria.controller;
 using victoria.interaction;
@@ -70,52 +71,57 @@ namespace victoria.log
             return header;
         }
 
-        private IEnumerator WriteReceivedEventsIntoFile(string path)
+        private IEnumerator WriteReceivedEventsIntoFile(string filename)
         {
-            using (var sw = new StreamWriter(path))
+            var p = Path.Combine(Application.persistentDataPath, filename);
+            using (var file = new FileStream(p, FileMode.Create, FileAccess.Write, FileShare.Write))
             {
-                while (true)
+                using (var writer = new StreamWriter(file, Encoding.UTF8))
                 {
-                    while (_receivedTourEvents.Count > 0)
-                        sw.Write(EventToCSV(_receivedTourEvents.Dequeue()));
-
-                    if (_shouldCompleteLogForTour)
-                        break;
-
-                    yield return null;
-                }
-            }
-        }
-
-        private IEnumerator WriteTransformIntoFile(Transform transformToLog, string path)
-        {
-            using (var sw = new StreamWriter(path))
-            {
-                sw.Write(GenerateHeader());
-                while (true)
-                {
-                    _timeSinceLastLog += Time.deltaTime;
-                    if (_timeSinceLastLog > _logRate)
+                    while (true)
                     {
-                        _timeSinceLastLog -= _logRate;
-                        var csvLine = SampleToCSV(transformToLog);
-                        sw.Write(csvLine);
+                        while (_receivedTourEvents.Count > 0)
+                            writer.Write(EventToCSV(_receivedTourEvents.Dequeue()));
+
+                        if (_shouldCompleteLogForTour)
+                            break;
+
+                        yield return null;
                     }
-
-                    if (_shouldCompleteLogForTour)
-                        break;
-
-                    yield return null;
                 }
             }
         }
+
+        private IEnumerator WriteTransformIntoFile(Transform transformToLog, string filename)
+        {
+            var p = Path.Combine(Application.persistentDataPath, filename);
+            using (var file = new FileStream(p, FileMode.Create, FileAccess.Write, FileShare.Write))
+            {
+                using (var writer = new StreamWriter(file, Encoding.UTF8))
+                {
+                    writer.Write(GenerateHeader());
+                    while (true)
+                    {
+                        _timeSinceLastLog += Time.deltaTime;
+                        if (_timeSinceLastLog > _logRate)
+                        {
+                            _timeSinceLastLog -= _logRate;
+                            var csvLine = SampleToCSV(transformToLog);
+                            writer.Write(csvLine);
+                        }
+
+                        if (_shouldCompleteLogForTour)
+                            break;
+
+                        yield return null;
+                    }
+                }
+            }
+        }
+
 
         private static string GeneratePathBase(TourController.TourMode mode)
         {
-            var exists = Directory.Exists(SubfolderPath);
-            if (!exists)
-                Directory.CreateDirectory(SubfolderPath);
-
             var now = DateTime.Now;
             char modeString;
             switch (mode)
@@ -135,8 +141,7 @@ namespace victoria.log
 
             var filenamePrefix =
                 $"{modeString}_{now.Year}_{now.Month}_{now.Day}T{now.Hour}h{now.Minute}m{now.Second}s_";
-
-            return SubfolderPath + filenamePrefix;
+            return filenamePrefix;
         }
 
 
@@ -146,7 +151,5 @@ namespace victoria.log
         private float _timeSinceLastLog;
         private bool _shouldCompleteLogForTour;
         private StreamWriter _eventLogger;
-
-        private const string SubfolderPath = "logs/";
     }
 }

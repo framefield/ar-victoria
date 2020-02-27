@@ -23,10 +23,10 @@ namespace victoria.input
 
         private Dictionary<string, Command> _textsForCommands = new Dictionary<string, Command>()
         {
-            {"alpha", Command.Alpha}, //start unguided tour
-            {"bravo", Command.Bravo}, //start guided tour
-            {"charlie", Command.Charlie}, //start mixed initiative tour
-            {"admin", Command.Admin},
+            {"start alpha", Command.Alpha}, //start unguided tour
+            {"start bravo", Command.Bravo}, //start guided tour
+            {"start charlie", Command.Charlie}, //start mixed initiative tour
+            {"admin mode", Command.Admin},
             {"cancel tour", Command.CancelTour}
         };
 

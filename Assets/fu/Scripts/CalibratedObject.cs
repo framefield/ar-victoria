@@ -44,8 +44,8 @@ public class CalibratedObject : MonoBehaviour
         PlayerPrefs.SetFloat("scaleX", transform.localScale.x);
         PlayerPrefs.SetFloat("scaleY", transform.localScale.y);
         PlayerPrefs.SetFloat("scaleZ", transform.localScale.z);
-        Debug.Log(name + ": " +PlayerPrefs.GetFloat("scaleX") + " scaleX; posX: " + PlayerPrefs.GetFloat("posX") + " rotY: " +
-           PlayerPrefs.GetFloat("rotY"));
+//        Debug.Log(name + ": " +PlayerPrefs.GetFloat("scaleX") + " scaleX; posX: " + PlayerPrefs.GetFloat("posX") + " rotY: " +
+//           PlayerPrefs.GetFloat("rotY"));
     }
     
     public void ResetCalibration()

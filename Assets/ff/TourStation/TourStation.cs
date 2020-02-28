@@ -30,10 +30,13 @@ namespace victoria.tour
             switch (state)
             {
                 case State.Stopped:
+                    _playableDirector.time = 0f;
+                    _playableDirector.Evaluate();
                     _playableDirector.Stop();
                     break;
                 case State.Playing:
                     _playableDirector.time = 0f;
+                    _playableDirector.Evaluate();
                     _playableDirector.Play();
                     
                     break;

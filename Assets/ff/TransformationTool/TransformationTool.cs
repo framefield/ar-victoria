@@ -59,9 +59,9 @@ namespace victoria.admintools
             AddTrigger(_showHitMesh, () => _virtualVictoria.gameObject.SetActive(true));
             AddTrigger(_hideHitMesh, () => _virtualVictoria.gameObject.SetActive(false));
             
-            AddTrigger(_startAlpha, () => _listener.StartTourCommand(TourController.TourMode.Unguided));
+            AddTrigger(_startAlpha, () => _listener.StartTourCommand(TourController.TourMode.Guided));
             AddTrigger(_startBravo, () => _listener.StartTourCommand(TourController.TourMode.Unguided));
-            AddTrigger(_startCharlie, () => _listener.StartTourCommand(TourController.TourMode.Unguided));
+            AddTrigger(_startCharlie, () => _listener.StartTourCommand(TourController.TourMode.Mixed));
         }
 
         private static void AddTrigger(EventTrigger trigger, Action action)

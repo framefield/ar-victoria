@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using HoloToolkit.Unity.InputModule;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -25,9 +26,10 @@ namespace victoria.controller
 
         // called by the AppController
         public void Initialize(ITourEventsListener listener, Camera cam, SoundFX soundFx, NotificationUI notificationUi,
-            TourLog tourLog)
+            TourLog tourLog, AnimatedCursor animatedCursor)
         {
             _camera = cam;
+            _animatedCursor = animatedCursor;
             _soundFX = soundFx;
             _listener = listener;
             _interaction.Initialize(this, _camera);
@@ -89,7 +91,7 @@ namespace victoria.controller
 
         private void Update()
         {
-            RenderModel(_interactionUI, _model, _interaction, _camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
         }
 
         private void PlayHoveredSegment()
@@ -116,9 +118,12 @@ namespace victoria.controller
         }
 
         private static void RenderModel(InteractionUI interactionUi, Model model, StatueInteraction interaction,
-            Camera camera)
+            Camera camera, AnimatedCursor animatedCursor)
         {
             interactionUi.UpdateCursor(model.HitPosition, model.HitNormal, camera);
+            var showCustomCursor = model.CurrentCursorState == Model.CursorState.DwellTimer;
+            interactionUi.SetCursorVisible(showCustomCursor);
+            animatedCursor.gameObject.SetActive(!showCustomCursor);
             RenderHighlightParticles(model, interaction, interactionUi);
             ToggleInteractiveSegments(model, interaction);
         }
@@ -191,7 +196,7 @@ namespace victoria.controller
                 BeginDwellTimerForHoveredSegment();
             }
 
-            RenderModel(_interactionUI, _model, _interaction, _camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
         }
 
         private void BeginDwellTimerForHoveredSegment()
@@ -220,7 +225,7 @@ namespace victoria.controller
         {
             _model.HitPosition = eventData.HitPosition;
             _model.HitNormal = eventData.HitNormal;
-            RenderModel(_interactionUI, _model, _interaction, _camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
         }
 
         void StatueInteraction.IInteractionListener.OnStopHover(InteractiveSegment.SegmentType type)
@@ -230,7 +235,7 @@ namespace victoria.controller
             _model.HoveredSegment = null;
             if (_model.CurrentCursorState == Model.CursorState.DwellTimer)
                 CancelDwellTimerForHoveredSegment();
-            RenderModel(_interactionUI, _model, _interaction, _camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
         }
 
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
@@ -284,7 +289,7 @@ namespace victoria.controller
                 _model.CurrentCursorState = Model.CursorState.Default;
             }
 
-            RenderModel(_interactionUI, _model, _interaction, _camera);
+            RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
         }
 
         #endregion
@@ -294,6 +299,7 @@ namespace victoria.controller
         private Camera _camera;
         private NotificationUI _notificationUI;
         private TourLog _tourLog;
+        private AnimatedCursor _animatedCursor;
 
         #region data structure
 

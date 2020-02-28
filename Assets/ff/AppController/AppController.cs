@@ -43,7 +43,7 @@ namespace victoria.controller
 
         private void Start()
         {
-            _tourController.Initialize(this, _camera, _soundFX, _notificationUI, _tourLog);
+            _tourController.Initialize(this, _camera, _soundFX, _notificationUI, _tourLog,  _admincomponents.AnimatedCursor);
             _speechInput.Initialize(this, _soundFX, _notificationUI);
             _admincomponents.TransformationTool.Initialize(
                 this,
@@ -71,7 +71,7 @@ namespace victoria.controller
             _state = state;
             _admincomponents.CalibratedTransform.enabled = _state == State.Admin;
             _admincomponents.TransformationTool.gameObject.SetActive(_state == State.Admin);
-            _admincomponents.AnimatedCursor.gameObject.SetActive(_state == State.Admin);
+//            _admincomponents.AnimatedCursor.gameObject.SetActive(_state == State.Admin);
             _admincomponents.VirtualVictoria.gameObject.SetActive(_state == State.Admin);
             _admincomponents.HoldoutVictoria.gameObject.SetActive(_state != State.Admin);
             _admincomponents.SpatialMapping.gameObject.SetActive(_state == State.Admin);

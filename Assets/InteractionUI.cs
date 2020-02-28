@@ -56,6 +56,7 @@ public class InteractionUI : MonoBehaviour
             _cursorPosition = pos + _cursorToCamDistance * forward;
             _cursorRotation = Quaternion.LookRotation(2 * forward);
         }
+        
         else
         {
             var p = position.Value;
@@ -65,6 +66,11 @@ public class InteractionUI : MonoBehaviour
         }
     }
 
+    public void SetCursorVisible(bool visible)
+    {
+        _cursorTransform.gameObject.SetActive(visible);
+    }
+    
     public void UpdateHighlightedMeshRenderer(MeshRenderer rendererToHighlight)
     {
         var shapeModule = _particles.shape;

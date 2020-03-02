@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824e719911e0ce0428d9c1f3a67b509a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 0.5
-  Width: 0.2
+  Radius: 0.1
+  Width: 0.3
   StartAngle: 0
   FillAngle: 360
   FillRatio: 1

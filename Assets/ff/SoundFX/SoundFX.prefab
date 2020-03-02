@@ -180,6 +180,6 @@ MonoBehaviour:
   - Type: 2
     Clip: {fileID: 8300000, guid: a44c90fe2f6244cacbde6cee04439b64, type: 3}
   - Type: 3
-    Clip: {fileID: 8300000, guid: 963d796993b9a4dfeb3ef0e6d9351eb6, type: 3}
+    Clip: {fileID: 0}
   - Type: 4
-    Clip: {fileID: 8300000, guid: cc113633938b34ba9a154aea465b72ed, type: 3}
+    Clip: {fileID: 0}

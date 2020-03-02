@@ -2,12 +2,6 @@
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity.SpatialMapping;
 using UnityEngine;
-using UnityEngine.Serialization;
-using victoria.admintools;
-using victoria.audio;
-using victoria.input;
-using victoria.log;
-using victoria.ui;
 
 namespace victoria.controller
 {

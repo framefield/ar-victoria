@@ -5,13 +5,9 @@ using HoloToolkit.Unity.InputModule;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using victoria.audio;
 using victoria.interaction;
-using victoria.log;
-using victoria.tour;
-using victoria.ui;
 
-namespace victoria.controller
+namespace victoria
 {
     /// <summary>
     /// Controls a tour that consists of TourStations. 
@@ -158,7 +154,6 @@ namespace victoria.controller
                     return false;
                 };
             }
-
             interaction.SetSegmentsActive(shouldBeActiveEvaluation);
         }
 
@@ -207,7 +202,6 @@ namespace victoria.controller
             _interactionUI.StartSelectionTimer(mode);
 
             _model.CurrentCursorState = Model.CursorState.DwellTimer;
-            _model.DwellTimerStartTime = Time.time;
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerBegin);
             _notificationUI.ShowDebugNotification($"Start Dwell Timer {_model.HoveredSegment}");
         }
@@ -216,7 +210,6 @@ namespace victoria.controller
         {
             _interactionUI.CancelSelectionTimer();
             _model.CurrentCursorState = Model.CursorState.Default;
-            _model.DwellTimerStartTime = float.PositiveInfinity;
             _soundFX.Play(SoundFX.SoundType.OnDwellTimerCanceled);
             _notificationUI.ShowDebugNotification($"Cancel Dwell Timer {_model.HoveredSegment}");
         }
@@ -350,7 +343,6 @@ namespace victoria.controller
             public CursorState CurrentCursorState;
             public Vector3? HitPosition;
             public Vector3? HitNormal;
-            public float? DwellTimerStartTime;
             public List<InteractiveSegment.SegmentType> CompletedContent;
 
             public InteractiveSegment.SegmentType? GetSegmentToGuideTo()
@@ -397,9 +389,6 @@ namespace victoria.controller
                 Tour,
                 Epilogue
             }
-
-            private const float SelectionTimeThresholdUnguided = 3f;
-            private const float SelectionTimeThresholdGuided = 0.1f;
 
             public bool PalmXORArmIsCompleted()
             {

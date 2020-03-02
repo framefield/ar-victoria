@@ -2,10 +2,8 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
-using victoria.audio;
-using victoria.ui;
 
-namespace victoria.input
+namespace victoria
 {
     /// <summary>
     /// Hold the available speech input commands and fires events when they are recognized.
@@ -72,13 +70,12 @@ namespace victoria.input
             _listener.OnCommandDetected(c);
         }
 
-        private KeywordRecognizer _keywordRecognizer = null;
-
         public interface ICommandListener
         {
             void OnCommandDetected(Command command);
         }
 
+        private KeywordRecognizer _keywordRecognizer = null;
         private ICommandListener _listener;
         private SoundFX _soundFX;
         private NotificationUI _notificationUI;

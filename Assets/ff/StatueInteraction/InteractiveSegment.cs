@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace victoria.interaction
+namespace victoria
 {
     /// <summary>
     /// Component that can be hit by the gaze cursor raycasts.

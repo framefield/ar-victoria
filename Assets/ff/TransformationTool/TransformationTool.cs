@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Experimental.PlayerLoop;
-using victoria.controller;
 
-namespace victoria.admintools
+namespace victoria
 {
     /// <summary>
     /// Small menu to adapt the calibration of the statue.

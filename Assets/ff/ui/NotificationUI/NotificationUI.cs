@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-namespace victoria.ui
+namespace victoria
 {
     /// <summary>
     /// Simple lower third notification ui. Used for debugging as well.

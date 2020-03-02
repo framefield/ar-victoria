@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.Playables;
-using UnityEngine.Serialization;
-using victoria.interaction;
 
-namespace victoria.tour
+namespace victoria
 {
     /// <summary>
     /// The seven content modules in the scene, that are assigned to a segment of the statue. 

@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
-using victoria.controller;
-using victoria.interaction;
 
-namespace victoria.log
+namespace victoria
 {
     /// <summary>
     /// Log the camera transform and interaction events to csv file.
@@ -119,7 +117,6 @@ namespace victoria.log
             }
         }
 
-
         private static string GeneratePathBase(TourController.TourMode mode)
         {
             var now = DateTime.Now;
@@ -143,7 +140,6 @@ namespace victoria.log
                 $"{modeString}_{now.Year}_{now.Month}_{now.Day}T{now.Hour}h{now.Minute}m{now.Second}s_";
             return filenamePrefix;
         }
-
 
         private readonly Queue<(TourEvent eventType, InteractiveSegment.SegmentType segment)> _receivedTourEvents =
             new Queue<(TourEvent, InteractiveSegment.SegmentType)>();

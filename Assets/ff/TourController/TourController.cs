@@ -187,6 +187,12 @@ namespace victoria
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
 
+            //quickfix to quick select first the tour station - whole statue 
+            if (_model.CurrentTourState == Model.TourState.Prologue)
+            {
+                PlayHoveredSegment();
+                return;
+            }
             if (_model.CurrentCursorState != Model.CursorState.Playing)
                 BeginDwellTimerForHoveredSegment();
 

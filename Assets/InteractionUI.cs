@@ -36,11 +36,19 @@ namespace victoria
                 if (_hasStopBeenTriggeredManually)
                     return;
                 selectionHandler.Invoke();
-                _playableDirector.Stop();
-                _playableDirector.time = 0f;
-                _playableDirector.Evaluate();
+//                _playableDirector.Stop();
+//                _playableDirector.time = 0f;
+//                _playableDirector.Evaluate();
             };
         }
+
+        public void Reset()
+        {
+            _playableDirector.Stop();
+            _playableDirector.time = 0f;
+            _playableDirector.Evaluate();
+        }
+
 
         private void Update()
         {

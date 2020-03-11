@@ -188,7 +188,7 @@ namespace victoria
             _model.HoveredSegment = eventData.HoveredType;
 
             //quickfix to quick select first the tour station - whole statue 
-            if (_model.CurrentTourState == Model.TourState.Prologue)
+            if (_model.CurrentTourState == Model.TourState.Prologue && _model.CurrentCursorState != Model.CursorState.Playing)
             {
                 PlayHoveredSegment();
                 return;

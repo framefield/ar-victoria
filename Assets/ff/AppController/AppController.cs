@@ -85,11 +85,11 @@ namespace victoria.controller
             {
                 case SpeechInput.Command.Alpha:
                     if (_state != State.Tour)
-                        StartTour(TourController.TourMode.Unguided);
+                        StartTour(TourController.TourMode.Guided);
                     break;
                 case SpeechInput.Command.Bravo:
                     if (_state != State.Tour)
-                        StartTour(TourController.TourMode.Guided);
+                        StartTour(TourController.TourMode.Unguided);
                     break;
                 case SpeechInput.Command.Charlie:
                     if (_state != State.Tour)

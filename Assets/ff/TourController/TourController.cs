@@ -55,6 +55,7 @@ namespace victoria
 
             SetState(Model.TourState.Prologue);
             _notificationUI.ShowDebugNotification($"Start tour {mode.ToString()}");
+            RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
         }
 
         // called by the AppController

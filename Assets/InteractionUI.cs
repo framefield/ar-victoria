@@ -36,14 +36,23 @@ namespace victoria
                 if (_hasStopBeenTriggeredManually)
                     return;
                 selectionHandler.Invoke();
-//                _playableDirector.Stop();
-//                _playableDirector.time = 0f;
-//                _playableDirector.Evaluate();
             };
         }
 
-        public void Reset()
+        public void Reset(Mode mode)
         {
+            switch (mode)
+            {
+                case Mode.Guided:
+                    _playableDirector.playableAsset = _guidedTimeline;
+                    break;
+                case Mode.Unguided:
+                    _playableDirector.playableAsset = _unguidedTimeline;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+            }
+
             _playableDirector.Stop();
             _playableDirector.time = 0f;
             _playableDirector.Evaluate();

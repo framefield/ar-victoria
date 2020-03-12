@@ -187,13 +187,12 @@ namespace victoria
             _model.HitNormal = eventData.HitNormal;
             _model.HoveredSegment = eventData.HoveredType;
 
-            //quickfix to quick select first the tour station - whole statue 
-            if (_model.CurrentTourState == Model.TourState.Prologue && _model.CurrentCursorState != Model.CursorState.Playing)
-            {
-                PlayHoveredSegment();
+            if( _model.CurrentCursorState == Model.CursorState.Playing)
                 return;
-            }
-            if (_model.CurrentCursorState != Model.CursorState.Playing)
+            
+            if (_model.CurrentTourState == Model.TourState.Prologue) //quick fix, to quick select first the tour station - whole statue 
+                PlayHoveredSegment();
+            else 
                 BeginDwellTimerForHoveredSegment();
 
             RenderModel(_interactionUI, _model, _interaction, _camera, _animatedCursor);
@@ -239,7 +238,12 @@ namespace victoria
         void TourStation.IInteractionListener.ContentCompleted(TourStation completedChapter)
         {
             _model.CompletedContent.Add(completedChapter.Type);
-            _interactionUI.Reset(); // set the ui timeline to t=0.0 
+            
+            var mode = _model.IsInGuidedModeOrInMixedModeGuided()
+                ? InteractionUI.Mode.Guided
+                : InteractionUI.Mode.Unguided;
+            _interactionUI.Reset(mode); // set the ui timeline to t=0.0 
+            
             _tourLog.LogEvent(TourLog.TourEvent.Complete, completedChapter.Type);
             _soundFX.Play(SoundFX.SoundType.ContentCompleted);
             _notificationUI.ShowDebugNotification(

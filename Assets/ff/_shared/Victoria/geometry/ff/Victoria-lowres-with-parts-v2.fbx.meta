@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: f0570f7a16a0e4d60a87ab45d564c3f9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: garmont-back
+    100002: head
+    100004: missing Arm
+    100006: palm
+    100008: sockel-sign-bigger
+    100010: sockel-sign-small
+    100012: //RootNode
+    100014: victoria-lower-sockel
+    100016: victorial-complete
+    100018: wings-back
+    100020: wings-front
+    400000: garmont-back
+    400002: head
+    400004: missing Arm
+    400006: palm
+    400008: sockel-sign-bigger
+    400010: sockel-sign-small
+    400012: //RootNode
+    400014: victoria-lower-sockel
+    400016: victorial-complete
+    400018: wings-back
+    400020: wings-front
+    2100000: None.014
+    2100002: Carrera_Marble1.002
+    2300000: garmont-back
+    2300002: head
+    2300004: missing Arm
+    2300006: palm
+    2300008: sockel-sign-bigger
+    2300010: sockel-sign-small
+    2300012: victoria-lower-sockel
+    2300014: victorial-complete
+    2300016: wings-back
+    2300018: wings-front
+    3300000: garmont-back
+    3300002: head
+    3300004: missing Arm
+    3300006: palm
+    3300008: sockel-sign-bigger
+    3300010: sockel-sign-small
+    3300012: victoria-lower-sockel
+    3300014: victorial-complete
+    3300016: wings-back
+    3300018: wings-front
+    4300000: victorial-complete
+    4300002: head
+    4300004: palm
+    4300006: wings-front
+    4300008: wings-back
+    4300010: sockel-sign-small
+    4300012: garmont-back
+    4300014: missing Arm
+    4300016: sockel-sign-bigger
+    4300018: victoria-lower-sockel
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
